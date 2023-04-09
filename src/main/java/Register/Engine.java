@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.Scanner;
 
 import Users.*;
-import Register.*;
+
 
 import javax.print.Doc;
 
@@ -32,76 +32,86 @@ public class Engine {
 
         return null;
     }
-    public void addRegistroMedico(Doctor usuario,int id){
-        if(usuario instanceof Doctor){
-            Patient paciente = this.getUser(usuario,id);
+    public void addRegistroMedico(User usuario,int id){
+        if(usuario instanceof Doctor ){
+            Patient paciente = (Patient)(getUser(usuario,id));
+            if (paciente==null) return;
             List<RegistroMedico> historiaClinica=paciente.getHistoriasClinica();
             System.out.println("Ingrese el diagnostico del paciente: ");
-            Scanner s= new Scanner(java.lang.System.in);
+            Scanner s= new Scanner(System.in);
             String diagnostico=s.nextLine();
             System.out.println("Ingrese el tratamiento a seguir: ");
             String tratamiento=s.nextLine();
             System.out.println("Ingrese oberservaciones adicionales: ");
             String observaciones=s.nextLine();
             try{
-                RegistroMedico registro=new RegistroMedico(diagnostico,tratamiento,observaciones,usuario);
+                RegistroMedico registro=new RegistroMedico(diagnostico,tratamiento,observaciones, (Doctor)usuario);
                 historiaClinica.add(registro);
                 paciente.setHistoriasClinica(historiaClinica);
+                
+                
             }
             catch(Exception e){
-                java.lang.System.out.println("Error al actaulizar resgstro");
+                java.lang.System.out.println("Error al actaulizar resgistro");
             }
         }
-        else java.lang.System.out.println("esto no debia pasar onooooo");
+        else System.out.println("esto no debia pasar onooooo");
 
     }
-    public Patient getUser(User user, int id){
-        if(user instanceof Patient){
-            return null;
-        }
-        int index = patients.indexOf(id);//Se usará el id para instanciar el objeto paciente cada vez que se cree uno nuevo
-        if (index==-1) return null;
-        Patient patient = patients.get(index);
-
-        return patient;
-    }
-    public Object getUser(int id){
-        int index = patients.indexOf(id);
-        if (index==-1){
-            index = doctors.indexOf(id);
-            if(index==-1){
-                index = admins.indexOf(id);
-                if(index==-1){
-                    return null;
-                } else {
-                    Admin user = admins.get(index);
-                    return user;
+    public User getUser(User user, int id){
+        
+        if (user instanceof Doctor ){
+            if (((Doctor)user).getPatients().isEmpty()){
+                System.out.println("En este momento ud no tienen ningún paciente");
+                return null;
+            } else{
+            for(Patient patient:((Doctor)user).getPatients()){
+                if (patient.getId() == id){
+                    return patient;
                 }
-            } else {
-                Doctor user = doctors.get(index);
-                return user;
+              
+            } 
+            System.out.println("Ud no tiene ningún paciente con ese numero de identificación");
+            return null;
             }
-        } else {
-            Patient user = patients.get(index);
-            return user;
+                
         }
-    }
-    public void removeUser(int id) {
-        for (Patient paciente : patients) {
-        if (paciente.getId() == id) {
-            patients.remove(paciente);
-            return;
-        }
-    }
+        else {
+            for (Patient paciente : patients) {
+                if (paciente.getId() == id) {
+                    return paciente;
+                }
+            }
     // Buscar en la lista de médicos
-    for (Doctor medico : doctors) {
-        if (medico.getId() == id) {
-            doctors.remove(medico);
+            for (Doctor medico : doctors) {
+                if (medico.getId() == id) {
+                    return medico ;
+                }
+            }
+        System.out.println("Error: el usuario con id " + id + " no se encuentra en el sistema.");
+        return null;
+                   
+    }
+        
+    }
+   
+    public void removeUser(User user,int id) {
+        User userRemove=getUser(user, id);
+        if (userRemove==null){
+        return;}
+        if(userRemove instanceof Patient patient){
+            patients.remove(patient);
+            for(Doctor doctor:doctors){
+                doctor.getPatients().remove(patient);
+                    
+                
+            }
             return;
         }
-    }
-     System.out.println("Error: el usuario con id " + id + " no se encuentra en el sistema.");
-    
+        if(userRemove instanceof Doctor doctor){
+            doctors.remove(doctor);
+            return;
+        }
 }
     private void initialData(){
         EPS epsHolder = new EPS("SaludPublica","Calle 1 Carrera 2 #10", "3000000000");
@@ -116,8 +126,8 @@ public class Engine {
         patients.add(new Patient(4,"patient4","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com",epsHolder));
 
         doctors.add(new Doctor("Internista",epsHolder,0,"doc0","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com"));
-        doctors.add(new Doctor("Pediatra",epsHolder,1,"doc0","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com"));
-        doctors.add(new Doctor("Neurologo",epsHolder,2,"doc0","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com"));
+        doctors.add(new Doctor("Pediatra",epsHolder,1,"doc1","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com"));
+        doctors.add(new Doctor("Neurologo",epsHolder,2,"doc2","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com"));
 
     }
 

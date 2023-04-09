@@ -55,12 +55,15 @@ public String toString() {
     return sb.toString();
 }
 public String toStringListPatients(){
+    if(!patients.isEmpty()){
     StringBuilder sb= new StringBuilder();
     for (Patient paciente : patients) {
-    sb.append(paciente.toString()).append(", ");
+    sb.append(paciente.getId()).append(", ");
 }
     return sb.toString();
+            }else {
+        return "El doctor no tiene pacientes asignados";
+    }
 }
-
     
 }

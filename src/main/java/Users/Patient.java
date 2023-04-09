@@ -39,6 +39,7 @@ public String toString() {
     return sb.toString();
 }
 public String toStringHistoClinica(){
+    if(!historiaClinica.isEmpty()){
     StringBuilder sb=new StringBuilder();
     sb.append("Historia clínica:\n");
     for (RegistroMedico registro : historiaClinica) {
@@ -48,6 +49,8 @@ public String toStringHistoClinica(){
                 .append(registro.getMedicoTratante().getName()).append("\n");
     }
     return sb.toString();
+    } else return "EL paciente no tiene historia clínica";
+    
 }
 
     

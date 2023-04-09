@@ -89,7 +89,9 @@ public class NormalMenu {
                     case 1 ->{
                         System.out.println();
                     }case 2 ->{
-                        System.out.println("shows all the clinical history");
+                        System.out.println("Ingrese el numero de identificación del usuario que desea eliminar");
+                        int id=scanner.nextInt();
+                        engine.removeUser(user,id);
                     }case 0 ->{
                         System.out.println("Goodbye");
                     }
@@ -121,6 +123,9 @@ public class NormalMenu {
                     }case 3 ->{
 
                     }case 4 ->{
+                        System.out.println("Digite el id del paciente sobre el que desea agregar un nuevo registro");
+                        int id=scanner.nextInt();
+                        engine.addRegistroMedico(user, id);
 
                     }case 0 ->{
                         System.out.println("Goodbye");
