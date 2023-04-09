@@ -29,7 +29,20 @@ public class Patient extends Person {
     public void setEps(EPS eps) {
         this.eps = eps;
     }
-    
+     @Override
+public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("Paciente: ").append(super.toString()).append("\n");
+    sb.append("EPS: ").append(eps.getNombre()).append("\n");
+    sb.append("Historia clínica:\n");
+    for (RegistroMedico registro : historiaClinica) {
+        sb.append("- ").append(registro.getDiagnostico()).append(", ").append(registro.getTratamiento())
+                .append(", ").append(registro.getObservaciones()).append(", ")
+                .append(registro.getFechaCreacion()).append(", ")
+                .append(registro.getMedicoTratante().getNombre()).append("\n");
+    }
+    return sb.toString();
+}
 
     
 }
