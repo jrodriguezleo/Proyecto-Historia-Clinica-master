@@ -78,7 +78,16 @@ public abstract class Person extends User{
     public void setEmail(String email) {
         this.email = email;
     }
-
+@Override
+    public String toString() {
+    return "Nombre: " + nombre + "\n" +
+           "Apellido: " + apellido + "\n" +
+           "Fecha de nacimiento: " + fechaNacimiento + "\n" +
+           "Género: " + genero + "\n" +
+           "Dirección: " + direccion + "\n" +
+           "Teléfono: " + telefono + "\n" +
+           "Email: " + email;
+}
 
 
 }
