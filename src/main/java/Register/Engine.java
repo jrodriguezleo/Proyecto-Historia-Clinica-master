@@ -14,6 +14,7 @@ public class Engine {
     private LinkedList<Patient> patients = new LinkedList<>();
     private LinkedList<Doctor> doctors = new LinkedList<>();
     private LinkedList<Admin> admins = new LinkedList<>();
+    private LinkedList<EPS> listEps  = new LinkedList<>();
 
     public Engine(){
         initialData();
@@ -32,6 +33,75 @@ public class Engine {
 
         return null;
     }
+    
+    public void adUsuario(User usuario,int opcion){
+       switch(opcion){
+       
+       } 
+    }
+    
+    
+    
+    
+    public void editUsuario(User user,int id){
+        Scanner scan=new Scanner(System.in);
+        User userEdit=getUser(user,id);
+        if (userEdit==null){
+            System.out.println("No existe ningún usuario con ese numero de identificación");
+            return;
+        }
+        else if(userEdit instanceof Doctor){
+            System.out.println("Ingrese los nuevos datos del doctor:");
+            System.out.println("Id: "+userEdit.getId());
+            System.out.println("Ingrese especialidad");
+            ((Doctor) userEdit).setSpecialization(scan.nextLine());
+            System.out.println("Ingrese Nombre de Usuario");
+            ((Doctor) userEdit).setUserName(scan.nextLine());
+            System.out.println("Ingrese contraseña");
+            ((Doctor) userEdit).setPassword(scan.nextLine());
+            System.out.println("Ingrese nombre");
+            ((Doctor) userEdit).setName(scan.nextLine());
+            System.out.println("Ingrese apellido");
+            ((Doctor) userEdit).setLastName(scan.nextLine());
+            System.out.println("Ingrese FechaNacimiento");
+            ((Doctor) userEdit).setBirthdate(scan.nextLine());
+            System.out.println("Ingrese genero");
+            ((Doctor) userEdit).setGender(scan.nextLine());
+            System.out.println("Ingrese direccion");
+            ((Doctor) userEdit).setAddress(scan.nextLine());
+            System.out.println("Ingrese email");
+            ((Doctor) userEdit).setEmail(scan.nextLine());
+            System.out.println("Ingrese telefono");
+            ((Doctor) userEdit).setPhone(scan.nextLine());
+            
+            
+        }
+        else if(userEdit instanceof Patient){
+            System.out.println("Ingrese los nuevos datos del paciente:");
+            System.out.println("Id: "+userEdit.getId());
+            System.out.println("Ingrese Nombre de Usuario");
+            ((Patient) userEdit).setUserName(scan.nextLine());
+            System.out.println("Ingrese contraseña");
+            ((Patient) userEdit).setPassword(scan.nextLine());
+            System.out.println("Ingrese nombre");
+            ((Patient) userEdit).setName(scan.nextLine());
+            System.out.println("Ingrese apellido");
+            ((Patient) userEdit).setLastName(scan.nextLine());
+            System.out.println("Ingrese FechaNacimiento");
+            ((Patient) userEdit).setBirthdate(scan.nextLine());
+            System.out.println("Ingrese genero");
+            ((Patient) userEdit).setGender(scan.nextLine());
+            System.out.println("Ingrese direccion");
+            ((Patient) userEdit).setAddress(scan.nextLine());
+            System.out.println("Ingrese email");
+            ((Patient) userEdit).setEmail(scan.nextLine());
+            System.out.println("Ingrese telefono");
+            ((Patient) userEdit).setPhone(scan.nextLine());
+        }
+        
+    }
+    
+    
     public void addRegistroMedico(User usuario,int id){
         if(usuario instanceof Doctor ){
             Patient paciente = (Patient)(getUser(usuario,id));
@@ -117,6 +187,7 @@ public class Engine {
 }
     private void initialData(){
         EPS epsHolder = new EPS("SaludPublica","Calle 1 Carrera 2 #10", "3000000000");
+        listEps.add(epsHolder);
         admins.add(new Admin(0,"admin0","admin01234","Developer 0",012345, epsHolder));
         admins.add(new Admin(1,"admin1","admin12345","Developer 1",123456, epsHolder));
         admins.add(new Admin(2,"admin2","admin23456","Developer 2",234567, epsHolder));
@@ -129,14 +200,14 @@ public class Engine {
         patients.add(new Patient(3,"patient3","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com",epsHolder));
         patients.add(new Patient(4,"patient4","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com",epsHolder));
 
-        doctors.add(new Doctor("Internista",epsHolder,0,"doc0","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com"));
-        Doctor doc1=new Doctor("Pediatra",epsHolder,1,"doc1","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com");
+        doctors.add(new Doctor("Internista",epsHolder,100,"doc0","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com"));
+        Doctor doc1=new Doctor("Pediatra",epsHolder,101,"doc1","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com");
         doctors.add(doc1);
         LinkedList<Patient> pacientesDoc1=doc1.getPatients();
         pacientesDoc1.add(paciente1);
         doc1.setPatients(pacientesDoc1);
         
-        doctors.add(new Doctor("Neurologo",epsHolder,2,"doc2","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com"));
+        doctors.add(new Doctor("Neurologo",epsHolder,102,"doc2","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com"));
         
 
     }

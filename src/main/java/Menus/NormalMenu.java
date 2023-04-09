@@ -87,12 +87,20 @@ public class NormalMenu {
                 option = scanner.nextInt();
                 switch (option){
                     case 1 ->{
-                        System.out.println();
+                        System.out.println("Escriba 0 si quiere crear un medico o 1 si quiere crear un paciente ");
+                        int opcion=scanner.nextInt();
+                        
                     }case 2 ->{
                         System.out.println("Ingrese el numero de identificación del usuario que desea eliminar");
                         int id=scanner.nextInt();
                         engine.removeUser(user,id);
-                    }case 0 ->{
+                    
+                    }case 3 ->{
+                        System.out.println("Ingrese el numero de identificacion del usuario que desea modificar");
+                        int id=scanner.nextInt();
+                        engine.editUsuario(user,id);
+                    }
+                    case 0 ->{
                         System.out.println("Goodbye");
                     }
                 }
