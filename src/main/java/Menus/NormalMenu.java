@@ -64,7 +64,7 @@ public class NormalMenu {
                         System.out.println(((Patient)user).toString());
                         
                     }case 2 ->{
-                        System.out.println("shows all my clinical history");
+                        System.out.println(((Patient) user).toStringListPatients());
                     }case 0 ->{
                         System.out.println("Goodbye");
                     }

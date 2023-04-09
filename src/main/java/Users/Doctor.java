@@ -46,7 +46,11 @@ public String toString() {
     sb.append(super.toString()); // Llama al toString de la clase Persona
     sb.append(", especialidad='").append(specialization).append('\'');
     sb.append(", eps=").append(eps);
-    sb.append(", pacientes=").append(patients);
+    sb.append(", pacientes=[").append(patients.toString());
+    for (Patient paciente : patients) {
+    sb.append(paciente.toString()).append(", ");
+}
+    sb.append("]");
     sb.append('}');
     return sb.toString();
 }
