@@ -64,7 +64,7 @@ public class NormalMenu {
                         System.out.println(((Patient)user).toString());
                         
                     }case 2 ->{
-                        System.out.println(((Patient) user).toStringListPatients());
+                        System.out.println(((Patient) user).toStringHistoClinica());
                     }case 0 ->{
                         System.out.println("Goodbye");
                     }
@@ -116,6 +116,7 @@ public class NormalMenu {
                         System.out.println(((Doctor)user).toString());
 
                     }case 2 ->{
+                        System.out.println(((Doctor)user).toStringListPatients());
 
                     }case 3 ->{
 

@@ -86,6 +86,23 @@ public class Engine {
             return user;
         }
     }
+    public void removeUser(int id) {
+        for (Patient paciente : patients) {
+        if (paciente.getId() == id) {
+            patients.remove(paciente);
+            return;
+        }
+    }
+    // Buscar en la lista de médicos
+    for (Doctor medico : doctors) {
+        if (medico.getId() == id) {
+            doctors.remove(medico);
+            return;
+        }
+    }
+     System.out.println("Error: el usuario con id " + id + " no se encuentra en el sistema.");
+    
+}
     private void initialData(){
         EPS epsHolder = new EPS("SaludPublica","Calle 1 Carrera 2 #10", "3000000000");
         admins.add(new Admin(0,"admin0","admin01234","Developer 0",012345, epsHolder));

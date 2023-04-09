@@ -35,10 +35,10 @@ public String toString() {
     sb.append("Paciente: ").append(super.toString()).append("\n");
     sb.append("EPS: ").append(eps.getName()).append("\n");
     sb.append("Historia clínica:\n");
-    sb.append(toStringListPatients());
+    sb.append(toStringHistoClinica());
     return sb.toString();
 }
-public String toStringListPatients(){
+public String toStringHistoClinica(){
     StringBuilder sb=new StringBuilder();
     sb.append("Historia clínica:\n");
     for (RegistroMedico registro : historiaClinica) {

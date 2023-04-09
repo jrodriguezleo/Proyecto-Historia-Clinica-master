@@ -46,12 +46,19 @@ public String toString() {
     sb.append(super.toString()); // Llama al toString de la clase Persona
     sb.append(", especialidad='").append(specialization).append('\'');
     sb.append(", eps=").append(eps);
-    sb.append(", pacientes=[").append(patients.toString());
+    sb.append(", pacientes=[");
     for (Patient paciente : patients) {
-    sb.append(paciente.toString()).append(", ");
+    sb.append(paciente.getId()).append(", ");
 }
     sb.append("]");
     sb.append('}');
+    return sb.toString();
+}
+public String toStringListPatients(){
+    StringBuilder sb= new StringBuilder();
+    for (Patient paciente : patients) {
+    sb.append(paciente.toString()).append(", ");
+}
     return sb.toString();
 }
 
