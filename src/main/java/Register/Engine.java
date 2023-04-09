@@ -99,17 +99,19 @@ public class Engine {
         User userRemove=getUser(user, id);
         if (userRemove==null){
         return;}
-        if(userRemove instanceof Patient patient){
-            patients.remove(patient);
+        if(userRemove instanceof Patient){
+            patients.remove((Patient)userRemove);
             for(Doctor doctor:doctors){
-                doctor.getPatients().remove(patient);
+                doctor.getPatients().remove((Patient)userRemove);
                     
                 
             }
+            System.out.println("El paciente con id " + id + " fue eliminado.");
             return;
         }
-        if(userRemove instanceof Doctor doctor){
-            doctors.remove(doctor);
+        if(userRemove instanceof Doctor){
+            doctors.remove((Doctor)userRemove);
+            System.out.println("El doctor con id " + id + " fue eliminado.");
             return;
         }
 }
@@ -120,14 +122,22 @@ public class Engine {
         admins.add(new Admin(2,"admin2","admin23456","Developer 2",234567, epsHolder));
 
         patients.add(new Patient(0,"patient0","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com",epsHolder));
-        patients.add(new Patient(1,"patient1","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com",epsHolder));
+        Patient paciente1=new Patient(1,"patient1","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com",epsHolder);
+        patients.add(paciente1);
+        
         patients.add(new Patient(2,"patient2","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com",epsHolder));
         patients.add(new Patient(3,"patient3","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com",epsHolder));
         patients.add(new Patient(4,"patient4","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com",epsHolder));
 
         doctors.add(new Doctor("Internista",epsHolder,0,"doc0","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com"));
-        doctors.add(new Doctor("Pediatra",epsHolder,1,"doc1","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com"));
+        Doctor doc1=new Doctor("Pediatra",epsHolder,1,"doc1","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com");
+        doctors.add(doc1);
+        LinkedList<Patient> pacientesDoc1=doc1.getPatients();
+        pacientesDoc1.add(paciente1);
+        doc1.setPatients(pacientesDoc1);
+        
         doctors.add(new Doctor("Neurologo",epsHolder,2,"doc2","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com"));
+        
 
     }
 

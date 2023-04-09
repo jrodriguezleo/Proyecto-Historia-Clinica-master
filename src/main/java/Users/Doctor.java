@@ -29,7 +29,7 @@ public class Doctor extends Person{
         this.eps = eps;
     }
 
-    public List<Patient> getPatients() {
+    public LinkedList<Patient> getPatients() {
         return patients;
     }
     public void setPatients(LinkedList<Patient> patients) {
@@ -57,8 +57,10 @@ public String toString() {
 public String toStringListPatients(){
     if(!patients.isEmpty()){
     StringBuilder sb= new StringBuilder();
+    sb.append(", pacientes=[");
     for (Patient paciente : patients) {
     sb.append(paciente.getId()).append(", ");
+    sb.append("]");
 }
     return sb.toString();
             }else {
