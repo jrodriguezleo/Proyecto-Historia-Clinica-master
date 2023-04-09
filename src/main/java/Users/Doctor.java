@@ -38,6 +38,18 @@ public class Doctor extends Person{
     public void addPatient(Patient patient) {
         patients.add(patient);
     }
+    
+    @Override
+public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("Medico{");
+    sb.append(super.toString()); // Llama al toString de la clase Persona
+    sb.append(", especialidad='").append(especialidad).append('\'');
+    sb.append(", eps=").append(eps);
+    sb.append(", pacientes=").append(pacientes);
+    sb.append('}');
+    return sb.toString();
+}
 
     
 }
