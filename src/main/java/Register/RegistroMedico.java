@@ -32,4 +32,61 @@ public class RegistroMedico {
         
         
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(String fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    public String getDiagnostico() {
+        return diagnostico;
+    }
+
+    public void setDiagnostico(String diagnostico) {
+        this.diagnostico = diagnostico;
+    }
+
+    public String getTratamiento() {
+        return tratamiento;
+    }
+
+    public void setTratamiento(String tratamiento) {
+        this.tratamiento = tratamiento;
+    }
+
+    public String getObservaciones() {
+        return observaciones;
+    }
+
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
+    }
+
+    public Doctor getMedicoTratante() {
+        return medicoTratante;
+    }
+
+    public void setMedicoTratante(Doctor medicoTratante) {
+        this.medicoTratante = medicoTratante;
+    }
+
+    public List<NotaClinica> getNotasClinicas() {
+        return notasClinicas;
+    }
+
+    public void setNotasClinicas(List<NotaClinica> notasClinicas) {
+        this.notasClinicas = notasClinicas;
+    }
+    
 }

@@ -80,12 +80,12 @@ public abstract class Person extends User{
     }
 @Override
     public String toString() {
-    return "Nombre: " + nombre + "\n" +
-           "Apellido: " + apellido + "\n" +
-           "Fecha de nacimiento: " + fechaNacimiento + "\n" +
-           "Género: " + genero + "\n" +
-           "Dirección: " + direccion + "\n" +
-           "Teléfono: " + telefono + "\n" +
+    return "Nombre: " + name + "\n" +
+           "Apellido: " + lastName + "\n" +
+           "Fecha de nacimiento: " + birthdate + "\n" +
+           "Género: " + gender + "\n" +
+           "Dirección: " + address + "\n" +
+           "Teléfono: " + phone + "\n" +
            "Email: " + email;
 }
 

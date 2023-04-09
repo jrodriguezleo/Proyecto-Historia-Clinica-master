@@ -61,7 +61,8 @@ public class NormalMenu {
                 option = scanner.nextInt();
                 switch (option){
                     case 1 ->{
-                        System.out.println("shows all my info");
+                        System.out.println(((Patient)user).toString());
+                        
                     }case 2 ->{
                         System.out.println("shows all my clinical history");
                     }case 0 ->{
@@ -86,7 +87,7 @@ public class NormalMenu {
                 option = scanner.nextInt();
                 switch (option){
                     case 1 ->{
-                        System.out.println("shows all the info");
+                        System.out.println();
                     }case 2 ->{
                         System.out.println("shows all the clinical history");
                     }case 0 ->{
@@ -112,6 +113,7 @@ public class NormalMenu {
                 option = scanner.nextInt();
                 switch (option){
                     case 1 ->{
+                        System.out.println(((Doctor)user).toString());
 
                     }case 2 ->{
 

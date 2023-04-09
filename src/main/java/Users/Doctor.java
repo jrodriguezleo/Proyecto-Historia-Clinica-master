@@ -42,11 +42,11 @@ public class Doctor extends Person{
     @Override
 public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("Medico{");
+    sb.append("Doctor{");
     sb.append(super.toString()); // Llama al toString de la clase Persona
-    sb.append(", especialidad='").append(especialidad).append('\'');
+    sb.append(", especialidad='").append(specialization).append('\'');
     sb.append(", eps=").append(eps);
-    sb.append(", pacientes=").append(pacientes);
+    sb.append(", pacientes=").append(patients);
     sb.append('}');
     return sb.toString();
 }
