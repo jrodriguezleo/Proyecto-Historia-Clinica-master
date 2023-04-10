@@ -45,6 +45,7 @@ public class Engine {
                    System.out.println("Ya hay un usuario con esa id, ingrese otra");
                    id=scan.nextInt();
                }
+               scan.nextLine();
                System.out.println("Ingrese el nombre de usuario");
                String userName=scan.nextLine();
                System.out.println("Ingrese la contraseña");
@@ -83,6 +84,7 @@ public class Engine {
                    System.out.println("Ya hay un usuario con esa id, ingrese otra");
                    id=scan.nextInt();
                }
+               scan.nextLine();
                System.out.println("Ingrese el nombre de usuario");
                String userName=scan.nextLine();
                System.out.println("Ingrese la contraseña");
@@ -120,7 +122,7 @@ public class Engine {
     
     public EPS verificarNameEps(String nombre){
         for(EPS eps:listEps){
-            if(eps.getName()== nombre) return eps;
+            if(eps.getName().equals(nombre)) return eps;
             
             
         }
