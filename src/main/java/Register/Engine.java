@@ -35,13 +35,97 @@ public class Engine {
     }
     
     public void adUsuario(User usuario,int opcion){
+        Scanner scan=new Scanner(System.in);
        switch(opcion){
+           case 0 ->{
+               System.out.println("Ingrese los datos del nuevo ususario Doctor");
+               System.out.println("Ingrese la identificación: ");
+               int id=scan.nextInt();
+               while(getUser(usuario, id)!=null){
+                   System.out.println("Ya hay un usuario con esa id, ingrese otra");
+                   id=scan.nextInt();
+               }
+               System.out.println("Ingrese el nombre de usuario");
+               String userName=scan.nextLine();
+               System.out.println("Ingrese la contraseña");
+               String password=scan.nextLine();
+               System.out.println("Ingrese el nombre");
+               String nombre=scan.nextLine();
+               System.out.println("Ingrese el apellido");
+               String apellido=scan.nextLine();
+               System.out.println("Ingrese especialidad");
+               String especialidad=scan.nextLine();
+               System.out.println("Ingrese el nombre de la EPS");
+               String nameEps =scan.nextLine();
+               while(verificarNameEps(nameEps)==null){
+                   System.out.println("Esa eps no existe en nuestro sistema, ingreselo nuevamente");
+               nameEps =scan.nextLine();
+               }
+               EPS eps=verificarNameEps(nameEps);
+               System.out.println("Ingrese la fecha de nacimiento");
+               String nacimiento=scan.nextLine();
+               System.out.println("Ingrese el genero");
+               String genero=scan.nextLine();
+               System.out.println("Ingrese la dirección");
+               String direccion=scan.nextLine();
+               System.out.println("Ingrese el numero de telefono");
+               String telefono=scan.nextLine();
+               System.out.println("Ingrese su email");
+               String email=scan.nextLine();
+               Doctor newDoctor= new Doctor(especialidad,eps,id,userName,password,nombre,apellido,nacimiento,genero,direccion,telefono,email);
+               doctors.add(newDoctor);
+               System.out.println("El doctor fue añadido con exito");
+           }case 1 ->{
+               System.out.println("Ingrese los datos del nuevo ususario Paciente");
+               System.out.println("Ingrese la identificación: ");
+               int id=scan.nextInt();
+               while(getUser(usuario, id)!=null){
+                   System.out.println("Ya hay un usuario con esa id, ingrese otra");
+                   id=scan.nextInt();
+               }
+               System.out.println("Ingrese el nombre de usuario");
+               String userName=scan.nextLine();
+               System.out.println("Ingrese la contraseña");
+               String password=scan.nextLine();
+               System.out.println("Ingrese el nombre");
+               String nombre=scan.nextLine();
+               System.out.println("Ingrese el apellido");
+               String apellido=scan.nextLine();
+               System.out.println("Ingrese el nombre de la EPS");
+               String nameEps =scan.nextLine();
+               while(verificarNameEps(nameEps)==null){
+                   System.out.println("Esa eps no existe en nuestro sistema, ingreselo nuevamente");
+               nameEps =scan.nextLine();
+               }
+               EPS eps=verificarNameEps(nameEps);
+               System.out.println("Ingrese la fecha de nacimiento");
+               String nacimiento=scan.nextLine();
+               System.out.println("Ingrese el genero");
+               String genero=scan.nextLine();
+               System.out.println("Ingrese la dirección");
+               String direccion=scan.nextLine();
+               System.out.println("Ingrese el numero de telefono");
+               String telefono=scan.nextLine();
+               System.out.println("Ingrese su email");
+               String email=scan.nextLine();
+               Patient newPatient= new Patient(id,userName,password,nombre,apellido,nacimiento,genero,direccion,telefono,email,eps);
+               patients.add(newPatient);
+               System.out.println("El paciente fue añadido con exito");
+           }
        
-       } 
+       }
+       
     }
     
     
-    
+    public EPS verificarNameEps(String nombre){
+        for(EPS eps:listEps){
+            if(eps.getName()== nombre) return eps;
+            
+            
+        }
+        return null;
+    }
     
     public void editUsuario(User user,int id){
         Scanner scan=new Scanner(System.in);
@@ -98,6 +182,7 @@ public class Engine {
             System.out.println("Ingrese telefono");
             ((Patient) userEdit).setPhone(scan.nextLine());
         }
+        System.out.println("El usuario con el numero de identificacion "+id+" fue modificado satisfactoriamente");
         
     }
     

@@ -89,6 +89,7 @@ public class NormalMenu {
                     case 1 ->{
                         System.out.println("Escriba 0 si quiere crear un medico o 1 si quiere crear un paciente ");
                         int opcion=scanner.nextInt();
+                        engine.adUsuario(user, opcion);
                         
                     }case 2 ->{
                         System.out.println("Ingrese el numero de identificación del usuario que desea eliminar");
@@ -129,7 +130,8 @@ public class NormalMenu {
                         System.out.println(((Doctor)user).toStringListPatients());
 
                     }case 3 ->{
-
+                        
+               
                     }case 4 ->{
                         System.out.println("Digite el id del paciente sobre el que desea agregar un nuevo registro");
                         int id=scanner.nextInt();
