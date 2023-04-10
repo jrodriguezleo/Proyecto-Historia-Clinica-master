@@ -297,6 +297,21 @@ public class Engine {
 
     }
 
+    public void testAddEps(EPS eps){
+        listEps.add(eps);
+    }
+
+    public boolean testSearchEps(String name){
+        for(EPS eps : listEps){
+            if(eps.getName().equals(name)){
+                System.out.println("La EPS " + name + " se encuentra en el sistema.");
+                return true;
+            }
+        }
+        System.out.println("La EPS " + name + " no se encuentra en el sistema.");
+        return false;
+    }
+
 }
     
     
