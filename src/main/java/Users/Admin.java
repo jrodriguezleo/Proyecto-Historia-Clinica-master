@@ -2,12 +2,9 @@ package Users;
 import Register.EPS;
 
 public class Admin extends User{
-
-
     private String name;
     private int nit;
     private EPS eps;
- 
 
     public Admin(int id, String userName, String password, String name, int nit, EPS eps){
         //initiate for User info
@@ -20,27 +17,21 @@ public class Admin extends User{
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
     public int getNit() {
         return nit;
     }
-
     public void setNit(int nit) {
         this.nit = nit;
     }
-
     public EPS getEps() {
         return eps;
     }
-
     public void setEps(EPS eps) {
         this.eps = eps;
     }
-
     @Override
     public String toString(){
         return  "Name: " + name + "\n"+
