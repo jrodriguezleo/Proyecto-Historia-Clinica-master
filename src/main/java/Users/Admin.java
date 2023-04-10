@@ -41,4 +41,10 @@ public class Admin extends User{
         this.eps = eps;
     }
 
+    @Override
+    public String toString(){
+        return  "Name: " + name + "\n"+
+                "Nit: " + nit + "\n"+
+                "EPS: " + eps.getName();
+    }
 }

@@ -6,6 +6,7 @@ import Users.Admin;
 import Users.Doctor;
 import Users.Patient;
 
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class TestMenu {
@@ -80,10 +81,10 @@ public class TestMenu {
         startTime = System.nanoTime();
         engine.testSearchEps("EPS" + n);
         endTime = System.nanoTime();
-    
+
         timeElapsed = endTime - startTime;
         // convert to milliseconds
-        
+
         timeElapsed /= 1000000;
         System.out.println("Execution time for searching last item in a list of " + n + " items: " + timeElapsed + " milliseconds");
 
@@ -106,9 +107,46 @@ public class TestMenu {
         // convert to milliseconds
         timeElapsed /= 1000000;
         System.out.println("Execution time for searching random item ("+ poistion + ") in a list of " + n + " items: " + timeElapsed + " milliseconds");
-        
+
     }
 
     void test2(){
+        //Add 100^i patients to the patients list, for m=10 times and averaged each result, for 1<=i<=nTest
+
+        int nTest = 6; // Con 10^8 datos ya se rompe la memoria
+        double amount = 10;
+        long time = 0;
+        int timesToAverage = 10;
+
+        EPS epsHolder = new EPS("EPS for testing","Fake Address 123", "123 456 7890");
+
+        for (int i = 0; i <  nTest; i++) {
+            time = 0;   //Reset the time
+
+            for (int j = 0; j < timesToAverage; j++) {
+                //Create the list
+                LinkedList<Patient> patientsList = new LinkedList<>();
+
+                //Start Timer
+                long start = System.nanoTime();
+
+                //Run for an amount of times
+                for(int k =0; k < amount; k++){
+                    patientsList.add(new Patient(k,"patient0","password123",
+                            "My Name", "My Last Name","1-1-2000","M",
+                            "Calle 123","300 123 9900","correo@gmail.com",epsHolder));
+                }
+                //End timer
+                long finish = System.nanoTime();
+
+                time += finish-start;
+            }
+            //Calculate the average
+            time = time/timesToAverage;
+            //Print the result of each iteration
+            System.out.println("Add n="+(int) amount+" patients to a list tooks "+time+" nanoseconds");
+            //Increment the amount of additions
+            amount *= 10;
+        }
     }
 }
