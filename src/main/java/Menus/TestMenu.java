@@ -59,55 +59,56 @@ public class TestMenu {
 
         System.out.println("----TEST SEARCH----");
         System.out.println("Type the amount of items to include in the list: ");
-        int n = scanner.nextInt();
+        for(int j = 1; j<7;j++) {
+            int n = (int) Math.pow(10,j);//scanner.nextInt();
+
+            System.out.println("Adding items to the list");
+            long startTime = System.nanoTime();
+            for (int i = 0; i < n; i++) {
+                EPS new_eps = new EPS("EPS" + i, "calle" + i, "phone" + i);
+                engine.testAddEps(new_eps);
+            }
+
+            long endTime = System.nanoTime();
+            long timeElapsed = endTime - startTime;
+            // convert to milliseconds
+            //timeElapsed /= 1000000;
+
+            System.out.println("Execution time for adding " + n + " items to the list: " + timeElapsed + " nanoseconds");
 
 
-        System.out.println("Adding items to the list");
-        long startTime = System.nanoTime();
-        for(int i = 0; i < n; i++){
-            EPS new_eps = new EPS("EPS" + i, "calle" + i, "phone" + i);
-            engine.testAddEps(new_eps);
+            System.out.println("Searching last in the list");
+            startTime = System.nanoTime();
+            engine.testSearchEps("EPS" + n);
+            endTime = System.nanoTime();
+
+            timeElapsed = endTime - startTime;
+            // convert to milliseconds
+
+            //timeElapsed /= 1000000;
+            System.out.println("Execution time for searching last item in a list of " + n + " items: " + timeElapsed + " nanoseconds");
+
+            System.out.println("Searching first in the list");
+            startTime = System.nanoTime();
+            engine.testSearchEps("EPS0");
+            endTime = System.nanoTime();
+            timeElapsed = endTime - startTime;
+            // convert to milliseconds
+            //timeElapsed /= 1000000;
+            System.out.println("Execution time for searching first item in a list of " + n + " items: " + timeElapsed + " nanoseconds");
+
+            System.out.println("Searching at a random position in the list");
+            int poistion = (int) (Math.random() * n);
+
+            startTime = System.nanoTime();
+            engine.testSearchEps("EPS" + poistion);
+            endTime = System.nanoTime();
+            timeElapsed = endTime - startTime;
+            // convert to milliseconds
+            //timeElapsed /= 1000000;
+            System.out.println("Execution time for searching random item (" + poistion + ") in a list of " + n + " items: " + timeElapsed + " nanoseconds");
+            System.out.println("---------------------");
         }
-
-        long endTime = System.nanoTime();
-        long timeElapsed = endTime - startTime;
-        // convert to milliseconds
-        timeElapsed /= 1000000;
-
-        System.out.println("Execution time for adding " + n + " items to the list: " + timeElapsed + " milliseconds");
-
-
-        System.out.println("Searching last in the list");
-        startTime = System.nanoTime();
-        engine.testSearchEps("EPS" + n);
-        endTime = System.nanoTime();
-
-        timeElapsed = endTime - startTime;
-        // convert to milliseconds
-
-        timeElapsed /= 1000000;
-        System.out.println("Execution time for searching last item in a list of " + n + " items: " + timeElapsed + " milliseconds");
-
-        System.out.println("Searching first in the list");
-        startTime = System.nanoTime();
-        engine.testSearchEps("EPS0");
-        endTime = System.nanoTime();
-        timeElapsed = endTime - startTime;
-        // convert to milliseconds
-        timeElapsed /= 1000000;
-        System.out.println("Execution time for searching first item in a list of " + n + " items: " + timeElapsed + " milliseconds");
-
-        System.out.println("Searching at a random position in the list");
-        int poistion = (int) (Math.random() * n);
-
-        startTime = System.nanoTime();
-        engine.testSearchEps("EPS" + poistion);
-        endTime = System.nanoTime();
-        timeElapsed = endTime - startTime;
-        // convert to milliseconds
-        timeElapsed /= 1000000;
-        System.out.println("Execution time for searching random item ("+ poistion + ") in a list of " + n + " items: " + timeElapsed + " milliseconds");
-
     }
 
     void test2(){
@@ -145,6 +146,9 @@ public class TestMenu {
             time = time/timesToAverage;
             //Print the result of each iteration
             System.out.println("Add n="+(int) amount+" patients to a list tooks "+time+" nanoseconds");
+
+
+
             //Increment the amount of additions
             amount *= 10;
         }
