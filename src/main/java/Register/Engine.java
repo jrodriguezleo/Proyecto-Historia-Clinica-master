@@ -112,7 +112,11 @@ public class Engine {
                String email=scan.nextLine();
                Patient newPatient= new Patient(id,userName,password,nombre,apellido,nacimiento,genero,direccion,telefono,email,eps);
                patients.add(newPatient);
+               if (usuario instanceof Doctor){ 
+                ((Doctor)usuario).addPatient(newPatient);
+           }
                System.out.println("El paciente fue añadido con exito");
+               
            }
        
        }

@@ -130,7 +130,7 @@ public class NormalMenu {
                         System.out.println(((Doctor)user).toStringListPatients());
 
                     }case 3 ->{
-                        
+                        engine.adUsuario(user,1);
                
                     }case 4 ->{
                         System.out.println("Digite el id del paciente sobre el que desea agregar un nuevo registro");
