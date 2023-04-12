@@ -194,9 +194,23 @@ public class Engine {
         System.out.println("El usuario con el numero de identificacion "+id+" fue modificado satisfactoriamente");
         
     }
-//    public void addPaciente(User usuario, int id){
-//        if 
-//    }
+    public void addPaciente(User usuario, int id){
+        for(Patient paciente: ((Doctor)usuario).getPatients()){
+            if (paciente.getId()==id){
+                System.out.println("Ud ya tiene un paciente con ese numero de identificacion");    
+                return;
+            }
+        }
+       for (Patient paciente : patients) {
+                if (paciente.getId() == id) {
+                    ((Doctor)usuario).addPatient(paciente);
+                    System.out.println("Paciente añadido con exito");
+                    return ;
+                }
+            }
+        System.out.println("EL paciente no se encuentra registrado");
+            
+    }
     
     
     

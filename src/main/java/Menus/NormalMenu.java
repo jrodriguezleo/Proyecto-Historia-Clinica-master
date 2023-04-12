@@ -130,7 +130,9 @@ public class NormalMenu {
                         System.out.println(((Doctor)user).toStringListPatients());
 
                     }case 3 ->{
-                        engine.adUsuario(user,1);
+                        System.out.println("Digite el id del paciente que desea agregar a su lista de pacientes");
+                        int id=scanner.nextInt();
+                        engine.addPaciente(user,id);
                
                     }case 4 ->{
                         System.out.println("Digite el id del paciente sobre el que desea agregar un nuevo registro");
