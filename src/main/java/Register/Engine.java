@@ -77,11 +77,14 @@ public class Engine {
                doctors.add(newDoctor);
                System.out.println("El doctor fue añadido con exito");
            }case 1 ->{
+               
                System.out.println("Ingrese los datos del nuevo ususario Paciente");
                System.out.println("Ingrese la identificación: ");
                int id=scan.nextInt();
                while(getUser(usuario, id)!=null){
-                   System.out.println("Ya hay un usuario con esa id, ingrese otra");
+                   System.out.println("Ya hay un usuario con esa id");
+                       
+                   
                    id=scan.nextInt();
                }
                scan.nextLine();
@@ -191,12 +194,19 @@ public class Engine {
         System.out.println("El usuario con el numero de identificacion "+id+" fue modificado satisfactoriamente");
         
     }
+//    public void addPaciente(User usuario, int id){
+//        if 
+//    }
+    
+    
     
     
     public void addRegistroMedico(User usuario,int id){
         if(usuario instanceof Doctor ){
             Patient paciente = (Patient)(getUser(usuario,id));
-            if (paciente==null) return;
+            if (paciente==null) {
+                System.out.println("Ud no tiene ningun paciente con ese numero de identificacion");
+                return;}
             List<RegistroMedico> historiaClinica=paciente.getHistoriasClinica();
             System.out.println("Ingrese el diagnostico del paciente: ");
             Scanner s= new Scanner(System.in);
@@ -223,7 +233,7 @@ public class Engine {
         
         if (user instanceof Doctor ){
             if (((Doctor)user).getPatients().isEmpty()){
-                System.out.println("En este momento ud no tienen ningún paciente");
+                
                 return null;
             } else{
             for(Patient patient:((Doctor)user).getPatients()){
@@ -232,7 +242,6 @@ public class Engine {
                 }
               
             } 
-            System.out.println("Ud no tiene ningún paciente con ese numero de identificación");
             return null;
             }
                 

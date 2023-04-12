@@ -136,6 +136,7 @@ public class NormalMenu {
                         System.out.println("Digite el id del paciente sobre el que desea agregar un nuevo registro");
                         int id=scanner.nextInt();
                         engine.addRegistroMedico(user, id);
+                        
 
                     }case 0 ->{
                         System.out.println("Goodbye");
