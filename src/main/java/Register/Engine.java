@@ -272,7 +272,7 @@ public class Engine {
                     return medico ;
                 }
             }
-        System.out.println("Error: el usuario con id " + id + " no se encuentra en el sistema.");
+        
         return null;
                    
     }

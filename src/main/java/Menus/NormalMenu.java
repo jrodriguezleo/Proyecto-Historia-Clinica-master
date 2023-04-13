@@ -13,11 +13,12 @@ public class NormalMenu {
      *
      */
     Scanner scanner;
-    Engine engine = new Engine();
+    Engine engine ;
     User user;
 
-    public NormalMenu(Scanner scanner){
+    public NormalMenu(Scanner scanner,Engine engine){
         this.scanner = scanner;
+        this.engine=engine;
     }
     public void run(){
         while(true){

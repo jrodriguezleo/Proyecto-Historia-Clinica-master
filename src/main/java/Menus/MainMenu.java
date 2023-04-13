@@ -1,4 +1,5 @@
 package Menus;
+import Register.Engine;
 import java.util.Scanner;
 
 public class MainMenu {
@@ -8,8 +9,10 @@ public class MainMenu {
      * rendimiento en las estructuras de datos
      */
     Scanner scanner;
-    public MainMenu(Scanner scanner){
+    Engine engine;
+    public MainMenu(Scanner scanner,Engine engine){
         this.scanner = scanner;
+        this.engine = engine;
     }
 
     public void run(){
@@ -41,7 +44,7 @@ public class MainMenu {
         }
     }
     public void normalExecution(){
-        NormalMenu normalMenu = new NormalMenu(this.scanner);
+        NormalMenu normalMenu = new NormalMenu(this.scanner,this.engine);
         normalMenu.run();
     }
     public void testExecution(){
