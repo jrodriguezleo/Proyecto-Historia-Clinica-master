@@ -2,6 +2,7 @@ package Register;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Stack;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -15,6 +16,10 @@ public class Engine {
     private LinkedList<Doctor> doctors = new LinkedList<>();
     private LinkedList<Admin> admins = new LinkedList<>();
     private LinkedList<EPS> listEps  = new LinkedList<>();
+    private Stack<LinkedList> changes = new Stack<>();
+    private Stack<Patient> ePatients = new Stack<>();
+    private Stack<Doctor> eDoctorPatient = new Stack<>();
+    private Stack<Doctor> eDoctor = new Stack<>();
 
     public Engine(){
         initialData();
@@ -281,23 +286,44 @@ public class Engine {
    
     public void removeUser(User user,int id) {
         User userRemove=getUser(user, id);
+        LinkedList<Object> info = new LinkedList<>();
+
         if (userRemove==null){
         return;}
+        info.add("remove");
+
         if(userRemove instanceof Patient){
+            info.add("patient");
+            ePatients.add((Patient)userRemove);
             patients.remove((Patient)userRemove);
             for(Doctor doctor:doctors){
+                if(doctor.getPatients().contains((Patient)userRemove)){
+                    eDoctorPatient.add(doctor);
+                }
                 doctor.getPatients().remove((Patient)userRemove);
                     
                 
             }
+            if (info.size() != 0){
+                changes.add(info);
+            }
             System.out.println("El paciente con id " + id + " fue eliminado.");
+
+
             return;
         }
         if(userRemove instanceof Doctor){
+            info.add("doctor");
+            eDoctor.add((Doctor)userRemove);
             doctors.remove((Doctor)userRemove);
+            if (info.size() != 0){
+                changes.add(info);
+            }
             System.out.println("El doctor con id " + id + " fue eliminado.");
+
             return;
         }
+
 }
     private void initialData(){
         EPS epsHolder = new EPS("SaludPublica","Calle 1 Carrera 2 #10", "3000000000");
@@ -339,6 +365,32 @@ public class Engine {
         }
         System.out.println("La EPS " + name + " no se encuentra en el sistema.");
         return false;
+    }
+
+    public void cancel(){
+
+        if (this.changes.size()!=0){
+            LinkedList<Object> info2 = this.changes.pop();
+            if(info2.contains("patient")){
+                Patient patient = ePatients.pop();
+                patients.add(patient);
+                if(eDoctorPatient.size()!=0){
+                   for(Doctor doctor:doctors){
+                       if(doctor.equals(eDoctorPatient.pop())){
+                           doctor.addPatient(patient);
+                       }
+                   }
+                }
+
+            }
+            if (info2.contains("doctor")){
+                doctors.add(eDoctor.pop());
+            }
+        } else {
+            System.out.println("No ha realizado ningún cambio");
+        }
+
+
     }
 
 }

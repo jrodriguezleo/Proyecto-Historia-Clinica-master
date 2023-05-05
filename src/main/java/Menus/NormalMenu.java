@@ -83,6 +83,7 @@ public class NormalMenu {
             System.out.println("1-Create");
             System.out.println("2-Delete");
             System.out.println("3-Edit");
+            System.out.println("4-Back");
             System.out.println("0-Exit");
             try {
                 option = scanner.nextInt();
@@ -101,6 +102,8 @@ public class NormalMenu {
                         System.out.println("Ingrese el numero de identificacion del usuario que desea modificar");
                         int id=scanner.nextInt();
                         engine.editUsuario(user,id);
+                    }case 4 ->{
+                        engine.cancel();
                     }
                     case 0 ->{
                         System.out.println("Goodbye");
