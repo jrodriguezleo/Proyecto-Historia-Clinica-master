@@ -123,6 +123,9 @@ public class NormalMenu {
             System.out.println("2-Show all my patients");
             System.out.println("3-Add a new patient");
             System.out.println("4-Make a prescription to one of my patients");
+            System.out.println("5-Schedule a date");
+            System.out.println("6-View the  dates schedule");
+            System.out.println("7-Remove most recent patient");
             System.out.println("0-Exit");
             try {
                 option = scanner.nextInt();
@@ -131,20 +134,25 @@ public class NormalMenu {
                         System.out.println(((Doctor)user).toString());
 
                     }case 2 ->{
-                        System.out.println(((Doctor)user).toStringListPatients());
+                        ((Doctor) user).printPatientList();
 
                     }case 3 ->{
                         System.out.println("Digite el id del paciente que desea agregar a su lista de pacientes");
                         int id=scanner.nextInt();
                         engine.addPaciente(user,id);
                
-                    }case 4 ->{
+                    }case 4 -> {
                         System.out.println("Digite el id del paciente sobre el que desea agregar un nuevo registro");
-                        int id=scanner.nextInt();
+                        int id = scanner.nextInt();
                         engine.addRegistroMedico(user, id);
-                        
-
-                    }case 0 ->{
+                    } case 5 ->{
+                        ((Doctor)user).schedulePatient();
+                    } case 6 ->{
+                        ((Doctor) user).printPatientQueue();
+                    }case 7 ->{
+                        ((Doctor) user).removePatientFromSchedule();
+                    }
+                    case 0 ->{
                         System.out.println("Goodbye");
                     }
                 }
