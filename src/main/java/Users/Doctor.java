@@ -61,11 +61,13 @@ public String toString() {
     private String toStringListPatients(){
         if(!patients.isEmpty()){
         StringBuilder sb= new StringBuilder();
-        sb.append(", pacientes=[");
+        sb.append("Pacientes = [");
         for (Patient paciente : patients) {
-        sb.append(paciente.getId()).append(", ");
+        sb.append(paciente.getId()).append(" ");
+            sb.append(paciente.name).append(" ");
+            sb.append(paciente.lastName).append(", ");
+        }
         sb.append("]");
-    }
         return sb.toString();
                 }else {
             return "El doctor no tiene pacientes asignados";
@@ -83,7 +85,8 @@ public String toString() {
                 sb.append(i).append("° ");
                 sb.append(paciente.getId()).append(" ");
                 sb.append(paciente.getName()).append(" ");
-                sb.append(paciente.getLastName()).append(" ");
+                sb.append(paciente.getLastName()).append(" \n");
+                i++;
             }
             return sb.toString();
         }else {
@@ -93,17 +96,20 @@ public String toString() {
     public void printPatientQueue(){
         System.out.println(toStringPatientsQueue());
     }
-    public void schedulePatient(){
+    public void schedulePatient(Scanner scanner){
         if(patients.isEmpty()){
             System.out.println("El doctor no tiene pacientes asignados");
             return;
         }
         System.out.println("Escoja alguno de los siguientes pacientes para atender");
         printPatientList();
-        Scanner scanner = new Scanner(System.in);
         int patientID = scanner.nextInt();
-        addPatientToQueue(this.patients.get(patientID));
-        scanner.close();
+        for(Patient patient: patients){
+            if(patient.id == patientID) {
+                addPatientToQueue(patient);
+                System.out.println("El paciente "+patient.name+" "+patient.lastName+ " fue añadido a la agenda correctamente");
+            }
+        }
     }
 
     public void removePatientFromSchedule() {

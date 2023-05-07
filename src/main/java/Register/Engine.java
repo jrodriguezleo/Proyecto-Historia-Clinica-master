@@ -336,9 +336,12 @@ public class Engine {
         Patient paciente1=new Patient(1,"patient1","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com",epsHolder);
         patients.add(paciente1);
         
-        patients.add(new Patient(2,"patient2","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com",epsHolder));
-        patients.add(new Patient(3,"patient3","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com",epsHolder));
-        patients.add(new Patient(4,"patient4","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com",epsHolder));
+        patients.add(new Patient(2,"patient2","password123","Juan", "Leon","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com",epsHolder));
+        patients.add(new Patient(3,"patient3","password123","Ana", "Orozco","1-1-2000","F","Calle 123","300 123 9900","correo@gmail.com",epsHolder));
+        patients.add(new Patient(4,"patient4","password123","Felipe", "Ruiz","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com",epsHolder));
+        patients.add(new Patient(5,"patient4","password123","Tomas", "Vallejo","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com",epsHolder));
+        patients.add(new Patient(6,"patient4","password123","Jorge", "Melo","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com",epsHolder));
+        patients.add(new Patient(7,"patient4","password123","Julian", "Archila","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com",epsHolder));
 
         doctors.add(new Doctor("Internista",epsHolder,100,"doc0","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com"));
         Doctor doc1=new Doctor("Pediatra",epsHolder,101,"doc1","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com");

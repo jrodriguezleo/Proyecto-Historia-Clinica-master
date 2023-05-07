@@ -146,7 +146,7 @@ public class NormalMenu {
                         int id = scanner.nextInt();
                         engine.addRegistroMedico(user, id);
                     } case 5 ->{
-                        ((Doctor)user).schedulePatient();
+                        ((Doctor)user).schedulePatient(scanner);
                     } case 6 ->{
                         ((Doctor) user).printPatientQueue();
                     }case 7 ->{
