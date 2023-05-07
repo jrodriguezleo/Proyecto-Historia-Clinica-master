@@ -1,7 +1,7 @@
 package Users;
 import Register.EPS;
 import java.util.*;
-public class Doctor extends Person{
+public class Doctor extends Person implements Comparable<Doctor>{
     private String specialization;
     private EPS eps;
 
@@ -67,5 +67,9 @@ public String toStringListPatients(){
         return "El doctor no tiene pacientes asignados";
     }
 }
+    @Override
+    public int compareTo(Doctor otro) {
+        return Integer.compare(this.id, otro.id);
+    }
     
 }

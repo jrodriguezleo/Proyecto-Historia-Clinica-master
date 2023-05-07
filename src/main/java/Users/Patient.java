@@ -51,7 +51,10 @@ public String toStringHistoClinica(){
     return sb.toString();
     } else return "EL paciente no tiene historia clínica";
     
+    
 }
 
+
+    
     
 }
