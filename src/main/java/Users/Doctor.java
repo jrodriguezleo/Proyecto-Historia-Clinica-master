@@ -80,7 +80,8 @@ public String toString() {
         if(!patientQueue.isEmpty()){
             StringBuilder sb= new StringBuilder();
             int i = 1;
-            sb.append(" Cola de pacientes\n");
+            sb.append("Cola de pacientes\n");
+            sb.append("Turno ID  Nombres\n");
             for (Patient paciente : patientQueue) {
                 sb.append(i).append("° ");
                 sb.append(paciente.getId()).append(" ");
