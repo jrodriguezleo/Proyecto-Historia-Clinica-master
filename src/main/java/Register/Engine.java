@@ -14,7 +14,7 @@ import javax.print.Doc;
 
 public class Engine {
     private LinkedList<Patient> patients = new LinkedList<>();
-    private LinkedList<Doctor> doctors = new LinkedList<>();
+    Set<Doctor> doctors = new TreeSet<>();
     private LinkedList<Admin> admins = new LinkedList<>();
     private LinkedList<EPS> listEps  = new LinkedList<>();
 //    private Stack<LinkedList> changes = new Stack<>();
