@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Stack;
 import java.util.Objects;
 import java.util.Scanner;
+import java.util.*;
 
 import Users.*;
 
@@ -13,13 +14,15 @@ import javax.print.Doc;
 
 public class Engine {
     private LinkedList<Patient> patients = new LinkedList<>();
-    private LinkedList<Doctor> doctors = new LinkedList<>();
+    Set<Doctor> doctors = new TreeSet<>();
     private LinkedList<Admin> admins = new LinkedList<>();
     private LinkedList<EPS> listEps  = new LinkedList<>();
-    private Stack<LinkedList> changes = new Stack<>();
-    private Stack<Patient> ePatients = new Stack<>();
-    private Stack<Doctor> eDoctorPatient = new Stack<>();
-    private Stack<Doctor> eDoctor = new Stack<>();
+//    private Stack<LinkedList> changes = new Stack<>();
+//    private Stack<Patient> ePatients = new Stack<>();
+//    private Stack<Doctor> eDoctorPatient = new Stack<>();
+//    private Stack<Doctor> eDoctor = new Stack<>();
+    private Stack<Person> persona= new Stack();
+     private Stack<ArrayList> action= new Stack();
 
     public Engine(){
         initialData();
@@ -286,41 +289,43 @@ public class Engine {
    
     public void removeUser(User user,int id) {
         User userRemove=getUser(user, id);
-        LinkedList<Object> info = new LinkedList<>();
+        ArrayList<Integer> info = new ArrayList<>();
 
         if (userRemove==null){
         return;}
-        info.add("remove");
+        info.add(3); //La acción 3 quiere decir editar
 
         if(userRemove instanceof Patient){
-            info.add("patient");
-            ePatients.add((Patient)userRemove);
-            patients.remove((Patient)userRemove);
+            this.patients.remove((Patient)userRemove);
+            int numDoc=0;
             for(Doctor doctor:doctors){
                 if(doctor.getPatients().contains((Patient)userRemove)){
-                    eDoctorPatient.add(doctor);
+                    numDoc+=1;
+                    this.persona.add(doctor);
                 }
                 doctor.getPatients().remove((Patient)userRemove);
                     
                 
             }
-            if (info.size() != 0){
-                changes.add(info);
-            }
+            this.persona.add((Person)userRemove);
+            info.add(numDoc);
+            this.action.add(info);
+            
+//            if (info.size() != 0){
+//                changes.add(info);
+//            }
             System.out.println("El paciente con id " + id + " fue eliminado.");
 
 
             return;
         }
         if(userRemove instanceof Doctor){
-            info.add("doctor");
-            eDoctor.add((Doctor)userRemove);
+            persona.add((Person)userRemove);
             doctors.remove((Doctor)userRemove);
-            if (info.size() != 0){
-                changes.add(info);
-            }
+//            if (info.size() != 0){
+//                changes.add(info);
+//            }
             System.out.println("El doctor con id " + id + " fue eliminado.");
-
             return;
         }
 
@@ -370,32 +375,55 @@ public class Engine {
         return false;
     }
 
-    public void cancel(){
-
-        if (this.changes.size()!=0){
-            LinkedList<Object> info2 = this.changes.pop();
-            if(info2.contains("patient")){
-                Patient patient = ePatients.pop();
-                patients.add(patient);
-                if(eDoctorPatient.size()!=0){
-                   for(Doctor doctor:doctors){
-                       if(doctor.equals(eDoctorPatient.pop())){
-                           doctor.addPatient(patient);
-                       }
-                   }
+    public void cancel(){//        if (this.changes.size()!=0){
+//            LinkedList<Object> info2 = this.changes.pop();
+//            if(info2.contains("patient")){
+//                Patient patient = ePatients.pop();
+//                patients.add(patient);
+//                if(eDoctorPatient.size()!=0){
+//                   for(Doctor doctor:doctors){
+//                       if(doctor.equals(eDoctorPatient.pop())){
+//                           doctor.addPatient(patient);
+//                       }
+//                   }
+//                }
+//
+//            }
+//            if (info2.contains("doctor")){
+//                doctors.add(eDoctor.pop());
+//            }
+//        } else {
+//            System.out.println("No ha realizado ningún cambio");
+//        }
+        if (this.action.size() !=0) {
+            int action = (int)this.action.pop().get(0);
+            Person persona= this.persona.pop();
+            if(action  == 3){
+                
+                
+                if(persona instanceof Patient){
+                    Patient paciente=(Patient) persona;
+                    this.patients.add(paciente);
+                    int countDoc=(int)this.action.pop().get(1);
+                    for(int i=0;i<countDoc;i++){
+                        ((Doctor)this.persona.pop()).addPatient(paciente);
+                    }
                 }
-
-            }
-            if (info2.contains("doctor")){
-                doctors.add(eDoctor.pop());
+                else if (persona instanceof Doctor){
+                    Doctor doctor=(Doctor) persona;
+                    this.doctors.add(doctor);
+                    
+                }
+                System.out.println("El usuario con el id "+ persona.getId()+"Volvió a ser agregado al sistema");
             }
         } else {
-            System.out.println("No ha realizado ningún cambio");
+            System.out.println("No se ha realizado ningun cambio");
         }
 
-
     }
+
 }
+    
     
     
 
