@@ -8,6 +8,8 @@ import Users.Patient;
 
 import java.util.LinkedList;
 import java.util.Scanner;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class TestMenu {
     private final Scanner scanner;
@@ -44,6 +46,9 @@ public class TestMenu {
                     }
                     case 2 -> {
                         test2();
+                    }
+                    case 3 -> {
+                        test3();
                     }
                     case 0 -> {
                         System.out.println("Goodbye");
@@ -146,6 +151,50 @@ public class TestMenu {
             time = time/timesToAverage;
             //Print the result of each iteration
             System.out.println("Add n="+(int) amount+" patients to a list tooks "+time+" nanoseconds");
+
+
+
+            //Increment the amount of additions
+            amount *= 10;
+        }
+    }
+    
+    void test3(){
+        //Add 100^i patients to the doctors tree, for m=10 times and averaged each result, for 1<=i<=nTest
+
+        int nTest = 6; // Con 10^8 datos ya se rompe la memoria
+        double amount = 10;
+        long time = 0;
+        int timesToAverage = 10;
+
+        EPS epsHolder = new EPS("EPS for testing","Fake Address 123", "123 456 7890");
+
+        for (int i = 0; i <  nTest; i++) {
+            time = 0;   //Reset the time
+
+            for (int j = 0; j < timesToAverage; j++) {
+                //Create the tree
+                Set<Doctor> Listdoctors = new TreeSet<>();
+
+                //Start Timer
+                long start = System.nanoTime();
+
+                //Run for an amount of times
+//                
+                for(int k =0; k < amount; k++){
+                    Listdoctors.add(new Doctor("Pediatra",epsHolder,k,"doctor"+k,"password123",
+                            "My Name", "My Last Name","1-1-2000","M",
+                            "Calle 123","300 123 9900","correo@gmail.com"));
+                }
+                //End timer
+                long finish = System.nanoTime();
+
+                time += finish-start;
+            }
+            //Calculate the average
+            time = time/timesToAverage;
+            //Print the result of each iteration
+            System.out.println("Add n="+(int) amount+" doctors to a tree tooks "+time+" nanoseconds");
 
 
 
