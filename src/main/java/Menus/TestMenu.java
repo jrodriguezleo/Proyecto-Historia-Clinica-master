@@ -36,6 +36,7 @@ public class TestMenu {
             System.out.println("Choose one option:");
             System.out.println("1-test eps");
             System.out.println("2-test");
+            System.out.println("3-test insertion tree");
             System.out.println("0-Exit");
             try {
                 option = scanner.nextInt();
