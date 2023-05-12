@@ -6,10 +6,7 @@ import Users.Admin;
 import Users.Doctor;
 import Users.Patient;
 
-import java.util.LinkedList;
-import java.util.Scanner;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 public class TestMenu {
     private final Scanner scanner;
@@ -37,6 +34,7 @@ public class TestMenu {
             System.out.println("1-test eps");
             System.out.println("2-test");
             System.out.println("3-test insertion tree");
+            System.out.println("4-test insertion queue");
             System.out.println("0-Exit");
             try {
                 option = scanner.nextInt();
@@ -50,6 +48,9 @@ public class TestMenu {
                     }
                     case 3 -> {
                         test3();
+                    }
+                    case 4 -> {
+                        test4();
                     }
                     case 0 -> {
                         System.out.println("Goodbye");
@@ -196,6 +197,51 @@ public class TestMenu {
             time = time/timesToAverage;
             //Print the result of each iteration
             System.out.println("Add n="+(int) amount+" doctors to a tree tooks "+time+" nanoseconds");
+
+
+
+            //Increment the amount of additions
+            amount *= 10;
+        }
+    }
+    void test4(){
+        //Add 100^i patients to the patients list, for m=10 times and averaged each result, for 1<=i<=nTest
+
+        int nTest = 6; // Con 10^8 datos ya se rompe la memoria
+        double amount = 10;
+        long time = 0;
+        int timesToAverage = 10;
+
+        EPS epsHolder = new EPS("EPS for testing","Fake Address 123", "123 456 7890");
+
+        for (int i = 0; i <  nTest; i++) {
+            time = 0;   //Reset the time
+
+            for (int j = 0; j < timesToAverage; j++) {
+                //Create the list
+                Queue<Patient> patientQueue = new LinkedList<>();
+                Patient patient;
+
+
+                //Start Timer
+                long start = System.nanoTime();
+
+                //Run for an amount of times
+                for(int k =0; k < amount; k++){
+                    patientQueue.add(new Patient(k,"patient0","password123",
+                            "My Name", "My Last Name","1-1-2000","M",
+                            "Calle 123","300 123 9900","correo@gmail.com",epsHolder));
+                }
+                //patient  = patientQueue.poll();
+                //End timer
+                long finish = System.nanoTime();
+
+                time += finish-start;
+            }
+            //Calculate the average
+            time = time/timesToAverage;
+            //Print the result of each iteration
+            System.out.println("Queue n="+(int) amount+" patients to a doctor schedule tooks "+time+" nanoseconds");
 
 
 
