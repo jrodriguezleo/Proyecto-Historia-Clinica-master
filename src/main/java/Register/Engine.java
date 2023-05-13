@@ -14,7 +14,7 @@ import Util.RecursiveBinarySearchTree;
 import javax.print.Doc;
 
 public class Engine {
-    private LinkedList<Patient> patients = new LinkedList<>();
+    public LinkedList<Patient> patients = new LinkedList<>();
     Set<Doctor> doctors = new TreeSet<>();
     private LinkedList<Admin> admins = new LinkedList<>();
     private LinkedList<EPS> listEps  = new LinkedList<>();
@@ -320,7 +320,7 @@ public class Engine {
 //            if (info.size() != 0){
 //                changes.add(info);
 //            }
-            System.out.println("El paciente con id " + id + " fue eliminado.");
+             System.out.println("El paciente con id " + id + " fue eliminado.");
 
 
             return;

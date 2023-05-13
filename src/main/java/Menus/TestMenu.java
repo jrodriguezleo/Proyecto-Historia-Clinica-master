@@ -5,6 +5,7 @@ import Register.Engine;
 import Users.Admin;
 import Users.Doctor;
 import Users.Patient;
+import Users.User;
 
 import javax.print.Doc;
 import java.util.*;
@@ -37,8 +38,8 @@ public class TestMenu {
             System.out.println("3-test insertion tree");
             System.out.println("4-test  queue");
             System.out.println("5-test stack");
-            System.out.println("6-test  queue");
-            System.out.println("7-test stack");
+            System.out.println("6-test  6");
+            System.out.println("7-test 7");
             System.out.println("0-Exit");
             try {
                 option = scanner.nextInt();
@@ -60,10 +61,10 @@ public class TestMenu {
                         test5();
                     }
                     case 6 -> {
-                        test4();
+                        test6();
                     }
                     case 7 -> {
-                        test5();
+                        test7();
                     }
                     case 0 -> {
                         System.out.println("Goodbye");
@@ -281,7 +282,8 @@ public class TestMenu {
         double amount = 10;
         long time = 0;
         int timesToAverage = 10;
-        Engine engine;
+        User user = engine.login("admin0","admin01234");
+
 
         EPS epsHolder = new EPS("EPS for testing","Fake Address 123", "123 456 7890");
 
@@ -289,26 +291,28 @@ public class TestMenu {
             time = 0;   //Reset the time
 
             for (int j = 0; j < timesToAverage; j++) {
-                //Create the list
-                Queue<Patient> patientQueue = new LinkedList<>();
-                Patient patient;
 
-                //Run for an amount of times
-                for(int k =0; k < amount; k++){
-                    patientQueue.add(new Patient(k,"patient0","password123",
-                            "My Name", "My Last Name","1-1-2000","M",
-                            "Calle 123","300 123 9900","correo@gmail.com",epsHolder));
+                //create users
+                for (int k = 0; k < amount; k++) {
+                    this.engine.patients.add(new Patient(k, "patient"+k, "pass123",
+                            "Name", "LastName", "1-1-2000", "M",
+                            "Calle 123", "300 123 9900", "correo@gmail.com", epsHolder));
                 }
-                int n = (int) Math.rint(amount) - 1;
-                patient = new Patient(n,"patient0","password123",
-                        "My Name", "My Last Name","1-1-2000","M",
-                        "Calle 123","300 123 9900","correo@gmail.com",epsHolder);
+                //remove users
+                for (int k = 0; k < amount; k++) {
+                    this.engine.removeUser(user,k);
+                }
+
+
 
                 //Start Timer
                 long start = System.nanoTime();
 
                 //Thing to be measured
-                if(patientQueue.contains(patient)) System.out.print("");
+                for (int k = 0; k < amount-1; k++) {
+                    this.engine.cancel();
+                }
+                this.engine.cancel();
 
                 //End timer
                 long finish = System.nanoTime();
@@ -328,7 +332,7 @@ public class TestMenu {
     }
 
     void test6(){
-        int nTest = 7; // Con 10^8 datos ya se rompe la memoria
+        int nTest = 6; // Con 10^8 datos ya se rompe la memoria
         double amount = 10;
         long time = 0;
         int timesToAverage = 10;
@@ -370,7 +374,7 @@ public class TestMenu {
         System.out.println("Type the amount of items to include in the tree: ");
         EPS epsHolder = new EPS("EPS for testing","Fake Address 123", "123 456 7890");
 
-        for(int j = 1; j<7;j++) {
+        for(int j = 1; j<6;j++) {
             int n = (int) Math.pow(10,j);//scanner.nextInt();
 
             System.out.println("Adding items to the tree");
