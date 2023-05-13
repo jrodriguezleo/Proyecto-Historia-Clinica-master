@@ -8,6 +8,7 @@ import java.util.Scanner;
 import java.util.*;
 
 import Users.*;
+import Util.RecursiveBinarySearchTree;
 
 
 import javax.print.Doc;
@@ -23,6 +24,11 @@ public class Engine {
 //    private Stack<Doctor> eDoctor = new Stack<>();
     private Stack<Person> persona= new Stack();
      private Stack<ArrayList> action= new Stack();
+
+    private TreeMap<Integer, Patient> patientstree = new TreeMap<>();
+    private RecursiveBinarySearchTree<Integer> doctorsid = new RecursiveBinarySearchTree<>();
+    private RecursiveBinarySearchTree<String> usernames = new RecursiveBinarySearchTree<>();
+    private RecursiveBinarySearchTree<String> systemeps = new RecursiveBinarySearchTree<>();
 
     public Engine(){
         initialData();
@@ -337,26 +343,50 @@ public class Engine {
         admins.add(new Admin(1,"admin1","admin12345","Developer 1",123456, epsHolder));
         admins.add(new Admin(2,"admin2","admin23456","Developer 2",234567, epsHolder));
 
-        patients.add(new Patient(0,"patient0","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com",epsHolder));
-        Patient paciente1=new Patient(1,"patient1","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com",epsHolder);
-        patients.add(paciente1);
-        
-        patients.add(new Patient(2,"patient2","password123","Juan", "Leon","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com",epsHolder));
-        patients.add(new Patient(3,"patient3","password123","Ana", "Orozco","1-1-2000","F","Calle 123","300 123 9900","correo@gmail.com",epsHolder));
-        patients.add(new Patient(4,"patient4","password123","Felipe", "Ruiz","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com",epsHolder));
-        patients.add(new Patient(5,"patient4","password123","Tomas", "Vallejo","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com",epsHolder));
-        patients.add(new Patient(6,"patient4","password123","Jorge", "Melo","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com",epsHolder));
-        patients.add(new Patient(7,"patient4","password123","Julian", "Archila","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com",epsHolder));
+        Patient patient0 = new Patient(0,"patient0","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com",epsHolder);
+        Patient patient1 = new Patient(1,"patient1","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com",epsHolder);
+        Patient patient2 = new Patient(2,"patient2","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com",epsHolder);
+        Patient patient3 = new Patient(3,"patient3","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com",epsHolder);
+        Patient patient4 = new Patient(4,"patient4","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com",epsHolder);
+        patients.add(patient0);
+        patients.add(patient1);
+        patients.add(patient2);
+        patients.add(patient3);
+        patients.add(patient4);
+
 
         doctors.add(new Doctor("Internista",epsHolder,100,"doc0","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com"));
         Doctor doc1=new Doctor("Pediatra",epsHolder,101,"doc1","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com");
         doctors.add(doc1);
         LinkedList<Patient> pacientesDoc1=doc1.getPatients();
-        pacientesDoc1.add(paciente1);
+        pacientesDoc1.add(patient1);
         doc1.setPatients(pacientesDoc1);
         
         doctors.add(new Doctor("Neurologo",epsHolder,102,"doc2","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com"));
-        
+
+        doctorsid.insert(100);
+        doctorsid.insert(101);
+        usernames.insert("admin0");
+        usernames.insert("admin1");
+        usernames.insert("admin2");
+        usernames.insert("patient0");
+        usernames.insert("patient1");
+        usernames.insert("patient2");
+        usernames.insert("patient3");
+        usernames.insert("patient4");
+        usernames.insert("doc0");
+        usernames.insert("doc1");
+        usernames.insert("doc2");
+        listEps.add(new EPS("Saname","Calle 2 Carrera 12 #20", "3100000000"));
+        systemeps.insert("SaludPublica");
+        systemeps.insert("Saname");
+
+        patientstree.put(patient0.getId(), patient0);
+        patientstree.put(patient1.getId(), patient1);
+        patientstree.put(patient2.getId(), patient2);
+        patientstree.put(patient3.getId(), patient3);
+        patientstree.put(patient4.getId(), patient4);
+
 
     }
 
