@@ -99,7 +99,7 @@ public class TestMenu {
 
             System.out.println("Searching last in the list");
             startTime = System.nanoTime();
-            engine.testSearchEps("EPS" + n);
+            engine.testSearchEpsLL("EPS" + n);
             endTime = System.nanoTime();
 
             timeElapsed = endTime - startTime;
@@ -110,7 +110,7 @@ public class TestMenu {
 
             System.out.println("Searching first in the list");
             startTime = System.nanoTime();
-            engine.testSearchEps("EPS0");
+            engine.testSearchEpsLL("EPS0");
             endTime = System.nanoTime();
             timeElapsed = endTime - startTime;
             // convert to milliseconds
@@ -121,7 +121,7 @@ public class TestMenu {
             int poistion = (int) (Math.random() * n);
 
             startTime = System.nanoTime();
-            engine.testSearchEps("EPS" + poistion);
+            engine.testSearchEpsLL("EPS" + poistion);
             endTime = System.nanoTime();
             timeElapsed = endTime - startTime;
             // convert to milliseconds
@@ -422,4 +422,6 @@ public class TestMenu {
             System.out.println("---------------------");
         }
     }
+
+
 }

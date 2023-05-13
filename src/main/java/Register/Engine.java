@@ -390,20 +390,6 @@ public class Engine {
 
     }
 
-    public void testAddEps(EPS eps){
-        listEps.add(eps);
-    }
-
-    public boolean testSearchEps(String name){
-        for(EPS eps : listEps){
-            if(eps.getName().equals(name)){
-                System.out.println("La EPS " + name + " se encuentra en el sistema.");
-                return true;
-            }
-        }
-        System.out.println("La EPS " + name + " no se encuentra en el sistema.");
-        return false;
-    }
 
     public void cancel(){//        if (this.changes.size()!=0){
 //            LinkedList<Object> info2 = this.changes.pop();
@@ -450,6 +436,66 @@ public class Engine {
             System.out.println("No se ha realizado ningun cambio");
         }
 
+    }
+    public void testAddEps(EPS eps){
+        testAddEps(listEps,eps);
+    }
+
+    public boolean testSearchEpsLL(String name){
+        return testSearchEps(listEps, name);
+    }
+
+    public boolean testSearchEpsBT(String name){
+        return testExistingUName(systemeps, name);
+    }
+
+    public boolean testExistingUsername(String name){
+        return testExistingUName(usernames, name);
+    }
+
+    public boolean testExistingDoctorID(int id){
+        return testExistingID(doctorsid, id);
+    }
+
+    public void testAddPatient(Patient patient){
+        testAddPatient(patientstree,patient);
+    }
+
+    public boolean testSearchPatient(Integer i){
+        boolean b = testSearchPatient(patientstree,i);
+        if(b == true){System.out.println("El paciente con ID" + i + " se encuentra en el sistema.");}
+        else{System.out.println("El paciente con ID" + i + " no se encuentra en el sistema.");}
+        return b;
+    }
+    public void testAddEps(LinkedList<EPS> listEps,EPS eps){
+        listEps.add(eps);
+    }
+
+    public boolean testSearchEps(LinkedList<EPS> listEps, String name){
+        for(EPS eps : listEps){
+            if(eps.getName().equals(name)){
+                System.out.println("La EPS " + name + " se encuentra en el sistema.");
+                return true;
+            }
+        }
+        System.out.println("La EPS " + name + " no se encuentra en el sistema.");
+        return false;
+    }
+
+    public boolean testExistingUName(RecursiveBinarySearchTree<String> names, String username){
+        return names.search(username);
+    }
+
+    public boolean testExistingID(RecursiveBinarySearchTree<Integer> ids, int id){
+        return ids.search(id);
+    }
+
+    public void testAddPatient(TreeMap<Integer,Patient> listP,Patient patient){
+        listP.put(patient.getId(),patient);
+    }
+
+    public boolean testSearchPatient(TreeMap<Integer,Patient> listP, Integer i){
+        return listP.containsKey(i);
     }
 
 }
