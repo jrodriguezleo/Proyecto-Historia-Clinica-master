@@ -37,6 +37,8 @@ public class TestMenu {
             System.out.println("3-test insertion tree");
             System.out.println("4-test  queue");
             System.out.println("5-test stack");
+            System.out.println("6-test  queue");
+            System.out.println("7-test stack");
             System.out.println("0-Exit");
             try {
                 option = scanner.nextInt();
@@ -55,6 +57,12 @@ public class TestMenu {
                         test4();
                     }
                     case 5 -> {
+                        test5();
+                    }
+                    case 6 -> {
+                        test4();
+                    }
+                    case 7 -> {
                         test5();
                     }
                     case 0 -> {
@@ -316,6 +324,102 @@ public class TestMenu {
 
             //Increment the amount of additions
             amount *= 10;
+        }
+    }
+
+    void test6(){
+        int nTest = 7; // Con 10^8 datos ya se rompe la memoria
+        double amount = 10;
+        long time = 0;
+        int timesToAverage = 10;
+        EPS epsHolder = new EPS("EPS for testing","Fake Address 123", "123 456 7890");
+
+        for (int i = 0; i <  nTest; i++) {
+            time = 0;   //Reset the time
+            for (int j = 0; j < timesToAverage; j++) {
+                //Create the tree
+                TreeMap<Integer,Patient> patientsTree = new TreeMap<>();
+
+                //Start Timer
+                long start = System.nanoTime();
+
+                //Run for an amount of times
+                for(int k = 0; k < amount; k++){
+                    Patient p = new Patient(k,"patient"+k,"password123",
+                            "My Name", "My Last Name","1-1-2000","M",
+                            "Calle 123","300 123 9900","correo@gmail.com",epsHolder);
+                    patientsTree.put(p.getId(),p);
+                }
+                //End timer
+                long finish = System.nanoTime();
+
+                time += finish-start;
+            }
+            //Calculate the average
+            time = time/timesToAverage;
+            //Print the result of each iteration
+            System.out.println("Add n="+(int) amount+" patients to a tree tooks "+time+" nanoseconds");
+            //Increment the amount of additions
+            amount *= 10;
+        }
+    }
+    void test7(){
+        // test search
+
+        System.out.println("----TEST SEARCH----");
+        System.out.println("Type the amount of items to include in the tree: ");
+        EPS epsHolder = new EPS("EPS for testing","Fake Address 123", "123 456 7890");
+
+        for(int j = 1; j<7;j++) {
+            int n = (int) Math.pow(10,j);//scanner.nextInt();
+
+            System.out.println("Adding items to the tree");
+            long startTime = System.nanoTime();
+            for (int i = 5; i < n; i++) {
+                Patient p = new Patient(i,"patient"+i,"password123",
+                        "My Name", "My Last Name","1-1-2000","M",
+                        "Calle 123","300 123 9900","correo@gmail.com",epsHolder);
+                engine.testAddPatient(p);
+            }
+
+            long endTime = System.nanoTime();
+            long timeElapsed = endTime - startTime;
+            // convert to milliseconds
+            //timeElapsed /= 1000000;
+
+            System.out.println("Execution time for adding " + n + " items to the tree: " + timeElapsed + " nanoseconds");
+
+            System.out.println("Searching last in the list");
+            startTime = System.nanoTime();
+            engine.testSearchPatient(n-1);
+            endTime = System.nanoTime();
+
+            timeElapsed = endTime - startTime;
+            // convert to milliseconds
+
+            //timeElapsed /= 1000000;
+            System.out.println("Execution time for searching last item in a tree of " + n + " items: " + timeElapsed + " nanoseconds");
+
+            System.out.println("Searching first in the tree");
+            startTime = System.nanoTime();
+            engine.testSearchPatient(0);
+            endTime = System.nanoTime();
+            timeElapsed = endTime - startTime;
+            // convert to milliseconds
+            //timeElapsed /= 1000000;
+            System.out.println("Execution time for searching first item in a tree of " + n + " items: " + timeElapsed + " nanoseconds");
+
+            System.out.println("Searching a random ID in the tree");
+            int position = (int) (Math.random() * n);
+
+            startTime = System.nanoTime();
+            engine.testSearchPatient(position);
+            endTime = System.nanoTime();
+            timeElapsed = endTime - startTime;
+            // convert to milliseconds
+            //timeElapsed /= 1000000;
+            System.out.println("Execution time for searching random ID (" + position + ") in a tree of " + n + " items: " + timeElapsed + " nanoseconds");
+            System.out.println("---------------------");
         }
     }
 }
