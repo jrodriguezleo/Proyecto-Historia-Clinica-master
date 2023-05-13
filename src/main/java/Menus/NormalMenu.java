@@ -14,7 +14,7 @@ public class NormalMenu {
      */
     Scanner scanner;
     Engine engine ;
-    User user;
+    public User user;
 
     public NormalMenu(Scanner scanner,Engine engine){
         this.scanner = scanner;
