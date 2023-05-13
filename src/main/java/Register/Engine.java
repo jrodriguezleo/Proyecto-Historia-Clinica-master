@@ -295,10 +295,13 @@ public class Engine {
    
     public void removeUser(User user,int id) {
         User userRemove=getUser(user, id);
+        if (userRemove==null){
+            System.out.println("No existe un usuario con ese id");
+            return;
+        }
         ArrayList<Integer> info = new ArrayList<>();
 
-        if (userRemove==null){
-        return;}
+        
         info.add(3); //La acción 3 quiere decir editar
 
         if(userRemove instanceof Patient){
@@ -412,7 +415,8 @@ public class Engine {
 //            System.out.println("No ha realizado ningún cambio");
 //        }
         if (this.action.size() !=0) {
-            int action = (int)this.action.pop().get(0);
+            ArrayList<Integer> listAction = this.action.pop();
+            int action=listAction.get(0);
             Person persona= this.persona.pop();
             if(action  == 3){
                 
@@ -420,7 +424,7 @@ public class Engine {
                 if(persona instanceof Patient){
                     Patient paciente=(Patient) persona;
                     this.patients.add(paciente);
-                    int countDoc=(int)this.action.pop().get(1);
+                    int countDoc=listAction.get(1);
                     for(int i=0;i<countDoc;i++){
                         ((Doctor)this.persona.pop()).addPatient(paciente);
                     }
