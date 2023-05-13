@@ -6,6 +6,7 @@ import Users.Admin;
 import Users.Doctor;
 import Users.Patient;
 
+import javax.print.Doc;
 import java.util.*;
 
 public class TestMenu {
@@ -34,7 +35,8 @@ public class TestMenu {
             System.out.println("1-test eps");
             System.out.println("2-test");
             System.out.println("3-test insertion tree");
-            System.out.println("4-test insertion queue");
+            System.out.println("4-test  queue");
+            System.out.println("5-test stack");
             System.out.println("0-Exit");
             try {
                 option = scanner.nextInt();
@@ -51,6 +53,9 @@ public class TestMenu {
                     }
                     case 4 -> {
                         test4();
+                    }
+                    case 5 -> {
+                        test5();
                     }
                     case 0 -> {
                         System.out.println("Goodbye");
@@ -178,16 +183,22 @@ public class TestMenu {
                 //Create the tree
                 Set<Doctor> Listdoctors = new TreeSet<>();
 
-                //Start Timer
-                long start = System.nanoTime();
-
-                //Run for an amount of times
-//                
                 for(int k =0; k < amount; k++){
                     Listdoctors.add(new Doctor("Pediatra",epsHolder,k,"doctor"+k,"password123",
                             "My Name", "My Last Name","1-1-2000","M",
                             "Calle 123","300 123 9900","correo@gmail.com"));
                 }
+
+                int n = (int) Math.rint(amount) - 1;
+                Doctor doctor = new Doctor("Pediatra",epsHolder,n,"doctor"+n,"password123",
+                        "My Name", "My Last Name","1-1-2000","M",
+                        "Calle 123","300 123 9900","correo@gmail.com");
+                //Start Timer
+                long start = System.nanoTime();
+
+                //Run for an amount of times
+                Listdoctors.remove(doctor);
+
                 //End timer
                 long finish = System.nanoTime();
 
@@ -222,9 +233,57 @@ public class TestMenu {
                 Queue<Patient> patientQueue = new LinkedList<>();
                 Patient patient;
 
+                //Run for an amount of times
+                for(int k =0; k < amount; k++){
+                    patientQueue.add(new Patient(k,"patient0","password123",
+                            "My Name", "My Last Name","1-1-2000","M",
+                            "Calle 123","300 123 9900","correo@gmail.com",epsHolder));
+                }
+                int n = (int) Math.rint(amount) - 1;
+                patient = new Patient(n,"patient0","password123",
+                        "My Name", "My Last Name","1-1-2000","M",
+                        "Calle 123","300 123 9900","correo@gmail.com",epsHolder);
 
                 //Start Timer
                 long start = System.nanoTime();
+
+                //Thing to be measured
+                if(patientQueue.contains(patient)) System.out.print("");
+
+                //End timer
+                long finish = System.nanoTime();
+
+                time += finish-start;
+            }
+            //Calculate the average
+            time = time/timesToAverage;
+            //Print the result of each iteration
+            System.out.println("Queue n="+(int) amount+" patients to a doctor schedule tooks "+time+" nanoseconds");
+
+
+
+            //Increment the amount of additions
+            amount *= 10;
+        }
+    }
+    void test5(){
+        //Add 100^i patients to the patients list, for m=10 times and averaged each result, for 1<=i<=nTest
+
+        int nTest = 6; // Con 10^8 datos ya se rompe la memoria
+        double amount = 10;
+        long time = 0;
+        int timesToAverage = 10;
+        Engine engine;
+
+        EPS epsHolder = new EPS("EPS for testing","Fake Address 123", "123 456 7890");
+
+        for (int i = 0; i <  nTest; i++) {
+            time = 0;   //Reset the time
+
+            for (int j = 0; j < timesToAverage; j++) {
+                //Create the list
+                Queue<Patient> patientQueue = new LinkedList<>();
+                Patient patient;
 
                 //Run for an amount of times
                 for(int k =0; k < amount; k++){
@@ -232,7 +291,17 @@ public class TestMenu {
                             "My Name", "My Last Name","1-1-2000","M",
                             "Calle 123","300 123 9900","correo@gmail.com",epsHolder));
                 }
-                //patient  = patientQueue.poll();
+                int n = (int) Math.rint(amount) - 1;
+                patient = new Patient(n,"patient0","password123",
+                        "My Name", "My Last Name","1-1-2000","M",
+                        "Calle 123","300 123 9900","correo@gmail.com",epsHolder);
+
+                //Start Timer
+                long start = System.nanoTime();
+
+                //Thing to be measured
+                if(patientQueue.contains(patient)) System.out.print("");
+
                 //End timer
                 long finish = System.nanoTime();
 
