@@ -322,7 +322,7 @@ public class TestMenu {
             //Calculate the average
             time = time/timesToAverage;
             //Print the result of each iteration
-            System.out.println("Queue n="+(int) amount+" patients to a doctor schedule tooks "+time+" nanoseconds");
+            System.out.println("Restoring n="+(int) amount+" patients that have been removed tooks "+time+" nanoseconds");
 
 
 
