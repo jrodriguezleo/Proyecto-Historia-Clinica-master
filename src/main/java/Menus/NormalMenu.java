@@ -4,6 +4,7 @@ import Register.*;
 import Users.*;
 
 import java.util.Scanner;
+import Graphics.*;
 
 public class NormalMenu {
     /**
@@ -21,34 +22,42 @@ public class NormalMenu {
         this.engine=engine;
     }
     public void run(){
-        while(true){
-            System.out.println("Insert your info");
-
-            try {
-                System.out.println("UserName: ");
-                String userName = scanner.nextLine();
-
-                System.out.println("Password: ");
-                String password = scanner.nextLine();
-
-                //Distición entre los tipos de roles
-                user = engine.login(userName,password);
-                if(user instanceof Patient){
-                    patientMenu();
-                    break;
-                }else if(user instanceof Doctor) {
-                    doctorMenu();
-                    break;
-                }else if(user instanceof Admin) {
-                    adminMenu();
-                    break;
-                }else{
-                    System.out.println("Invalid user name or password");
-                }
-            }catch (Exception e){
-                System.out.println("Error " + e);
-            }
-        }
+        
+        //Para probar la interfaz descomentar las siguientes  lineas y comentar todo el while
+        // En caso contrario se ejecutara como siempre el programa, por consola;
+        InicioSesion log = new InicioSesion(engine,user);
+        log.setLocationRelativeTo(null);
+            log.setVisible(true);
+//        while(true){
+//            
+//            
+//            System.out.println("Insert your info");
+//
+//            try {
+//                System.out.println("UserName: ");
+//                String userName = scanner.nextLine();
+//
+//                System.out.println("Password: ");
+//                String password = scanner.nextLine();
+//
+//                //Distición entre los tipos de roles
+//                user = engine.login(userName,password);
+//                if(user instanceof Patient){
+//                    patientMenu();
+//                    break;
+//                }else if(user instanceof Doctor) {
+//                    doctorMenu();
+//                    break;
+//                }else if(user instanceof Admin) {
+//                    adminMenu();
+//                    break;
+//                }else{
+//                    System.out.println("Invalid user name or password");
+//                }
+//            }catch (Exception e){
+//                System.out.println("Error " + e);
+//            }
+//        }
     }
     void patientMenu(){
         int option = -1;
