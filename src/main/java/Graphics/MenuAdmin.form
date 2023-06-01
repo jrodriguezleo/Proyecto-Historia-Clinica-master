@@ -90,11 +90,9 @@
                                   <Component id="buttonCrear" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                                   <Component id="buttonEditar" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                                  <Component id="buttonBorrar" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="19" max="32767" attributes="0"/>
+                          <EmptySpace pref="138" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -106,10 +104,8 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="txtEspecialidad" max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                          <Component id="buttonConsultar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="buttonVolver" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                       </Group>
@@ -206,8 +202,6 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="buttonCrear" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="buttonEditar" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="buttonBorrar" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="buttonConsultar" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="buttonVolver" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
@@ -376,9 +370,6 @@
           <SubComponents>
             <Component class="javax.swing.JTextArea" name="txtAreaHistoriaClinica">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
               </Properties>
@@ -415,11 +406,6 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCrearActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="buttonConsultar">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Consultar"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JButton" name="buttonVolver">
           <Properties>
             <Property name="text" type="java.lang.String" value="Volver"/>
@@ -428,11 +414,6 @@
         <Component class="javax.swing.JButton" name="buttonEditar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Editar"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="buttonBorrar">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Borrar"/>
           </Properties>
         </Component>
       </SubComponents>

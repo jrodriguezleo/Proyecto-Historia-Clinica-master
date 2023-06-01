@@ -16,6 +16,7 @@ import javax.print.Doc;
 public class Engine {
     public LinkedList<Patient> patients = new LinkedList<>();
     Set<Doctor> doctors = new TreeSet<>();
+
     private LinkedList<Admin> admins = new LinkedList<>();
     private LinkedList<EPS> listEps  = new LinkedList<>();
 //    private Stack<LinkedList> changes = new Stack<>();
@@ -441,6 +442,46 @@ public class Engine {
         }
 
     }
+    
+    
+    
+    
+    public LinkedList<Patient> getPatients() {
+        return patients;
+    }
+
+    public void setPatients(LinkedList<Patient> patients) {
+        this.patients = patients;
+    }
+
+    public Set<Doctor> getDoctors() {
+        return doctors;
+    }
+
+    public void setDoctors(Set<Doctor> doctors) {
+        this.doctors = doctors;
+    }
+
+    public LinkedList<Admin> getAdmins() {
+        return admins;
+    }
+
+    public void setAdmins(LinkedList<Admin> admins) {
+        this.admins = admins;
+    }
+
+    public LinkedList<EPS> getListEps() {
+        return listEps;
+    }
+
+    public void setListEps(LinkedList<EPS> listEps) {
+        this.listEps = listEps;
+    }
+    
+    
+    
+    
+    
     public void testAddEps(EPS eps){
         testAddEps(listEps,eps);
     }

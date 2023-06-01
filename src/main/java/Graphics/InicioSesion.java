@@ -242,8 +242,8 @@ public class InicioSesion extends javax.swing.JFrame {
         this.userName = (txtUserName.getText());
         char[] charPassword = txtPassword.getPassword();
         this.password = new String(charPassword);
-        user = engine.login(userName, password);
-        if (user instanceof Patient) {
+        this.user = engine.login(userName, password);
+        if (this.user instanceof Patient) {
             JOptionPane.showMessageDialog(rootPane, "Menu paciente");
             MenuPatient menuPatient = new MenuPatient(engine, (Patient) user);
             menuPatient.setLocationRelativeTo(null);
@@ -253,7 +253,7 @@ public class InicioSesion extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "menu doctor");
         } else if (user instanceof Admin) {
             JOptionPane.showMessageDialog(rootPane, "menu admin");
-            MenuAdmin menuAdmin = new MenuAdmin();
+            MenuAdmin1 menuAdmin = new MenuAdmin1(this.engine,this.user);
             menuAdmin.setLocationRelativeTo(null);
             menuAdmin.setVisible(true);
         } else {

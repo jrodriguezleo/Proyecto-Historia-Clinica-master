@@ -4,17 +4,23 @@
  */
 package Graphics;
 
+import Register.*;
+import Users.*;
+import javax.swing.JOptionPane;
 /**
  *
  * @author st_va
  */
 public class MenuAdmin extends javax.swing.JFrame {
     String selectedOption="Doctor";
-
+    private Engine engine;
+    public User user;
     /**
      * Creates new form MenuAdmin
      */
-    public MenuAdmin() {
+    public MenuAdmin(Engine engine, User user) {
+        this.engine = engine;
+        this.user = user;
         initComponents();
         txtAreaHistoriaClinica.setText("No aplica");
         txtAreaHistoriaClinica.setEditable(false);
@@ -62,10 +68,8 @@ public class MenuAdmin extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         buttonCrear = new javax.swing.JButton();
-        buttonConsultar = new javax.swing.JButton();
         buttonVolver = new javax.swing.JButton();
         buttonEditar = new javax.swing.JButton();
-        buttonBorrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -152,7 +156,6 @@ public class MenuAdmin extends javax.swing.JFrame {
 
         jLabel12.setText("Especialidad:");
 
-        txtAreaHistoriaClinica.setBackground(new java.awt.Color(255, 255, 255));
         txtAreaHistoriaClinica.setColumns(20);
         txtAreaHistoriaClinica.setRows(5);
         jScrollPane1.setViewportView(txtAreaHistoriaClinica);
@@ -172,13 +175,9 @@ public class MenuAdmin extends javax.swing.JFrame {
             }
         });
 
-        buttonConsultar.setText("Consultar");
-
         buttonVolver.setText("Volver");
 
         buttonEditar.setText("Editar");
-
-        buttonBorrar.setText("Borrar");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -223,10 +222,8 @@ public class MenuAdmin extends javax.swing.JFrame {
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(buttonCrear)
                                 .addGap(49, 49, 49)
-                                .addComponent(buttonEditar)
-                                .addGap(47, 47, 47)
-                                .addComponent(buttonBorrar)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)))
+                                .addComponent(buttonEditar)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(comboBoxUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13)
@@ -235,10 +232,8 @@ public class MenuAdmin extends javax.swing.JFrame {
                         .addComponent(jLabel12)
                         .addGap(18, 18, 18)
                         .addComponent(txtEspecialidad))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGap(28, 28, 28)
-                        .addComponent(buttonConsultar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(buttonVolver)
                         .addGap(8, 8, 8))
                     .addComponent(jScrollPane2)
@@ -315,8 +310,6 @@ public class MenuAdmin extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(buttonCrear)
                             .addComponent(buttonEditar)
-                            .addComponent(buttonBorrar)
-                            .addComponent(buttonConsultar)
                             .addComponent(buttonVolver))
                         .addGap(21, 21, 21))))
         );
@@ -342,6 +335,25 @@ public class MenuAdmin extends javax.swing.JFrame {
     private void buttonCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCrearActionPerformed
         // TODO add your handling code here:
         
+        
+//        if (selectedOption.equals("Doctor")){
+//            
+//                int id=Integer.parseInt(txtId.getText());
+//            
+//            String nombre=txtName.getText();
+//            String apellido=txtApellido.getText();
+//            String fechaNacimiento=txtFechaNacimiento.getText();
+//            String genero=txtGenero.getText();
+//            String direccion=txtDireccion.getText();
+//            String telefono=txtTelefono.getText();
+//            String email=txtEmail.getText();
+//            String especialidad=txtEspecialidad.getText();
+//            
+//        }
+//        else if(selectedOption.equals("Paciente")){
+//        
+//        }
+        
     }//GEN-LAST:event_buttonCrearActionPerformed
 
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
@@ -360,7 +372,7 @@ public class MenuAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.selectedOption = comboBoxUser.getSelectedItem().toString();
                 if (selectedOption.equals("Doctor")) {
-                    txtAreaListPacientes.setText("");
+                    this.txtAreaListPacientes.setText("");
                     txtEspecialidad.setText("");
                     txtAreaHistoriaClinica.setText("No aplica");
                     txtAreaHistoriaClinica.setEditable(false);
@@ -375,7 +387,18 @@ public class MenuAdmin extends javax.swing.JFrame {
                     txtAreaHistoriaClinica.setEditable(true);
                 }
     }//GEN-LAST:event_comboBoxUserActionPerformed
-
+    
+    
+//    public void limpiar() {
+//        txtUserName.setText("");
+//        txtPassword.setText("");
+//    };
+//    
+    
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -412,8 +435,6 @@ public class MenuAdmin extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonBorrar;
-    private javax.swing.JButton buttonConsultar;
     private javax.swing.JButton buttonCrear;
     private javax.swing.JButton buttonEditar;
     private javax.swing.JButton buttonSalir;
