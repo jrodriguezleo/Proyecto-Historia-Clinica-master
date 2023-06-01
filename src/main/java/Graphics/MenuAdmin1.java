@@ -6,6 +6,7 @@ package Graphics;
 
 import Register.*;
 import Users.*;
+import java.util.*;
 
 /**
  *
@@ -22,6 +23,7 @@ public class MenuAdmin1 extends javax.swing.JFrame {
         this.engine = engine;
         this.user = user;
         initComponents();
+        mostrar();
     }
 
     /**
@@ -44,13 +46,12 @@ public class MenuAdmin1 extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         buttonInicioSesion = new javax.swing.JButton();
-        txtUserName = new javax.swing.JTextField();
-        buttonCerrar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableUsuarios = new javax.swing.JTable();
         buttonInicioSesion1 = new javax.swing.JButton();
         buttonInicioSesion2 = new javax.swing.JButton();
         buttonInicioSesion3 = new javax.swing.JButton();
+        buttonCerrar = new javax.swing.JButton();
 
         jFrame1.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -145,7 +146,7 @@ public class MenuAdmin1 extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Swis721 Blk BT", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(153, 255, 204));
-        jLabel4.setText("Busque usuario por id:");
+        jLabel4.setText("A continuación puede ver la lista de ususarios registrados en el sistema:");
 
         buttonInicioSesion.setBackground(new java.awt.Color(0, 153, 153));
         buttonInicioSesion.setFont(new java.awt.Font("Swis721 BlkCn BT", 2, 14)); // NOI18N
@@ -156,32 +157,16 @@ public class MenuAdmin1 extends javax.swing.JFrame {
             }
         });
 
-        txtUserName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUserNameActionPerformed(evt);
-            }
-        });
-
-        buttonCerrar.setBackground(new java.awt.Color(0, 153, 153));
-        buttonCerrar.setText("Cerrar");
-        buttonCerrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonCerrarActionPerformed(evt);
-            }
-        });
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableUsuarios.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jTableUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null}
             },
             new String [] {
-                "Id", "Nombre", "Tipo Usuario"
+                "Id", "Nombre", "Eps", "Tipo Usuario"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(jTableUsuarios);
 
         buttonInicioSesion1.setBackground(new java.awt.Color(0, 153, 153));
         buttonInicioSesion1.setFont(new java.awt.Font("Swis721 BlkCn BT", 2, 14)); // NOI18N
@@ -210,15 +195,23 @@ public class MenuAdmin1 extends javax.swing.JFrame {
             }
         });
 
+        buttonCerrar.setBackground(new java.awt.Color(0, 153, 153));
+        buttonCerrar.setFont(new java.awt.Font("Swis721 BlkCn BT", 2, 14)); // NOI18N
+        buttonCerrar.setText("Cerrar");
+        buttonCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCerrarActionPerformed(evt);
+            }
+        });
+
         jDesktopPane2.setLayer(jPanel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(buttonInicioSesion, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(txtUserName, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(buttonCerrar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jScrollPane2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(buttonInicioSesion1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(buttonInicioSesion2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(buttonInicioSesion3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(buttonCerrar, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane2Layout = new javax.swing.GroupLayout(jDesktopPane2);
         jDesktopPane2.setLayout(jDesktopPane2Layout);
@@ -232,40 +225,37 @@ public class MenuAdmin1 extends javax.swing.JFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jDesktopPane2Layout.createSequentialGroup()
-                        .addComponent(buttonInicioSesion)
-                        .addGap(18, 18, 18)
-                        .addComponent(buttonInicioSesion1)
-                        .addGap(18, 18, 18)
-                        .addComponent(buttonInicioSesion2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(buttonInicioSesion3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                        .addComponent(buttonCerrar)
-                        .addGap(47, 47, 47))
-                    .addGroup(jDesktopPane2Layout.createSequentialGroup()
                         .addComponent(jLabel4)
-                        .addGap(32, 32, 32)
-                        .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(buttonInicioSesion)
+                .addGap(18, 18, 18)
+                .addComponent(buttonInicioSesion1)
+                .addGap(18, 18, 18)
+                .addComponent(buttonInicioSesion2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(buttonInicioSesion3)
+                .addGap(18, 18, 18)
+                .addComponent(buttonCerrar)
+                .addGap(57, 57, 57))
         );
         jDesktopPane2Layout.setVerticalGroup(
             jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane2Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonInicioSesion3)
+                    .addComponent(buttonInicioSesion2)
                     .addComponent(buttonInicioSesion1)
                     .addComponent(buttonInicioSesion)
-                    .addComponent(buttonCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonInicioSesion2)
-                    .addComponent(buttonInicioSesion3))
-                .addGap(44, 44, 44))
+                    .addComponent(buttonCerrar))
+                .addGap(53, 53, 53))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -289,15 +279,6 @@ public class MenuAdmin1 extends javax.swing.JFrame {
             menuAdmin.setVisible(true);
     }//GEN-LAST:event_buttonInicioSesionActionPerformed
 
-    private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUserNameActionPerformed
-
-    private void buttonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCerrarActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_buttonCerrarActionPerformed
-
     private void buttonInicioSesion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonInicioSesion1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonInicioSesion1ActionPerformed
@@ -309,6 +290,10 @@ public class MenuAdmin1 extends javax.swing.JFrame {
     private void buttonInicioSesion3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonInicioSesion3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonInicioSesion3ActionPerformed
+
+    private void buttonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCerrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonCerrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -345,6 +330,34 @@ public class MenuAdmin1 extends javax.swing.JFrame {
 //        });
 //    }
 
+    public void mostrar(){
+    LinkedList<Patient> listaPacientes=this.engine.getPatients();
+    Set<Doctor> arbolDoctores = this.engine.getDoctors();
+    Doctor[] listaDoctores = new Doctor[arbolDoctores.size()];
+    arbolDoctores.toArray(listaDoctores);
+    int cantUsuarios= listaPacientes.size()+listaDoctores.length;
+    String datos[][]=new String [cantUsuarios][4];
+    for(int i=0;i<listaPacientes.size();i++){// llenamos matriz con datos de pacientes 
+        datos[i][0]=String.valueOf(listaPacientes.get(i).getId());
+        datos[i][1]=listaPacientes.get(i).getName();
+        datos[i][2]=listaPacientes.get(i).getEps().getName();
+        datos[i][3]="Paciente";
+    }
+    int count=0;
+    //Ahora llenamos matriz con datos de doctores
+        for(int i=listaPacientes.size();i<cantUsuarios;i++){
+        datos[i][0]=String.valueOf(listaDoctores[count].getId());
+        datos[i][1]=listaDoctores[count].getName();
+        datos[i][2]=listaDoctores[count].getEps().getName();
+        datos[i][3]="Doctor";
+        count++;
+    }
+    
+    
+jTableUsuarios.setModel(new javax.swing.table.DefaultTableModel(datos,new String[]{"Id","Nombre","Eps","Tipo Usuario"}));
+    } 
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonCerrar;
     private javax.swing.JButton buttonInicioSesion;
@@ -361,8 +374,7 @@ public class MenuAdmin1 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableUsuarios;
     private javax.swing.JLabel labelTitle;
-    private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
 }
