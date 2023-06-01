@@ -346,7 +346,7 @@ public class Engine {
         admins.add(new Admin(1,"admin1","admin12345","Developer 1",123456, epsHolder));
         admins.add(new Admin(2,"admin2","admin23456","Developer 2",234567, epsHolder));
 
-        Patient patient0 = new Patient(0,"patient0","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com",epsHolder);
+        Patient patient0 = new Patient(0,"p1","p1","Juan", "Perez","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com",epsHolder);
         Patient patient1 = new Patient(1,"patient1","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com",epsHolder);
         Patient patient2 = new Patient(2,"patient2","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com",epsHolder);
         Patient patient3 = new Patient(3,"patient3","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com",epsHolder);
