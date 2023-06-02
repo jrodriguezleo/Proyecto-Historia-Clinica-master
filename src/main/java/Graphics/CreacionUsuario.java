@@ -7,6 +7,7 @@ package Graphics;
 import Register.*;
 import Users.*;
 import javax.swing.JOptionPane;
+import java.util.*;
 /**
  *
  * @author st_va
@@ -60,7 +61,11 @@ public class CreacionUsuario extends javax.swing.JFrame {
         txtEspecialidad = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         buttonCrear = new javax.swing.JButton();
-        buttonVolver = new javax.swing.JButton();
+        buttonCerrar = new javax.swing.JButton();
+        txtUsername = new javax.swing.JTextField();
+        txtPassword = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -154,7 +159,17 @@ public class CreacionUsuario extends javax.swing.JFrame {
             }
         });
 
-        buttonVolver.setText("Volver");
+        buttonCerrar.setText("Cerrar");
+
+        txtUsername.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUsernameActionPerformed(evt);
+            }
+        });
+
+        jLabel13.setText("<html><label>Nombre de<br>usuario</label><html>");
+
+        jLabel14.setText("Contraseña:");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -164,30 +179,33 @@ public class CreacionUsuario extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                             .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(16, 16, 16)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel7)
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel3)
-                                    .addComponent(jLabel5))
-                                .addGap(38, 38, 38)))
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(38, 38, 38))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)))
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(buttonCrear)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(buttonVolver))
+                                .addComponent(buttonCerrar))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
                                     .addComponent(txtName)
                                     .addComponent(txtId)
                                     .addComponent(txtFechaNacimiento, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtGenero))
+                                    .addComponent(txtGenero)
+                                    .addComponent(txtUsername))
                                 .addGap(126, 126, 126)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -206,11 +224,15 @@ public class CreacionUsuario extends javax.swing.JFrame {
                                         .addComponent(jLabel12)
                                         .addGap(18, 18, 18)
                                         .addComponent(txtEspecialidad, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE))
-                                    .addComponent(comboBoxUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(comboBoxUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addComponent(jLabel14)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(183, 183, 183)
                         .addComponent(jLabel2)))
-                .addGap(54, 81, Short.MAX_VALUE))
+                .addGap(54, 68, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -241,7 +263,15 @@ public class CreacionUsuario extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7))
+                            .addComponent(jLabel7)
+                            .addComponent(txtEspecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12))
+                        .addGap(28, 28, 28)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel14)
+                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -260,17 +290,13 @@ public class CreacionUsuario extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel10))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel11)
-                            .addComponent(txtEps, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel12)
-                            .addComponent(txtEspecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(65, 65, 65)
+                            .addComponent(txtEps, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 167, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(buttonVolver)
+                            .addComponent(buttonCerrar)
                             .addComponent(buttonCrear))
                         .addGap(104, 104, 104))))
         );
@@ -291,24 +317,68 @@ public class CreacionUsuario extends javax.swing.JFrame {
 
     private void buttonCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCrearActionPerformed
         // TODO add your handling code here:
+        if("".equals(this.txtId.getText())){
+        JOptionPane.showMessageDialog(rootPane, "Completar el campo id es obligatorio");
+        return;
+        } ;
+        if(this.engine.getUser(this.user,Integer.parseInt(this.txtId.getText()))!=null){
+        JOptionPane.showMessageDialog(rootPane, "El id ya se encuentra registrado, verifique");
+        return;
+        } ;
+        
+        if(this.engine.verificarNameEps(this.txtEps.getText())==null){
+        JOptionPane.showMessageDialog(rootPane, "El nombre de la eps no está registrada en el sistema, verifíquela");
+        return;
+        }
+        if((this.txtUsername.getText())==""){
+        JOptionPane.showMessageDialog(rootPane, "Completar el campo nombre de usuario es obligatorio");
+        return;
+        } ;
+        if((this.txtPassword.getText())==""){
+        JOptionPane.showMessageDialog(rootPane, "Completar el campo contraseña es obligatorio");
+        return;
+        } ;
 
-        //        if (selectedOption.equals("Doctor")){
-            //
-            //                int id=Integer.parseInt(txtId.getText());
-            //
-            //            String nombre=txtName.getText();
-            //            String apellido=txtApellido.getText();
-            //            String fechaNacimiento=txtFechaNacimiento.getText();
-            //            String genero=txtGenero.getText();
-            //            String direccion=txtDireccion.getText();
-            //            String telefono=txtTelefono.getText();
-            //            String email=txtEmail.getText();
-            //            String especialidad=txtEspecialidad.getText();
-            //
-            //        }
-        //        else if(selectedOption.equals("Paciente")){
-            //
-            //        }
+                if (selectedOption.equals("Doctor")){//Vamos a añadir un nuevo doctor
+            
+                        int id=Integer.parseInt(txtId.getText());
+            
+                        String nombre=txtName.getText();
+                        String apellido=txtApellido.getText();
+                        String fechaNacimiento=txtFechaNacimiento.getText();
+                        String genero=txtGenero.getText();
+                        EPS eps=this.engine.verificarNameEps(txtEps.getText());
+                        String direccion=txtDireccion.getText();
+                        String telefono=txtTelefono.getText();
+                        String email=txtEmail.getText();
+                        String especialidad=txtEspecialidad.getText();
+                        String userName=txtUsername.getText();
+                        String password=txtPassword.getText();
+                        Doctor newDoctor= new Doctor(especialidad,eps,id,userName,password,nombre,apellido,fechaNacimiento,genero,direccion,telefono,email);
+                        Set<Doctor> arbolDoctores=this.engine.getDoctors();
+                        arbolDoctores.add(newDoctor);
+                        this.engine.setDoctors(arbolDoctores);
+                        
+            
+                    }
+                else if(selectedOption.equals("Paciente")){
+                        int id=Integer.parseInt(txtId.getText());
+                        String nombre=txtName.getText();
+                        String apellido=txtApellido.getText();
+                        String fechaNacimiento=txtFechaNacimiento.getText();
+                        EPS eps=this.engine.verificarNameEps(txtEps.getText());
+                        String genero=txtGenero.getText();
+                        String direccion=txtDireccion.getText();
+                        String telefono=txtTelefono.getText();
+                        String email=txtEmail.getText();
+                        String userName=txtUsername.getText();
+                        String password=txtPassword.getText();
+                        Patient newPatient= new Patient(id,userName,password,nombre,apellido,fechaNacimiento,genero,direccion,telefono,email,eps);
+                        LinkedList<Patient> listaPacientes=this.engine.getPatients();
+                        listaPacientes.add(newPatient);
+                        this.engine.setPatients(listaPacientes);
+                    }
+                JOptionPane.showMessageDialog(rootPane, "Usuario creado con éxito");
 
     }//GEN-LAST:event_buttonCrearActionPerformed
 
@@ -339,6 +409,10 @@ public class CreacionUsuario extends javax.swing.JFrame {
     private void buttonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalirActionPerformed
         this.dispose();
     }//GEN-LAST:event_buttonSalirActionPerformed
+
+    private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUsernameActionPerformed
     
     
 //    public void limpiar() {
@@ -387,14 +461,16 @@ public class CreacionUsuario extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonCerrar;
     private javax.swing.JButton buttonCrear;
     private javax.swing.JButton buttonSalir;
-    private javax.swing.JButton buttonVolver;
     private javax.swing.JComboBox<String> comboBoxUser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -414,6 +490,8 @@ public class CreacionUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField txtGenero;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtTelefono;
+    private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }
