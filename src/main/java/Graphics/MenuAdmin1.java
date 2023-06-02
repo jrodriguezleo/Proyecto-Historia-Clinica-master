@@ -294,6 +294,8 @@ public class MenuAdmin1 extends javax.swing.JFrame {
 
     private void buttonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVolverActionPerformed
         // TODO add your handling code here:
+        this.engine.cancel();
+        mostrar();
     }//GEN-LAST:event_buttonVolverActionPerformed
 
     private void buttonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCerrarActionPerformed
