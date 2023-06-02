@@ -275,7 +275,7 @@ public class MenuAdmin1 extends javax.swing.JFrame {
 
     private void buttonCrearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCrearUsuarioActionPerformed
         // TODO add your handling code here:
-        MenuAdmin menuAdmin = new MenuAdmin(this.engine,this.user);
+        CreacionUsuario menuAdmin = new CreacionUsuario(this.engine,this.user);
             menuAdmin.setLocationRelativeTo(null);
             menuAdmin.setVisible(true);
     }//GEN-LAST:event_buttonCrearUsuarioActionPerformed
