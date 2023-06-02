@@ -15,6 +15,7 @@ import java.util.*;
 public class MenuAdmin1 extends javax.swing.JFrame {
     private Engine engine;
     public User user;
+    int filaSeleccionada=-1;
 
     /**
      * Creates new form MenuAdmin1
@@ -45,12 +46,12 @@ public class MenuAdmin1 extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        buttonInicioSesion = new javax.swing.JButton();
+        buttonCrearUsuario = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableUsuarios = new javax.swing.JTable();
-        buttonInicioSesion1 = new javax.swing.JButton();
-        buttonInicioSesion2 = new javax.swing.JButton();
-        buttonInicioSesion3 = new javax.swing.JButton();
+        buttonEditarUsuario = new javax.swing.JButton();
+        buttonEliminarUsuario = new javax.swing.JButton();
+        buttonVolver = new javax.swing.JButton();
         buttonCerrar = new javax.swing.JButton();
 
         jFrame1.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -148,12 +149,12 @@ public class MenuAdmin1 extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(153, 255, 204));
         jLabel4.setText("A continuación puede ver la lista de ususarios registrados en el sistema:");
 
-        buttonInicioSesion.setBackground(new java.awt.Color(0, 153, 153));
-        buttonInicioSesion.setFont(new java.awt.Font("Swis721 BlkCn BT", 2, 14)); // NOI18N
-        buttonInicioSesion.setText("Crear");
-        buttonInicioSesion.addActionListener(new java.awt.event.ActionListener() {
+        buttonCrearUsuario.setBackground(new java.awt.Color(0, 153, 153));
+        buttonCrearUsuario.setFont(new java.awt.Font("Swis721 BlkCn BT", 2, 14)); // NOI18N
+        buttonCrearUsuario.setText("Crear");
+        buttonCrearUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonInicioSesionActionPerformed(evt);
+                buttonCrearUsuarioActionPerformed(evt);
             }
         });
 
@@ -168,30 +169,30 @@ public class MenuAdmin1 extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTableUsuarios);
 
-        buttonInicioSesion1.setBackground(new java.awt.Color(0, 153, 153));
-        buttonInicioSesion1.setFont(new java.awt.Font("Swis721 BlkCn BT", 2, 14)); // NOI18N
-        buttonInicioSesion1.setText("Editar");
-        buttonInicioSesion1.addActionListener(new java.awt.event.ActionListener() {
+        buttonEditarUsuario.setBackground(new java.awt.Color(0, 153, 153));
+        buttonEditarUsuario.setFont(new java.awt.Font("Swis721 BlkCn BT", 2, 14)); // NOI18N
+        buttonEditarUsuario.setText("Editar");
+        buttonEditarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonInicioSesion1ActionPerformed(evt);
+                buttonEditarUsuarioActionPerformed(evt);
             }
         });
 
-        buttonInicioSesion2.setBackground(new java.awt.Color(0, 153, 153));
-        buttonInicioSesion2.setFont(new java.awt.Font("Swis721 BlkCn BT", 2, 14)); // NOI18N
-        buttonInicioSesion2.setText("Eiminar");
-        buttonInicioSesion2.addActionListener(new java.awt.event.ActionListener() {
+        buttonEliminarUsuario.setBackground(new java.awt.Color(0, 153, 153));
+        buttonEliminarUsuario.setFont(new java.awt.Font("Swis721 BlkCn BT", 2, 14)); // NOI18N
+        buttonEliminarUsuario.setText("Eiminar");
+        buttonEliminarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonInicioSesion2ActionPerformed(evt);
+                buttonEliminarUsuarioActionPerformed(evt);
             }
         });
 
-        buttonInicioSesion3.setBackground(new java.awt.Color(0, 153, 153));
-        buttonInicioSesion3.setFont(new java.awt.Font("Swis721 BlkCn BT", 2, 14)); // NOI18N
-        buttonInicioSesion3.setText("Volver");
-        buttonInicioSesion3.addActionListener(new java.awt.event.ActionListener() {
+        buttonVolver.setBackground(new java.awt.Color(0, 153, 153));
+        buttonVolver.setFont(new java.awt.Font("Swis721 BlkCn BT", 2, 14)); // NOI18N
+        buttonVolver.setText("Volver");
+        buttonVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonInicioSesion3ActionPerformed(evt);
+                buttonVolverActionPerformed(evt);
             }
         });
 
@@ -206,11 +207,11 @@ public class MenuAdmin1 extends javax.swing.JFrame {
 
         jDesktopPane2.setLayer(jPanel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(buttonInicioSesion, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(buttonCrearUsuario, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jScrollPane2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(buttonInicioSesion1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(buttonInicioSesion2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(buttonInicioSesion3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(buttonEditarUsuario, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(buttonEliminarUsuario, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(buttonVolver, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(buttonCerrar, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane2Layout = new javax.swing.GroupLayout(jDesktopPane2);
@@ -229,13 +230,13 @@ public class MenuAdmin1 extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(buttonInicioSesion)
+                .addComponent(buttonCrearUsuario)
                 .addGap(18, 18, 18)
-                .addComponent(buttonInicioSesion1)
+                .addComponent(buttonEditarUsuario)
                 .addGap(18, 18, 18)
-                .addComponent(buttonInicioSesion2)
+                .addComponent(buttonEliminarUsuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(buttonInicioSesion3)
+                .addComponent(buttonVolver)
                 .addGap(18, 18, 18)
                 .addComponent(buttonCerrar)
                 .addGap(57, 57, 57))
@@ -250,10 +251,10 @@ public class MenuAdmin1 extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonInicioSesion3)
-                    .addComponent(buttonInicioSesion2)
-                    .addComponent(buttonInicioSesion1)
-                    .addComponent(buttonInicioSesion)
+                    .addComponent(buttonVolver)
+                    .addComponent(buttonEliminarUsuario)
+                    .addComponent(buttonEditarUsuario)
+                    .addComponent(buttonCrearUsuario)
                     .addComponent(buttonCerrar))
                 .addGap(53, 53, 53))
         );
@@ -272,24 +273,28 @@ public class MenuAdmin1 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonInicioSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonInicioSesionActionPerformed
+    private void buttonCrearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCrearUsuarioActionPerformed
         // TODO add your handling code here:
         MenuAdmin menuAdmin = new MenuAdmin(this.engine,this.user);
             menuAdmin.setLocationRelativeTo(null);
             menuAdmin.setVisible(true);
-    }//GEN-LAST:event_buttonInicioSesionActionPerformed
+    }//GEN-LAST:event_buttonCrearUsuarioActionPerformed
 
-    private void buttonInicioSesion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonInicioSesion1ActionPerformed
+    private void buttonEditarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_buttonInicioSesion1ActionPerformed
+    }//GEN-LAST:event_buttonEditarUsuarioActionPerformed
 
-    private void buttonInicioSesion2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonInicioSesion2ActionPerformed
+    private void buttonEliminarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEliminarUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_buttonInicioSesion2ActionPerformed
+        filaSeleccionada=jTableUsuarios.getSelectedRow();
+        int idUsuario=Integer.parseInt((jTableUsuarios.getValueAt(filaSeleccionada, 0)).toString());
+        this.engine.removeUser(this.user, idUsuario);
+        mostrar();
+    }//GEN-LAST:event_buttonEliminarUsuarioActionPerformed
 
-    private void buttonInicioSesion3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonInicioSesion3ActionPerformed
+    private void buttonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVolverActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_buttonInicioSesion3ActionPerformed
+    }//GEN-LAST:event_buttonVolverActionPerformed
 
     private void buttonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCerrarActionPerformed
         // TODO add your handling code here:
@@ -360,10 +365,10 @@ jTableUsuarios.setModel(new javax.swing.table.DefaultTableModel(datos,new String
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonCerrar;
-    private javax.swing.JButton buttonInicioSesion;
-    private javax.swing.JButton buttonInicioSesion1;
-    private javax.swing.JButton buttonInicioSesion2;
-    private javax.swing.JButton buttonInicioSesion3;
+    private javax.swing.JButton buttonCrearUsuario;
+    private javax.swing.JButton buttonEditarUsuario;
+    private javax.swing.JButton buttonEliminarUsuario;
+    private javax.swing.JButton buttonVolver;
     private javax.swing.JDesktopPane jDesktopPane2;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
