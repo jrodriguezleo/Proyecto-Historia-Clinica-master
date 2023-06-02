@@ -170,13 +170,13 @@
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="buttonInicioSesion" min="-2" max="-2" attributes="0"/>
+                  <Component id="buttonCrearUsuario" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="buttonInicioSesion1" min="-2" max="-2" attributes="0"/>
+                  <Component id="buttonEditarUsuario" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="buttonInicioSesion2" min="-2" max="-2" attributes="0"/>
+                  <Component id="buttonEliminarUsuario" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="buttonInicioSesion3" min="-2" max="-2" attributes="0"/>
+                  <Component id="buttonVolver" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="buttonCerrar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
@@ -193,10 +193,10 @@
                   <Component id="jScrollPane2" min="-2" pref="142" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="buttonInicioSesion3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="buttonInicioSesion2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="buttonInicioSesion1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="buttonInicioSesion" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="buttonVolver" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="buttonEliminarUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="buttonEditarUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="buttonCrearUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="buttonCerrar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
@@ -254,7 +254,7 @@
             <Property name="text" type="java.lang.String" value="A continuaci&#xf3;n puede ver la lista de ususarios registrados en el sistema:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="buttonInicioSesion">
+        <Component class="javax.swing.JButton" name="buttonCrearUsuario">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="99" green="99" red="0" type="rgb"/>
@@ -265,7 +265,7 @@
             <Property name="text" type="java.lang.String" value="Crear"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonInicioSesionActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCrearUsuarioActionPerformed"/>
           </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane2">
@@ -318,7 +318,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="buttonInicioSesion1">
+        <Component class="javax.swing.JButton" name="buttonEditarUsuario">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="99" green="99" red="0" type="rgb"/>
@@ -329,10 +329,10 @@
             <Property name="text" type="java.lang.String" value="Editar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonInicioSesion1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonEditarUsuarioActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="buttonInicioSesion2">
+        <Component class="javax.swing.JButton" name="buttonEliminarUsuario">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="99" green="99" red="0" type="rgb"/>
@@ -343,10 +343,10 @@
             <Property name="text" type="java.lang.String" value="Eiminar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonInicioSesion2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonEliminarUsuarioActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="buttonInicioSesion3">
+        <Component class="javax.swing.JButton" name="buttonVolver">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="99" green="99" red="0" type="rgb"/>
@@ -357,7 +357,7 @@
             <Property name="text" type="java.lang.String" value="Volver"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonInicioSesion3ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonVolverActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="buttonCerrar">
