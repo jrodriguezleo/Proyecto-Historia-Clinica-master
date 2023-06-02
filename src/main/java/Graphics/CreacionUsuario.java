@@ -11,14 +11,14 @@ import javax.swing.JOptionPane;
  *
  * @author st_va
  */
-public class MenuAdmin extends javax.swing.JFrame {
+public class CreacionUsuario extends javax.swing.JFrame {
     String selectedOption="Doctor";
     private Engine engine;
     public User user;
     /**
      * Creates new form MenuAdmin
      */
-    public MenuAdmin(Engine engine, User user) {
+    public CreacionUsuario(Engine engine, User user) {
         this.engine = engine;
         this.user = user;
         initComponents();
@@ -416,20 +416,20 @@ public class MenuAdmin extends javax.swing.JFrame {
 //                }
 //            }
 //        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(MenuAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(CreacionUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(MenuAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(CreacionUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(MenuAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(CreacionUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(MenuAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(CreacionUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        }
 //        //</editor-fold>
 //
 //        /* Create and display the form */
 //        java.awt.EventQueue.invokeLater(new Runnable() {
 //            public void run() {
-//                new MenuAdmin().setVisible(true);
+//                new CreacionUsuario().setVisible(true);
 //            }
 //        });
 //    }
