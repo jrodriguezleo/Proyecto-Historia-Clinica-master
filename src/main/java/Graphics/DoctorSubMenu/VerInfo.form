@@ -746,7 +746,7 @@
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="user.getEPS().getName()" type="code"/>
+                  <Connection code="user.getEps().getName()" type="code"/>
                 </Property>
               </Properties>
             </Component>

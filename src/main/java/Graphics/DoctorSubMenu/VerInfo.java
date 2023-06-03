@@ -381,7 +381,7 @@ public class VerInfo extends javax.swing.JFrame {
 
         jLabel37.setFont(new java.awt.Font("Swis721 Blk BT", 1, 14)); // NOI18N
         jLabel37.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel37.setText(user.getEPS().getName());
+        jLabel37.setText(user.getEps().getName());
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
