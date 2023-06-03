@@ -4,17 +4,42 @@
  */
 package Graphics;
 
+import Register.*;
+import javax.swing.JOptionPane;
+import java.util.*;
 /**
  *
  * @author anama
  */
 public class VerRegistro extends javax.swing.JFrame {
-
+    private RegistroMedico registro;
+    public Engine engine;
     /**
      * Creates new form VerRegistro
      */
-    public VerRegistro() {
+    public VerRegistro(RegistroMedico registro) {
+        this.registro = registro;
         initComponents();
+        
+        if(registro.getFechaCreacion()!= null){
+        FechaRegistro.setText(registro.getFechaCreacion());
+    }   
+    
+    if(registro.getMedicoTratante().getName() != null){
+        NDoctor.setText(registro.getMedicoTratante().getName());
+    }
+    if(registro.getDiagnostico() != null){
+        TituloRegistro.setText(registro.getDiagnostico());
+    }
+    if(registro.getObservaciones() != null){
+        observacionesR.setText(registro.getObservaciones());
+    }
+    if(registro.getTratamiento() != null){
+        tratamientoR.setText(registro.getTratamiento());
+    } 
+    if(registro.getEspecialidad() != null){
+        especialidad.setText(registro.getEspecialidad());
+    }    
     }
 
     /**
@@ -29,20 +54,23 @@ public class VerRegistro extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
+        TituloRegistro = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        botonSalir = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
+        NDoctor = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
+        FechaRegistro = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jTextArea4 = new javax.swing.JTextArea();
+        especialidad = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        observacionesR = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        tratamientoR = new javax.swing.JLabel();
 
         jButton1.setBackground(new java.awt.Color(153, 255, 204));
         jButton1.setText("Guardar");
@@ -58,11 +86,19 @@ public class VerRegistro extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(0, 153, 153));
 
-        jLabel9.setFont(new java.awt.Font("Swis721 Blk BT", 0, 18)); // NOI18N
-        jLabel9.setText("XTitulo del registroX");
+        TituloRegistro.setFont(new java.awt.Font("Swis721 Blk BT", 0, 18)); // NOI18N
+        TituloRegistro.setText("Titulo del registro");
 
         jLabel10.setFont(new java.awt.Font("Swis721 Blk BT", 0, 18)); // NOI18N
         jLabel10.setText("Viendo Registro");
+
+        botonSalir.setBackground(new java.awt.Color(153, 255, 204));
+        botonSalir.setText("Salir");
+        botonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -72,8 +108,10 @@ public class VerRegistro extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel9)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(TituloRegistro)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botonSalir)
+                .addGap(24, 24, 24))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -81,8 +119,9 @@ public class VerRegistro extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jLabel9))
-                .addContainerGap(18, Short.MAX_VALUE))
+                    .addComponent(TituloRegistro)
+                    .addComponent(botonSalir))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         jLabel11.setFont(new java.awt.Font("Swis721 Blk BT", 0, 16)); // NOI18N
@@ -98,20 +137,20 @@ public class VerRegistro extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Swis721 Blk BT", 0, 12)); // NOI18N
         jLabel13.setText("Profesional encargado:");
 
-        jLabel14.setFont(new java.awt.Font("Swis721 Blk BT", 0, 12)); // NOI18N
-        jLabel14.setText("Sitio de consulta:");
-
-        jLabel15.setFont(new java.awt.Font("Swis721 Blk BT", 0, 12)); // NOI18N
-        jLabel15.setText("XDoctorX");
+        NDoctor.setFont(new java.awt.Font("Swis721 Blk BT", 0, 12)); // NOI18N
+        NDoctor.setText("Doctor");
 
         jLabel16.setFont(new java.awt.Font("Swis721 Blk BT", 0, 12)); // NOI18N
         jLabel16.setText("Fecha:");
 
-        jLabel17.setFont(new java.awt.Font("Swis721 Blk BT", 0, 12)); // NOI18N
-        jLabel17.setText("XLugar RegistroX");
+        FechaRegistro.setFont(new java.awt.Font("Swis721 Blk BT", 0, 12)); // NOI18N
+        FechaRegistro.setText("Fecha Registro");
 
         jLabel18.setFont(new java.awt.Font("Swis721 Blk BT", 0, 12)); // NOI18N
-        jLabel18.setText("XFecha RegistroX");
+        jLabel18.setText("Especialidad:");
+
+        especialidad.setFont(new java.awt.Font("Swis721 Blk BT", 0, 12)); // NOI18N
+        especialidad.setText("Especialidad");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -123,16 +162,16 @@ public class VerRegistro extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel13)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel15))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel14)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel17))
+                        .addComponent(NDoctor))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel16)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel18)))
-                .addContainerGap(331, Short.MAX_VALUE))
+                        .addComponent(FechaRegistro))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(especialidad)))
+                .addContainerGap(342, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,39 +179,69 @@ public class VerRegistro extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jLabel15))
+                    .addComponent(NDoctor))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(jLabel17))
+                    .addComponent(jLabel18)
+                    .addComponent(especialidad))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel18)
+                    .addComponent(FechaRegistro)
                     .addComponent(jLabel16))
                 .addContainerGap(10, Short.MAX_VALUE))
         );
 
-        jButton2.setBackground(new java.awt.Color(153, 255, 204));
-        jButton2.setText("Guardar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTextArea4.setColumns(20);
-        jTextArea4.setRows(5);
-        jScrollPane5.setViewportView(jTextArea4);
+        observacionesR.setFont(new java.awt.Font("Swis721 Blk BT", 0, 12)); // NOI18N
+        observacionesR.setText("Consigna");
+
+        jLabel15.setFont(new java.awt.Font("Swis721 Blk BT", 0, 14)); // NOI18N
+        jLabel15.setText("Tratamiento:");
+
+        jLabel17.setFont(new java.awt.Font("Swis721 Blk BT", 0, 14)); // NOI18N
+        jLabel17.setText("Observaciones:");
+
+        tratamientoR.setFont(new java.awt.Font("Swis721 Blk BT", 0, 12)); // NOI18N
+        tratamientoR.setText("Consigna");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(jLabel17)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(observacionesR, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel15)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tratamientoR, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(observacionesR))
+                .addGap(29, 29, 29)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(tratamientoR))
+                .addContainerGap(50, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(245, 245, 245)
-                .addComponent(jButton2)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,10 +250,10 @@ public class VerRegistro extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel11)
                             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 24, Short.MAX_VALUE))))
+                        .addGap(0, 23, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,10 +266,8 @@ public class VerRegistro extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
-                .addGap(0, 18, Short.MAX_VALUE))
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 50, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -221,19 +288,20 @@ public class VerRegistro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_botonSalirActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+ /*   public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+         
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -252,31 +320,63 @@ public class VerRegistro extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        Create and display the form 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new VerRegistro().setVisible(true);
             }
         });
-    }
+        
+    } */
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel FechaRegistro;
+    private javax.swing.JLabel NDoctor;
+    private javax.swing.JLabel TituloRegistro;
+    private javax.swing.JButton botonSalir;
+    private javax.swing.JLabel especialidad;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTextArea jTextArea4;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JLabel observacionesR;
+    private javax.swing.JLabel tratamientoR;
     // End of variables declaration//GEN-END:variables
+
+    /*
+public void mostrar(){
+    if(registro.getFechaCreacion()!= null){
+        FechaRegistro.setText(registro.getFechaCreacion());
+    }   
+    if(registro.getFechaCreacion() != null){
+        LugarRegistro.setText(registro.getFechaCreacion());
+    }
+    if(registro.getMedicoTratante().getName() != null){
+        NDoctor.setText(registro.getMedicoTratante().getName());
+    }
+    if(registro.getDiagnostico() != null){
+        TituloRegistro.setText(registro.getDiagnostico());
+    }
+    if(registro.getObservaciones() != null){
+        observacionesR.setText(registro.getObservaciones());
+    }
+    if(registro.getTratamiento() != null){
+        tratamientoR.setText(registro.getTratamiento());
+    }       
+    
+    
+    
+        
+}*/
+
 }

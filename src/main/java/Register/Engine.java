@@ -227,10 +227,6 @@ public class Engine {
         System.out.println("EL paciente no se encuentra registrado");
             
     }
-    
-    
-    
-    
     public void addRegistroMedico(User usuario,int id){
         if(usuario instanceof Doctor ){
             Patient paciente = (Patient)(getUser(usuario,id));
@@ -249,14 +245,26 @@ public class Engine {
                 RegistroMedico registro=new RegistroMedico(diagnostico,tratamiento,observaciones, (Doctor)usuario);
                 historiaClinica.add(registro);
                 paciente.setHistoriasClinica(historiaClinica);
-                
-                
             }
             catch(Exception e){
                 java.lang.System.out.println("Error al actaulizar resgistro");
             }
         }
         else System.out.println("esto no debia pasar onooooo");
+
+    }
+    public void addRegistroMedico(User usuario, int id,RegistroMedico r) {
+        if (usuario instanceof Doctor) {
+            Patient paciente = (Patient) (getUser(usuario, id));
+            if (paciente == null) {
+                System.out.println("Ud no tiene ningun paciente con ese numero de identificacion");
+                return;
+            }
+            List<RegistroMedico> historiaClinica = paciente.getHistoriasClinica();
+            historiaClinica.add(r);
+            paciente.setHistoriasClinica(historiaClinica);
+        }
+        else System.out.println("no tiene permisos para realizar esta accion");
 
     }
     public User getUser(User user, int id){
@@ -318,6 +326,7 @@ public class Engine {
                     
                 
             }
+                    
             this.persona.add((Person)userRemove);
             info.add(numDoc);
             this.action.add(info);
@@ -394,6 +403,31 @@ public class Engine {
         patientstree.put(patient4.getId(), patient4);
         
   
+
+
+        for (Doctor doctor: doctors) {
+            if (doctor.getSpecialization().equals("Internista")) {
+                doctor.addPatient(patient0);
+                
+                for (int i = 0; i < 5; i++) {
+                    addRegistroMedico(doctor,patient0.getId(), new RegistroMedico("Dagnostico"+i, "Tratamiento"+i, "Observacion"+i, doctor) );
+                }
+            }
+            if (doctor.getSpecialization().equals("Pediatra")) {
+                doctor.addPatient(patient1);
+                for (int i = 0; i < 5; i++) {
+                    addRegistroMedico(doctor,patient1.getId(), new RegistroMedico("Dagnostico"+i, "Tratamiento"+i, "Observacion"+i, doctor) );
+                }
+            }
+            if (doctor.getSpecialization().equals("Neurologo")) {
+                doctor.addPatient(patient2);
+                for (int i = 0; i < 5; i++) {
+                    addRegistroMedico(doctor,patient2.getId(), new RegistroMedico("Dagnostico"+i, "Tratamiento"+i, "Observacion"+i, doctor) );
+                }
+            }
+        }
+
+
 
     }
 
@@ -480,10 +514,6 @@ public class Engine {
     public void setListEps(LinkedList<EPS> listEps) {
         this.listEps = listEps;
     }
-    
-    
-    
-    
     
     public void testAddEps(EPS eps){
         testAddEps(listEps,eps);

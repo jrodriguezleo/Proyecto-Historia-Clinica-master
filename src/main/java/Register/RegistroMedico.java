@@ -18,7 +18,9 @@ public class RegistroMedico {
     private String tratamiento;
     private String observaciones;
     private Doctor medicoTratante;
+    private String especialidad;
     private List<NotaClinica> notasClinicas;
+
     public RegistroMedico(String diagnostico, String tratamiento, String observaciones, Doctor medico){
         Date date=new Date();
         SimpleDateFormat formateo= new SimpleDateFormat("dd/MM/yy");
@@ -27,10 +29,9 @@ public class RegistroMedico {
         this.diagnostico=diagnostico;
         this.tratamiento=tratamiento;
         this.observaciones=observaciones;
+        this.especialidad = medicoTratante.getSpecialization();
         this.notasClinicas=new LinkedList<NotaClinica>();
-        this.id=(int)Math.floor(Math.random()*(1000+1));
-        
-        
+        this.id=(int)Math.floor(Math.random()*(1000+1));   
     }
 
     public int getId() {
@@ -79,6 +80,10 @@ public class RegistroMedico {
 
     public void setMedicoTratante(Doctor medicoTratante) {
         this.medicoTratante = medicoTratante;
+    }
+    
+    public String getEspecialidad() {
+        return especialidad;
     }
 
     public List<NotaClinica> getNotasClinicas() {
