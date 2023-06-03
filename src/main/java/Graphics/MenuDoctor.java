@@ -8,6 +8,7 @@ import Graphics.DoctorSubMenu.AddPaciente;
 import Graphics.DoctorSubMenu.AgendarPaciente;
 import Graphics.DoctorSubMenu.VerInfo;
 import Graphics.DoctorSubMenu.BuscarPaciente;
+import Graphics.DoctorSubMenu.TablaCitas;
 import Register.Engine;
 import Users.Doctor;
 import Users.Patient;
@@ -94,7 +95,7 @@ public class MenuDoctor extends javax.swing.JFrame {
         buscarPacienteButton = new javax.swing.JButton();
         AddPaciente = new javax.swing.JButton();
         agendarButton = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        verCitas = new javax.swing.JButton();
         eliminarMasReciente = new javax.swing.JButton();
         Actualizar = new javax.swing.JButton();
 
@@ -250,10 +251,10 @@ public class MenuDoctor extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setText("Ver mis citas pendientes");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        verCitas.setText("Ver mis citas pendientes");
+        verCitas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                verCitasActionPerformed(evt);
             }
         });
 
@@ -293,7 +294,7 @@ public class MenuDoctor extends javax.swing.JFrame {
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(agendarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(eliminarMasReciente)
-                                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(verCitas, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(27, 27, 27)))
                         .addContainerGap())
                     .addGroup(jPanel5Layout.createSequentialGroup()
@@ -319,7 +320,7 @@ public class MenuDoctor extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buscarPacienteButton)
-                    .addComponent(jButton6))
+                    .addComponent(verCitas))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(AddPaciente)
@@ -370,9 +371,12 @@ public class MenuDoctor extends javax.swing.JFrame {
         agendarPacientes.setVisible(true);
     }//GEN-LAST:event_agendarButtonActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void verCitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verCitasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+        TablaCitas tabla = new TablaCitas(engine,user);
+        tabla.setLocationRelativeTo(null);
+        tabla.setVisible(true);
+    }//GEN-LAST:event_verCitasActionPerformed
 
     private void eliminarMasRecienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarMasRecienteActionPerformed
         // TODO add your handling code here:
@@ -406,7 +410,6 @@ public class MenuDoctor extends javax.swing.JFrame {
     private javax.swing.JButton eliminarMasReciente;
     private javax.swing.JLabel fechaTxtBox;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -420,5 +423,6 @@ public class MenuDoctor extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JLabel nameTxtBox;
     private javax.swing.JLabel reasonTxtBox;
+    private javax.swing.JButton verCitas;
     // End of variables declaration//GEN-END:variables
 }

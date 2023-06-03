@@ -9,6 +9,14 @@ public class Doctor extends Person implements Comparable<Doctor>{
     public LinkedList<Patient> patients = new LinkedList<>();
     public Queue<DoctorDate> datesQueue = new LinkedList<>();
 
+    public Queue<DoctorDate> getDatesQueue() {
+        return datesQueue;
+    }
+
+    public void setDatesQueue(Queue<DoctorDate> datesQueue) {
+        this.datesQueue = datesQueue;
+    }
+
     public Doctor(String especialidad, EPS eps, int id, String userName, String password, String nombre, String apellido, String fechaNacimiento, String genero, String direccion, String telefono, String email) {
         super(id, userName, password, nombre, apellido, fechaNacimiento, genero, direccion, telefono, email);
         this.specialization = especialidad;

@@ -83,7 +83,7 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="agendarButton" min="-2" pref="203" max="-2" attributes="0"/>
                                       <Component id="eliminarMasReciente" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jButton6" min="-2" pref="203" max="-2" attributes="0"/>
+                                      <Component id="verCitas" min="-2" pref="203" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                               </Group>
@@ -119,7 +119,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="buscarPacienteButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton6" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="verCitas" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -381,12 +381,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="agendarButtonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton6">
+        <Component class="javax.swing.JButton" name="verCitas">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ver mis citas pendientes"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="verCitasActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="eliminarMasReciente">
