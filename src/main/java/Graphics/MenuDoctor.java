@@ -4,6 +4,7 @@
  */
 package Graphics;
 
+import Graphics.DoctorSubMenu.AddPaciente;
 import Graphics.DoctorSubMenu.VerInfo;
 import Graphics.DoctorSubMenu.VerPacientes;
 import Register.Engine;
@@ -57,7 +58,7 @@ public class MenuDoctor extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         VerInfo = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        AddPaciente = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
@@ -144,10 +145,10 @@ public class MenuDoctor extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Añadir un paciente");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        AddPaciente.setText("Añadir un paciente");
+        AddPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                AddPacienteActionPerformed(evt);
             }
         });
 
@@ -202,7 +203,7 @@ public class MenuDoctor extends javax.swing.JFrame {
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(VerInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(AddPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 194, Short.MAX_VALUE)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -230,7 +231,7 @@ public class MenuDoctor extends javax.swing.JFrame {
                     .addComponent(jButton6))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
+                    .addComponent(AddPaciente)
                     .addComponent(jButton7))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -267,9 +268,13 @@ public class MenuDoctor extends javax.swing.JFrame {
         verPacientes.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void AddPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddPacienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+        AddPaciente addPacientes = new AddPaciente(engine,user);
+        addPacientes.setLocationRelativeTo(null);
+        addPacientes.setVisible(true);
+        
+    }//GEN-LAST:event_AddPacienteActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
@@ -297,10 +302,10 @@ public class MenuDoctor extends javax.swing.JFrame {
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AddPaciente;
     private javax.swing.JButton Salir;
     private javax.swing.JButton VerInfo;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
