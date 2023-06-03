@@ -251,6 +251,10 @@ public class InicioSesion extends javax.swing.JFrame {
 
         } else if (user instanceof Doctor) {
             JOptionPane.showMessageDialog(rootPane, "menu doctor");
+            MenuDoctor menuDoctor = new MenuDoctor(engine,(Doctor) user);
+            menuDoctor.setLocationRelativeTo(null);
+            menuDoctor.setVisible(true);
+            
         } else if (user instanceof Admin) {
             JOptionPane.showMessageDialog(rootPane, "menu admin");
             MenuAdmin1 menuAdmin = new MenuAdmin1(this.engine,this.user);

@@ -346,7 +346,7 @@ public class Engine {
         listEps.add(epsHolder);
         admins.add(new Admin(0,"admin0","admin01234","Developer 0",012345, epsHolder));
         admins.add(new Admin(1,"admin1","admin12345","Developer 1",123456, epsHolder));
-        admins.add(new Admin(2,"admin2","admin23456","Developer 2",234567, epsHolder));
+        admins.add(new Admin(2,"adm","adm123","Developer 2",234567, epsHolder));
 
         Patient patient0 = new Patient(0,"p1","p1","Juan", "Perez","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com",epsHolder);
         Patient patient1 = new Patient(1,"patient1","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com",epsHolder);
@@ -361,6 +361,7 @@ public class Engine {
 
 
         doctors.add(new Doctor("Internista",epsHolder,100,"doc0","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com"));
+        doctors.add(new Doctor("General",epsHolder,102,"doc","doc123","Vicente", "Fernandez","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com"));
         Doctor doc1=new Doctor("Pediatra",epsHolder,101,"doc1","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com");
         doctors.add(doc1);
         LinkedList<Patient> pacientesDoc1=doc1.getPatients();
@@ -389,9 +390,10 @@ public class Engine {
         patientstree.put(patient0.getId(), patient0);
         patientstree.put(patient1.getId(), patient1);
         patientstree.put(patient2.getId(), patient2);
-        patientstree.put(patient3.getId(), patient3);
+        patientstree.put(patient3.getId(), patient3); 
         patientstree.put(patient4.getId(), patient4);
-
+        
+  
 
     }
 

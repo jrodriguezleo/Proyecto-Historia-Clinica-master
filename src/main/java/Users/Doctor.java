@@ -5,8 +5,8 @@ public class Doctor extends Person implements Comparable<Doctor>{
     private String specialization;
     private EPS eps;
 
-    private LinkedList<Patient> patients = new LinkedList<>();
-    private Queue<Patient> patientQueue = new LinkedList<>();
+    public LinkedList<Patient> patients = new LinkedList<>();
+    public Queue<Patient> patientQueue = new LinkedList<>();
 
     public Doctor(String especialidad, EPS eps, int id, String userName, String password, String nombre, String apellido, String fechaNacimiento, String genero, String direccion, String telefono, String email) {
         super(id, userName, password, nombre, apellido, fechaNacimiento, genero, direccion, telefono, email);
