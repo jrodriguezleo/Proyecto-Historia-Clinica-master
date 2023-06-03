@@ -35,7 +35,7 @@ public class InformacionPaciente extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        nuevoRegistroButton = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -105,8 +105,8 @@ public class InformacionPaciente extends javax.swing.JFrame {
         jLabel15.setForeground(new java.awt.Color(153, 255, 204));
         jLabel15.setText(paciente.getBirthdate());
 
-        jButton1.setBackground(new java.awt.Color(153, 255, 204));
-        jButton1.setLabel("Nuevo Registro");
+        nuevoRegistroButton.setBackground(new java.awt.Color(153, 255, 204));
+        nuevoRegistroButton.setLabel("Nuevo Registro");
 
         jButton2.setBackground(new java.awt.Color(153, 255, 204));
         jButton2.setLabel("Deshacer Cambios");
@@ -156,7 +156,7 @@ public class InformacionPaciente extends javax.swing.JFrame {
                             .addComponent(jLabel15))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nuevoRegistroButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
                 .addGap(120, 120, 120))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -187,7 +187,7 @@ public class InformacionPaciente extends javax.swing.JFrame {
                         .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(44, 44, 44)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(nuevoRegistroButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(5, 5, 5)
@@ -216,7 +216,7 @@ public class InformacionPaciente extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE))
         );
 
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        nuevoRegistroButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
@@ -256,6 +256,7 @@ public class InformacionPaciente extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {  
         int size1 = paciente.getHistoriasClinica().size();
         NuevoRegistro nuevo = new NuevoRegistro(paciente,doctor);
+        nuevo.setLocationRelativeTo(null);
         nuevo.setVisible(true);
         if(size1 < paciente.getHistoriasClinica().size()){
             this.cantidadnuevosregistros++;
@@ -299,7 +300,7 @@ public class InformacionPaciente extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        nuevoRegistroButton = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -388,8 +389,13 @@ public class InformacionPaciente extends javax.swing.JFrame {
         jLabel15.setForeground(new java.awt.Color(153, 255, 204));
         jLabel15.setText("BirthDay");
 
-        jButton1.setBackground(new java.awt.Color(153, 255, 204));
-        jButton1.setLabel("Nuevo Registro");
+        nuevoRegistroButton.setBackground(new java.awt.Color(153, 255, 204));
+        nuevoRegistroButton.setLabel("Nuevo Registro");
+        nuevoRegistroButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nuevoRegistroButtonActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(153, 255, 204));
         jButton2.setLabel("Deshacer Cambios");
@@ -435,7 +441,7 @@ public class InformacionPaciente extends javax.swing.JFrame {
                             .addComponent(jLabel15))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nuevoRegistroButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
                 .addGap(120, 120, 120))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -466,7 +472,7 @@ public class InformacionPaciente extends javax.swing.JFrame {
                         .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(44, 44, 44)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(nuevoRegistroButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(5, 5, 5)
@@ -505,6 +511,10 @@ public class InformacionPaciente extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void nuevoRegistroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoRegistroButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nuevoRegistroButtonActionPerformed
 */
 
     /*public static void main(String args[]) {
@@ -517,7 +527,6 @@ public class InformacionPaciente extends javax.swing.JFrame {
        });
     }*/
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -536,6 +545,7 @@ public class InformacionPaciente extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JButton nuevoRegistroButton;
     private javax.swing.JLabel pacienteNombreTextBox;
     // End of variables declaration//GEN-END:variables
 }

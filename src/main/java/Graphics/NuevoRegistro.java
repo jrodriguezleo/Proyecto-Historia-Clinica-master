@@ -21,6 +21,7 @@ public class NuevoRegistro extends javax.swing.JFrame {
         this.paciente = paciente;
         this.doctor = doctor;
         initComponents();
+        nombrePaciente.setText(paciente.getName()+" "+paciente.getLastName());
     }
 
     /**
@@ -40,8 +41,7 @@ public class NuevoRegistro extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        nombrePaciente = new javax.swing.JLabel();
         botonSalir = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -95,13 +95,10 @@ public class NuevoRegistro extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(0, 153, 153));
 
         jLabel9.setFont(new java.awt.Font("Swis721 Blk BT", 0, 18)); // NOI18N
-        jLabel9.setText("Viendo al Paciente");
+        jLabel9.setText("Añadiendo registro a ");
 
-        jLabel11.setFont(new java.awt.Font("Swis721 Blk BT", 0, 18)); // NOI18N
-        jLabel11.setText("XxPacientexX");
-
-        jLabel12.setFont(new java.awt.Font("Swis721 Blk BT", 0, 18)); // NOI18N
-        jLabel12.setText("-- Nuevo Registro");
+        nombrePaciente.setFont(new java.awt.Font("Swis721 Blk BT", 0, 18)); // NOI18N
+        nombrePaciente.setText("XxPacientexX");
 
         botonSalir.setBackground(new java.awt.Color(153, 255, 204));
         botonSalir.setText("Salir");
@@ -119,9 +116,7 @@ public class NuevoRegistro extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel12)
+                .addComponent(nombrePaciente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(botonSalir)
                 .addGap(24, 24, 24))
@@ -132,8 +127,7 @@ public class NuevoRegistro extends javax.swing.JFrame {
                 .addContainerGap(20, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel12)
+                    .addComponent(nombrePaciente)
                     .addComponent(botonSalir))
                 .addGap(15, 15, 15))
         );
@@ -339,8 +333,6 @@ public class NuevoRegistro extends javax.swing.JFrame {
     private javax.swing.JButton botonSalir;
     private javax.swing.JTextField diagnostico;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
@@ -352,6 +344,7 @@ public class NuevoRegistro extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JLabel nombrePaciente;
     private javax.swing.JTextField observaciones;
     private javax.swing.JTextField tratamiento;
     // End of variables declaration//GEN-END:variables
