@@ -36,7 +36,10 @@ public class VerRegistro extends javax.swing.JFrame {
     }
     if(registro.getTratamiento() != null){
         tratamientoR.setText(registro.getTratamiento());
-    }     
+    } 
+    if(registro.getEspecialidad() != null){
+        especialidad.setText(registro.getEspecialidad());
+    }    
     }
 
     /**
@@ -61,6 +64,8 @@ public class VerRegistro extends javax.swing.JFrame {
         NDoctor = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         FechaRegistro = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        especialidad = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         observacionesR = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -141,6 +146,12 @@ public class VerRegistro extends javax.swing.JFrame {
         FechaRegistro.setFont(new java.awt.Font("Swis721 Blk BT", 0, 12)); // NOI18N
         FechaRegistro.setText("Fecha Registro");
 
+        jLabel18.setFont(new java.awt.Font("Swis721 Blk BT", 0, 12)); // NOI18N
+        jLabel18.setText("Especialidad:");
+
+        especialidad.setFont(new java.awt.Font("Swis721 Blk BT", 0, 12)); // NOI18N
+        especialidad.setText("Especialidad");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -155,8 +166,12 @@ public class VerRegistro extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel16)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(FechaRegistro)))
-                .addContainerGap(343, Short.MAX_VALUE))
+                        .addComponent(FechaRegistro))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(especialidad)))
+                .addContainerGap(342, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,7 +180,11 @@ public class VerRegistro extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(NDoctor))
-                .addGap(28, 28, 28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(especialidad))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(FechaRegistro)
                     .addComponent(jLabel16))
@@ -316,6 +335,7 @@ public class VerRegistro extends javax.swing.JFrame {
     private javax.swing.JLabel NDoctor;
     private javax.swing.JLabel TituloRegistro;
     private javax.swing.JButton botonSalir;
+    private javax.swing.JLabel especialidad;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -324,6 +344,7 @@ public class VerRegistro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
