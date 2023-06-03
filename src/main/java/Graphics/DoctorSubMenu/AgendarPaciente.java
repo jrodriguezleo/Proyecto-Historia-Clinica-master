@@ -44,7 +44,7 @@ public class AgendarPaciente extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        Salir1 = new javax.swing.JButton();
+        Salir = new javax.swing.JButton();
         patientIdTextBox = new javax.swing.JTextField();
         agendarPatientButton = new javax.swing.JButton();
         resultado = new javax.swing.JLabel();
@@ -73,10 +73,10 @@ public class AgendarPaciente extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Swis721 Blk BT", 0, 18)); // NOI18N
         jLabel15.setText("(Doctor)");
 
-        Salir1.setText("Salir");
-        Salir1.addActionListener(new java.awt.event.ActionListener() {
+        Salir.setText("Salir");
+        Salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Salir1ActionPerformed(evt);
+                SalirActionPerformed(evt);
             }
         });
 
@@ -91,9 +91,9 @@ public class AgendarPaciente extends javax.swing.JFrame {
                 .addComponent(jLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel15)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
-                .addComponent(Salir1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addComponent(Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,7 +103,7 @@ public class AgendarPaciente extends javax.swing.JFrame {
                     .addComponent(jLabel10)
                     .addComponent(jLabel14)
                     .addComponent(jLabel15)
-                    .addComponent(Salir1))
+                    .addComponent(Salir))
                 .addGap(16, 16, 16))
         );
 
@@ -139,8 +139,9 @@ public class AgendarPaciente extends javax.swing.JFrame {
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addComponent(resultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(339, 339, 339)
-                        .addComponent(agendarPatientButton))
+                        .addGap(315, 315, 315)
+                        .addComponent(agendarPatientButton)
+                        .addGap(24, 24, 24))
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel12Layout.createSequentialGroup()
@@ -173,11 +174,15 @@ public class AgendarPaciente extends javax.swing.JFrame {
                 .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(reasonTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(agendarPatientButton, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(resultado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                        .addComponent(resultado, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(agendarPatientButton)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -194,35 +199,40 @@ public class AgendarPaciente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Salir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Salir1ActionPerformed
+    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
         // TODO add your handling code here:
         this.dispose();
-    }//GEN-LAST:event_Salir1ActionPerformed
+    }//GEN-LAST:event_SalirActionPerformed
 
     private void agendarPatientButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendarPatientButtonActionPerformed
         // TODO add your handling code here:
-        int patientId = Integer.parseInt(patientIdTextBox.getText());
-        String date = dateTextBox.getText();
-        String reason = reasonTextBox.getText();
-        
-        boolean hasPatient = false;
-        for(Patient patient: user.getPatients()){
-            if(patient.getId() == patientId){
-                hasPatient = true;
-                user.addDateToQueue(new DoctorDate(patient,date,reason));
-                resultado.setText("El paciente "+patient.getName()+" "+patient.getLastName()+ " fue añadido a la agenda correctamente");
-                
+        try{
+            int patientId = Integer.parseInt(patientIdTextBox.getText());
+            String date = dateTextBox.getText();
+            String reason = reasonTextBox.getText();
+
+            boolean hasPatient = false;
+            for(Patient patient: user.getPatients()){
+                if(patient.getId() == patientId){
+                    hasPatient = true;
+                    user.addDateToQueue(new DoctorDate(patient,date,reason));
+                    resultado.setText("El paciente "+patient.getName()+" "+patient.getLastName()+ " fue añadido a la agenda correctamente");
+
+                }
             }
-        }
-        if(!hasPatient){
-            resultado.setText("El paciente no se encuentra en la lista");
-        }
+            if(!hasPatient){
+                resultado.setText("El paciente no se encuentra en la lista");
+            }
+        }catch(Exception e){
+            resultado.setText("Datos incorrectos");
+        }  
+       
     }//GEN-LAST:event_agendarPatientButtonActionPerformed
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Salir1;
+    private javax.swing.JButton Salir;
     private javax.swing.JButton agendarPatientButton;
     private javax.swing.JTextField dateTextBox;
     private javax.swing.JLabel jLabel10;
