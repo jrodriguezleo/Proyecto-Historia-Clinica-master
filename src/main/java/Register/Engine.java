@@ -245,8 +245,10 @@ public class Engine {
             String tratamiento=s.nextLine();
             System.out.println("Ingrese oberservaciones adicionales: ");
             String observaciones=s.nextLine();
+            System.out.println("Ingrese el tipo de consulta: ");
+            String tipo=s.nextLine();
             try{
-                RegistroMedico registro=new RegistroMedico(diagnostico,tratamiento,observaciones, (Doctor)usuario);
+                RegistroMedico registro=new RegistroMedico(diagnostico,tratamiento,observaciones, (Doctor)usuario,tipo);
                 historiaClinica.add(registro);
                 paciente.setHistoriasClinica(historiaClinica);
                 

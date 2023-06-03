@@ -19,7 +19,8 @@ public class RegistroMedico {
     private String observaciones;
     private Doctor medicoTratante;
     private List<NotaClinica> notasClinicas;
-    public RegistroMedico(String diagnostico, String tratamiento, String observaciones, Doctor medico){
+    private String tipo;
+    public RegistroMedico(String diagnostico, String tratamiento, String observaciones, Doctor medico,String tipo){
         Date date=new Date();
         SimpleDateFormat formateo= new SimpleDateFormat("dd/MM/yy");
         this.fechaCreacion=formateo.format(date);
@@ -29,8 +30,16 @@ public class RegistroMedico {
         this.observaciones=observaciones;
         this.notasClinicas=new LinkedList<NotaClinica>();
         this.id=(int)Math.floor(Math.random()*(1000+1));
+        this.tipo = tipo;
         
-        
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public int getId() {
