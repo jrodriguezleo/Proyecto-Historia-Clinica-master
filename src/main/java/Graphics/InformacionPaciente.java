@@ -26,7 +26,7 @@ public class InformacionPaciente extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        pacienteNombreTextBox = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -55,8 +55,8 @@ public class InformacionPaciente extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Swis721 Blk BT", 0, 22)); // NOI18N
         jLabel1.setText("Información del Paciente");
 
-        jLabel2.setFont(new java.awt.Font("Swis721 Blk BT", 0, 22)); // NOI18N
-        jLabel2.setText(paciente.getUserName());
+        pacienteNombreTextBox.setFont(new java.awt.Font("Swis721 Blk BT", 0, 22)); // NOI18N
+        pacienteNombreTextBox.setText(paciente.getName()+" "+paciente.getLastName());
 
         jLabel12.setFont(new java.awt.Font("Swis721 Blk BT", 0, 18)); // NOI18N
 
@@ -68,7 +68,7 @@ public class InformacionPaciente extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
+                .addComponent(pacienteNombreTextBox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -81,7 +81,7 @@ public class InformacionPaciente extends javax.swing.JFrame {
                 .addContainerGap(20, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel2)
+                    .addComponent(pacienteNombreTextBox)
                     .addComponent(jLabel12)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(16, 16, 16))
@@ -95,7 +95,7 @@ public class InformacionPaciente extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("Swis721 Blk BT", 0, 16)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(153, 255, 204));
-        jLabel13.setText(paciente.getName()+paciente.getLastName());
+        jLabel13.setText(paciente.getName()+" "+paciente.getLastName());
 
         jLabel14.setFont(new java.awt.Font("Swis721 Blk BT", 0, 16)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(153, 255, 204));
@@ -290,7 +290,7 @@ public class InformacionPaciente extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        pacienteNombreTextBox = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -330,8 +330,8 @@ public class InformacionPaciente extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Swis721 Blk BT", 0, 22)); // NOI18N
         jLabel1.setText("Información del Paciente");
 
-        jLabel2.setFont(new java.awt.Font("Swis721 Blk BT", 0, 22)); // NOI18N
-        jLabel2.setText("XxPacientexX");
+        pacienteNombreTextBox.setFont(new java.awt.Font("Swis721 Blk BT", 0, 22)); // NOI18N
+        pacienteNombreTextBox.setText("XxPacientexX");
 
         jLabel12.setFont(new java.awt.Font("Swis721 Blk BT", 0, 18)); // NOI18N
 
@@ -351,7 +351,7 @@ public class InformacionPaciente extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
+                .addComponent(pacienteNombreTextBox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -364,13 +364,11 @@ public class InformacionPaciente extends javax.swing.JFrame {
                 .addContainerGap(20, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel2)
+                    .addComponent(pacienteNombreTextBox)
                     .addComponent(jLabel12)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(16, 16, 16))
         );
-
-        jButton4.getAccessibleContext().setAccessibleName("Salir");
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -531,7 +529,6 @@ public class InformacionPaciente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
@@ -539,5 +536,6 @@ public class InformacionPaciente extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JLabel pacienteNombreTextBox;
     // End of variables declaration//GEN-END:variables
 }

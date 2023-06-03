@@ -23,23 +23,23 @@ public class VerRegistro extends javax.swing.JFrame {
         
         if(registro.getFechaCreacion()!= null){
         FechaRegistro.setText(registro.getFechaCreacion());
-    }   
-    
-    if(registro.getMedicoTratante().getName() != null){
-        NDoctor.setText(registro.getMedicoTratante().getName());
-    }
-    if(registro.getDiagnostico() != null){
-        TituloRegistro.setText(registro.getDiagnostico());
-    }
-    if(registro.getObservaciones() != null){
-        observacionesR.setText(registro.getObservaciones());
-    }
-    if(registro.getTratamiento() != null){
-        tratamientoR.setText(registro.getTratamiento());
-    } 
-    if(registro.getEspecialidad() != null){
-        especialidad.setText(registro.getEspecialidad());
-    }    
+        }   
+
+        if(registro.getMedicoTratante().getName() != null){
+            NDoctor.setText(registro.getMedicoTratante().getName());
+        }
+        if(registro.getDiagnostico() != null){
+            TituloRegistro.setText(registro.getDiagnostico());
+        }
+        if(registro.getObservaciones() != null){
+            observacionesR.setText(registro.getObservaciones());
+        }
+        if(registro.getTratamiento() != null){
+            tratamientoR.setText(registro.getTratamiento());
+        } 
+        if(registro.getEspecialidad() != null){
+            especialidad.setText(registro.getEspecialidad());
+        }    
     }
 
     /**

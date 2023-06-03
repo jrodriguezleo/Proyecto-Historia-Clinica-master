@@ -55,7 +55,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="VerInfo" max="32767" attributes="0"/>
-                              <Component id="jButton2" alignment="0" max="32767" attributes="0"/>
+                              <Component id="buscarPacienteButton" alignment="0" max="32767" attributes="0"/>
                               <Component id="AddPaciente" alignment="0" max="32767" attributes="0"/>
                               <Component id="jButton4" alignment="0" pref="191" max="32767" attributes="0"/>
                           </Group>
@@ -87,7 +87,7 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="buscarPacienteButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButton6" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -232,12 +232,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="VerInfoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="buscarPacienteButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Ver mis pacientes"/>
+            <Property name="text" type="java.lang.String" value="Buscar un paciente"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buscarPacienteButtonActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="AddPaciente">

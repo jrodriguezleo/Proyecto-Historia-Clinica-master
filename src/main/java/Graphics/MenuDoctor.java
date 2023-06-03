@@ -6,7 +6,7 @@ package Graphics;
 
 import Graphics.DoctorSubMenu.AddPaciente;
 import Graphics.DoctorSubMenu.VerInfo;
-import Graphics.DoctorSubMenu.VerPacientes;
+import Graphics.DoctorSubMenu.BuscarPaciente;
 import Register.Engine;
 import Users.Doctor;
 import Users.Patient;
@@ -57,7 +57,7 @@ public class MenuDoctor extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         VerInfo = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        buscarPacienteButton = new javax.swing.JButton();
         AddPaciente = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -138,10 +138,10 @@ public class MenuDoctor extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Ver mis pacientes");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        buscarPacienteButton.setText("Buscar un paciente");
+        buscarPacienteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                buscarPacienteButtonActionPerformed(evt);
             }
         });
 
@@ -202,7 +202,7 @@ public class MenuDoctor extends javax.swing.JFrame {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(VerInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buscarPacienteButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(AddPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 194, Short.MAX_VALUE)
@@ -227,7 +227,7 @@ public class MenuDoctor extends javax.swing.JFrame {
                     .addComponent(jButton5))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
+                    .addComponent(buscarPacienteButton)
                     .addComponent(jButton6))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -261,12 +261,12 @@ public class MenuDoctor extends javax.swing.JFrame {
         verInfo.setVisible(true);
     }//GEN-LAST:event_VerInfoActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void buscarPacienteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarPacienteButtonActionPerformed
         // TODO add your handling code here:
-        VerPacientes verPacientes = new VerPacientes(user);
+        BuscarPaciente verPacientes = new BuscarPaciente(engine,user);
         verPacientes.setLocationRelativeTo(null);
         verPacientes.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_buscarPacienteButtonActionPerformed
 
     private void AddPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddPacienteActionPerformed
         // TODO add your handling code here:
@@ -305,7 +305,7 @@ public class MenuDoctor extends javax.swing.JFrame {
     private javax.swing.JButton AddPaciente;
     private javax.swing.JButton Salir;
     private javax.swing.JButton VerInfo;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton buscarPacienteButton;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
