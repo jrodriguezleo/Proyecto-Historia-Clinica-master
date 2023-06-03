@@ -47,8 +47,14 @@ public class MenuPatient extends javax.swing.JFrame {
         viewport.setBackground(new java.awt.Color(0, 102, 102));
         jScrollPane1.setViewportView(viewport);
 
-        for (int i = 0; i < 10; i++) {
-            RegistroItem registroItem = new RegistroItem();
+        // for (int i = 0; i < 10; i++) {
+        //     RegistroItem registroItem = new RegistroItem();
+        //     registroItem.setPreferredSize(new Dimension(400, 100)); // Set preferred size for each RegistroItem
+        //     viewport.add(registroItem);
+        // }
+
+        for (int i = 0; i < patient.getHistoriasClinica().size(); i++) {
+            RegistroItem registroItem = new RegistroItem(patient.getHistoriasClinica().get(i));
             registroItem.setPreferredSize(new Dimension(400, 100)); // Set preferred size for each RegistroItem
             viewport.add(registroItem);
         }

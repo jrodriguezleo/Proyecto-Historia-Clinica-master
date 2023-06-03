@@ -7,6 +7,7 @@ package Graphics;
 import Register.*;
 import Users.*;
 import java.util.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -45,6 +46,7 @@ public class MenuAdmin1 extends javax.swing.JFrame {
         jDesktopPane2 = new javax.swing.JDesktopPane();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        buttonCerrar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         buttonCrearUsuario = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -52,7 +54,7 @@ public class MenuAdmin1 extends javax.swing.JFrame {
         buttonEditarUsuario = new javax.swing.JButton();
         buttonEliminarUsuario = new javax.swing.JButton();
         buttonVolver = new javax.swing.JButton();
-        buttonCerrar = new javax.swing.JButton();
+        buttonActualizar = new javax.swing.JButton();
 
         jFrame1.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -128,6 +130,15 @@ public class MenuAdmin1 extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Swis721 Blk BT", 0, 18)); // NOI18N
         jLabel3.setText("Bienvenido administrador");
 
+        buttonCerrar.setBackground(new java.awt.Color(0, 153, 153));
+        buttonCerrar.setFont(new java.awt.Font("Swis721 BlkCn BT", 2, 14)); // NOI18N
+        buttonCerrar.setText("Cerrar");
+        buttonCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCerrarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -135,14 +146,18 @@ public class MenuAdmin1 extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(buttonCerrar)
+                .addGap(34, 34, 34))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(jLabel3)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(buttonCerrar))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         jLabel4.setFont(new java.awt.Font("Swis721 Blk BT", 0, 14)); // NOI18N
@@ -196,12 +211,12 @@ public class MenuAdmin1 extends javax.swing.JFrame {
             }
         });
 
-        buttonCerrar.setBackground(new java.awt.Color(0, 153, 153));
-        buttonCerrar.setFont(new java.awt.Font("Swis721 BlkCn BT", 2, 14)); // NOI18N
-        buttonCerrar.setText("Cerrar");
-        buttonCerrar.addActionListener(new java.awt.event.ActionListener() {
+        buttonActualizar.setBackground(new java.awt.Color(0, 153, 153));
+        buttonActualizar.setFont(new java.awt.Font("Swis721 BlkCn BT", 2, 14)); // NOI18N
+        buttonActualizar.setText("Actualizar");
+        buttonActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonCerrarActionPerformed(evt);
+                buttonActualizarActionPerformed(evt);
             }
         });
 
@@ -212,7 +227,7 @@ public class MenuAdmin1 extends javax.swing.JFrame {
         jDesktopPane2.setLayer(buttonEditarUsuario, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(buttonEliminarUsuario, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(buttonVolver, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(buttonCerrar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(buttonActualizar, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane2Layout = new javax.swing.GroupLayout(jDesktopPane2);
         jDesktopPane2.setLayout(jDesktopPane2Layout);
@@ -228,7 +243,7 @@ public class MenuAdmin1 extends javax.swing.JFrame {
                     .addGroup(jDesktopPane2Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane2Layout.createSequentialGroup()
+            .addGroup(jDesktopPane2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(buttonCrearUsuario)
                 .addGap(18, 18, 18)
@@ -238,7 +253,7 @@ public class MenuAdmin1 extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(buttonVolver)
                 .addGap(18, 18, 18)
-                .addComponent(buttonCerrar)
+                .addComponent(buttonActualizar)
                 .addGap(57, 57, 57))
         );
         jDesktopPane2Layout.setVerticalGroup(
@@ -255,8 +270,8 @@ public class MenuAdmin1 extends javax.swing.JFrame {
                     .addComponent(buttonEliminarUsuario)
                     .addComponent(buttonEditarUsuario)
                     .addComponent(buttonCrearUsuario)
-                    .addComponent(buttonCerrar))
-                .addGap(53, 53, 53))
+                    .addComponent(buttonActualizar))
+                .addGap(52, 52, 52))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -282,11 +297,21 @@ public class MenuAdmin1 extends javax.swing.JFrame {
 
     private void buttonEditarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarUsuarioActionPerformed
         // TODO add your handling code here:
+        filaSeleccionada=jTableUsuarios.getSelectedRow();
+        if(sinSeleccion()) return;
+        int idUsuario=Integer.parseInt((jTableUsuarios.getValueAt(filaSeleccionada, 0)).toString());
+        User usuario=this.engine.getUser(this.user, idUsuario);
+        EditarUsuario editarUsuario=new EditarUsuario(this.engine,usuario);
+        editarUsuario.setLocationRelativeTo(null);
+        editarUsuario.setVisible(true);
+        
     }//GEN-LAST:event_buttonEditarUsuarioActionPerformed
 
     private void buttonEliminarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEliminarUsuarioActionPerformed
         // TODO add your handling code here:
+        
         filaSeleccionada=jTableUsuarios.getSelectedRow();
+        if(sinSeleccion()) return;
         int idUsuario=Integer.parseInt((jTableUsuarios.getValueAt(filaSeleccionada, 0)).toString());
         this.engine.removeUser(this.user, idUsuario);
         mostrar();
@@ -298,8 +323,14 @@ public class MenuAdmin1 extends javax.swing.JFrame {
         mostrar();
     }//GEN-LAST:event_buttonVolverActionPerformed
 
+    private void buttonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonActualizarActionPerformed
+        // TODO add your handling code here:
+        this.mostrar();
+    }//GEN-LAST:event_buttonActualizarActionPerformed
+
     private void buttonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCerrarActionPerformed
         // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_buttonCerrarActionPerformed
 
     /**
@@ -341,7 +372,7 @@ public class MenuAdmin1 extends javax.swing.JFrame {
     LinkedList<Patient> listaPacientes=this.engine.getPatients();
     Set<Doctor> arbolDoctores = this.engine.getDoctors();
     Doctor[] listaDoctores = new Doctor[arbolDoctores.size()];
-    arbolDoctores.toArray(listaDoctores);
+    arbolDoctores.toArray(listaDoctores); //convertimos el arbol de pacientes en un arreglo
     int cantUsuarios= listaPacientes.size()+listaDoctores.length;
     String datos[][]=new String [cantUsuarios][4];
     for(int i=0;i<listaPacientes.size();i++){// llenamos matriz con datos de pacientes 
@@ -363,9 +394,16 @@ public class MenuAdmin1 extends javax.swing.JFrame {
     
 jTableUsuarios.setModel(new javax.swing.table.DefaultTableModel(datos,new String[]{"Id","Nombre","Eps","Tipo Usuario"}));
     } 
-    
+    public boolean sinSeleccion(){
+    if(this.filaSeleccionada==-1) {
+        JOptionPane.showMessageDialog(rootPane, "Seleccione un usuario");
+        return true;
+    }
+    return false;
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonActualizar;
     private javax.swing.JButton buttonCerrar;
     private javax.swing.JButton buttonCrearUsuario;
     private javax.swing.JButton buttonEditarUsuario;

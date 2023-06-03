@@ -261,6 +261,20 @@ public class Engine {
         else System.out.println("esto no debia pasar onooooo");
 
     }
+    public void addRegistroMedico(User usuario, int id,RegistroMedico r) {
+        if (usuario instanceof Doctor) {
+            Patient paciente = (Patient) (getUser(usuario, id));
+            if (paciente == null) {
+                System.out.println("Ud no tiene ningun paciente con ese numero de identificacion");
+                return;
+            }
+            List<RegistroMedico> historiaClinica = paciente.getHistoriasClinica();
+            historiaClinica.add(r);
+            paciente.setHistoriasClinica(historiaClinica);
+        }
+        else System.out.println("no tiene permisos para realizar esta accion");
+
+    }
     public User getUser(User user, int id){
         
         if (user instanceof Doctor ){
@@ -393,6 +407,31 @@ public class Engine {
         patientstree.put(patient2.getId(), patient2);
         patientstree.put(patient3.getId(), patient3);
         patientstree.put(patient4.getId(), patient4);
+
+
+
+        for (Doctor doctor: doctors) {
+            if (doctor.getSpecialization().equals("Internista")) {
+                doctor.addPatient(patient0);
+                
+                for (int i = 0; i < 5; i++) {
+                    addRegistroMedico(doctor,patient0.getId(), new RegistroMedico("Dagnostico"+i, "Tratamiento"+i, "Observacion"+i, doctor) );
+                }
+            }
+            if (doctor.getSpecialization().equals("Pediatra")) {
+                doctor.addPatient(patient1);
+                for (int i = 0; i < 5; i++) {
+                    addRegistroMedico(doctor,patient1.getId(), new RegistroMedico("Dagnostico"+i, "Tratamiento"+i, "Observacion"+i, doctor) );
+                }
+            }
+            if (doctor.getSpecialization().equals("Neurologo")) {
+                doctor.addPatient(patient2);
+                for (int i = 0; i < 5; i++) {
+                    addRegistroMedico(doctor,patient2.getId(), new RegistroMedico("Dagnostico"+i, "Tratamiento"+i, "Observacion"+i, doctor) );
+                }
+            }
+        }
+
 
 
     }

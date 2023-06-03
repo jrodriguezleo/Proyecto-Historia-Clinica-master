@@ -168,7 +168,7 @@
                       </Group>
                   </Group>
               </Group>
-              <Group type="102" alignment="1" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="buttonCrearUsuario" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -178,8 +178,8 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="buttonVolver" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="buttonCerrar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                  <Component id="buttonActualizar" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="57" pref="57" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -197,9 +197,9 @@
                       <Component id="buttonEliminarUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="buttonEditarUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="buttonCrearUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="buttonCerrar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="buttonActualizar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -219,6 +219,8 @@
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
+                      <Component id="buttonCerrar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -226,8 +228,11 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="16" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="buttonCerrar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="38" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -240,6 +245,20 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Bienvenido administrador"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="buttonCerrar">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="99" green="99" red="0" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Swis721 BlkCn BT" size="14" style="2"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Cerrar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCerrarActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -360,7 +379,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonVolverActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="buttonCerrar">
+        <Component class="javax.swing.JButton" name="buttonActualizar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="99" green="99" red="0" type="rgb"/>
@@ -368,10 +387,10 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Swis721 BlkCn BT" size="14" style="2"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Cerrar"/>
+            <Property name="text" type="java.lang.String" value="Actualizar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCerrarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonActualizarActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

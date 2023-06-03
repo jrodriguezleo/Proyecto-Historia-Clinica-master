@@ -3,17 +3,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Graphics;
-
+import Register.RegistroMedico;
+import javax.swing.JOptionPane;
+import Users.*;
+import java.util.List;
 /**
  *
  * @author anama
  */
 public class NuevoRegistro extends javax.swing.JFrame {
-
+    Patient paciente;
+    Doctor doctor;
     /**
      * Creates new form NuevoRegistro
      */
-    public NuevoRegistro() {
+    public NuevoRegistro(Patient paciente,Doctor doctor) {
+        this.paciente = paciente;
+        this.doctor = doctor;
         initComponents();
     }
 
@@ -36,12 +42,15 @@ public class NuevoRegistro extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        botonSalir = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        txtUserName = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
+        diagnostico = new javax.swing.JTextField();
+        botonGuardar = new javax.swing.JButton();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        observaciones = new javax.swing.JTextField();
+        tratamiento = new javax.swing.JTextField();
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 153));
 
@@ -94,6 +103,14 @@ public class NuevoRegistro extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Swis721 Blk BT", 0, 18)); // NOI18N
         jLabel12.setText("-- Nuevo Registro");
 
+        botonSalir.setBackground(new java.awt.Color(153, 255, 204));
+        botonSalir.setText("Salir");
+        botonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonSalirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -105,7 +122,9 @@ public class NuevoRegistro extends javax.swing.JFrame {
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel12)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botonSalir)
+                .addGap(24, 24, 24))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,8 +133,9 @@ public class NuevoRegistro extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(jLabel11)
-                    .addComponent(jLabel12))
-                .addGap(16, 16, 16))
+                    .addComponent(jLabel12)
+                    .addComponent(botonSalir))
+                .addGap(15, 15, 15))
         );
 
         jLabel10.setFont(new java.awt.Font("Swis721 Blk BT", 0, 16)); // NOI18N
@@ -124,23 +144,39 @@ public class NuevoRegistro extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("Swis721 Blk BT", 0, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(153, 255, 204));
-        jLabel13.setText("Nombre del registro:");
+        jLabel13.setText("Diagnóstico:");
 
-        txtUserName.addActionListener(new java.awt.event.ActionListener() {
+        diagnostico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUserNameActionPerformed(evt);
+                diagnosticoActionPerformed(evt);
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        jButton1.setBackground(new java.awt.Color(153, 255, 204));
-        jButton1.setText("Guardar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonGuardar.setBackground(new java.awt.Color(153, 255, 204));
+        botonGuardar.setText("Guardar");
+        botonGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonGuardarActionPerformed(evt);
+            }
+        });
+
+        jLabel17.setFont(new java.awt.Font("Swis721 Blk BT", 0, 14)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(153, 255, 204));
+        jLabel17.setText("Observaciones:");
+
+        jLabel18.setFont(new java.awt.Font("Swis721 Blk BT", 0, 14)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(153, 255, 204));
+        jLabel18.setText("Tratamiento:");
+
+        observaciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                observacionesActionPerformed(evt);
+            }
+        });
+
+        tratamiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tratamientoActionPerformed(evt);
             }
         });
 
@@ -150,23 +186,34 @@ public class NuevoRegistro extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(245, 245, 245)
-                .addComponent(jButton1)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jLabel13)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE))
-                            .addComponent(jLabel10))
-                        .addGap(220, 220, 220))))
+                                .addGap(9, 9, 9)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel5Layout.createSequentialGroup()
+                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel13)
+                                            .addComponent(jLabel17))
+                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                                .addGap(12, 12, 12)
+                                                .addComponent(diagnostico, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                                .addGap(208, 208, 208)
+                                                .addComponent(jLabel18)))
+                                        .addGap(154, 154, 154))
+                                    .addGroup(jPanel5Layout.createSequentialGroup()
+                                        .addComponent(observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                                        .addComponent(tratamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel10)))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(245, 245, 245)
+                        .addComponent(botonGuardar)))
+                .addGap(14, 14, 14))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,15 +221,21 @@ public class NuevoRegistro extends javax.swing.JFrame {
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(8, 8, 8)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(diagnostico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
-                .addGap(0, 24, Short.MAX_VALUE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tratamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(botonGuardar)
+                .addGap(0, 25, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -199,23 +252,62 @@ public class NuevoRegistro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
+    private void diagnosticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_diagnosticoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtUserNameActionPerformed
+        
+    }//GEN-LAST:event_diagnosticoActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        if("".equals(this.diagnostico.getText())){
+        JOptionPane.showMessageDialog(rootPane, "Completar el campo diagnostico es obligatorio");
+        return;
+        } ;               
+        if("".equals(this.tratamiento.getText())){
+        JOptionPane.showMessageDialog(rootPane, "Completar el campo tratamiento es obligatorio");
+        return;
+        } ; 
+        
+        List<RegistroMedico> historiaClinica = paciente.getHistoriasClinica();
+        String diagnosticoS = diagnostico.getText();
+        String observac = observaciones.getText();
+        String trata = tratamiento.getText();
+        
+        try{
+                RegistroMedico registro=new RegistroMedico(diagnosticoS,trata,observac, doctor);
+                historiaClinica.add(registro);
+                paciente.setHistoriasClinica(historiaClinica);
+                
+                
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(rootPane, "Error al actaulizar resgistro");
+                
+            }
+    }//GEN-LAST:event_botonGuardarActionPerformed
+
+    private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_botonSalirActionPerformed
+
+    private void observacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_observacionesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_observacionesActionPerformed
+
+    private void tratamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tratamientoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tratamientoActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+  /*  public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+         
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -234,20 +326,24 @@ public class NuevoRegistro extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the form 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new NuevoRegistro().setVisible(true);
             }
         });
-    }
+    }  */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton botonGuardar;
+    private javax.swing.JButton botonSalir;
+    private javax.swing.JTextField diagnostico;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel8;
@@ -256,8 +352,7 @@ public class NuevoRegistro extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField txtUserName;
+    private javax.swing.JTextField observaciones;
+    private javax.swing.JTextField tratamiento;
     // End of variables declaration//GEN-END:variables
 }
