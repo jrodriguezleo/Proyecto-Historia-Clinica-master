@@ -18,6 +18,8 @@ public class ProyectoHistoriaClinica {
         Scanner scanner = new Scanner(System.in);
         Engine engine = new Engine();
         MainMenu mainMenu = new MainMenu(scanner,engine);
-        mainMenu.run();
+        //mainMenu.run();
+        mainMenu.normalExecution();
+        //mainMenu.testExecution();
     }
 }
