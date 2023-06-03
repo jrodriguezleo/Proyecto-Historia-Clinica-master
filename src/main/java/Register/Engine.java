@@ -227,10 +227,6 @@ public class Engine {
         System.out.println("EL paciente no se encuentra registrado");
             
     }
-    
-    
-    
-    
     public void addRegistroMedico(User usuario,int id){
         if(usuario instanceof Doctor ){
             Patient paciente = (Patient)(getUser(usuario,id));
@@ -245,14 +241,10 @@ public class Engine {
             String tratamiento=s.nextLine();
             System.out.println("Ingrese oberservaciones adicionales: ");
             String observaciones=s.nextLine();
-            System.out.println("Ingrese el tipo de consulta: ");
-            String tipo=s.nextLine();
             try{
-                RegistroMedico registro=new RegistroMedico(diagnostico,tratamiento,observaciones, (Doctor)usuario,tipo);
+                RegistroMedico registro=new RegistroMedico(diagnostico,tratamiento,observaciones, (Doctor)usuario);
                 historiaClinica.add(registro);
                 paciente.setHistoriasClinica(historiaClinica);
-                
-                
             }
             catch(Exception e){
                 java.lang.System.out.println("Error al actaulizar resgistro");
@@ -334,6 +326,7 @@ public class Engine {
                     
                 
             }
+                    
             this.persona.add((Person)userRemove);
             info.add(numDoc);
             this.action.add(info);
@@ -519,10 +512,6 @@ public class Engine {
     public void setListEps(LinkedList<EPS> listEps) {
         this.listEps = listEps;
     }
-    
-    
-    
-    
     
     public void testAddEps(EPS eps){
         testAddEps(listEps,eps);
