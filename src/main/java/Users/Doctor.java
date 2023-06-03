@@ -1,12 +1,13 @@
 package Users;
 import Register.EPS;
+import Util.DoctorDate;
 import java.util.*;
 public class Doctor extends Person implements Comparable<Doctor>{
     private String specialization;
     private EPS eps;
 
     public LinkedList<Patient> patients = new LinkedList<>();
-    public Queue<Patient> patientQueue = new LinkedList<>();
+    public Queue<DoctorDate> datesQueue = new LinkedList<>();
 
     public Doctor(String especialidad, EPS eps, int id, String userName, String password, String nombre, String apellido, String fechaNacimiento, String genero, String direccion, String telefono, String email) {
         super(id, userName, password, nombre, apellido, fechaNacimiento, genero, direccion, telefono, email);
@@ -39,8 +40,8 @@ public class Doctor extends Person implements Comparable<Doctor>{
     public void addPatient(Patient patient) {
         patients.add(patient);
     }
-    public void addPatientToQueue(Patient patient){
-        this.patientQueue.add(patient);
+    public void addDateToQueue(DoctorDate docDate){
+        this.datesQueue.add(docDate);
     }
     
     @Override
@@ -77,16 +78,18 @@ public String toString() {
         System.out.println(toStringListPatients());
     }
     private String toStringPatientsQueue(){
-        if(!patientQueue.isEmpty()){
+        if(!datesQueue.isEmpty()){
             StringBuilder sb= new StringBuilder();
             int i = 1;
             sb.append("Cola de pacientes\n");
             sb.append("Turno ID  Nombres\n");
-            for (Patient paciente : patientQueue) {
+            for (DoctorDate docDate : datesQueue) {
                 sb.append(i).append("° ");
-                sb.append(paciente.getId()).append(" ");
-                sb.append(paciente.getName()).append(" ");
-                sb.append(paciente.getLastName()).append(" \n");
+                sb.append(docDate.getPatient().getId()).append(" ");
+                sb.append(docDate.getPatient().getName()).append(" ");
+                sb.append(docDate.getPatient().getLastName()).append(" ");
+                sb.append(docDate.getDate()).append(" ");
+                sb.append(docDate.getReason()).append(" ");
                 i++;
             }
             return sb.toString();
@@ -107,19 +110,19 @@ public String toString() {
         int patientID = scanner.nextInt();
         for(Patient patient: patients){
             if(patient.id == patientID) {
-                addPatientToQueue(patient);
+                
+                addDateToQueue(new DoctorDate(patient,"01-01-2000","Razon de consulta"));
                 System.out.println("El paciente "+patient.name+" "+patient.lastName+ " fue añadido a la agenda correctamente");
             }
         }
     }
 
-    public void removePatientFromSchedule() {
-        if(patientQueue.isEmpty()){
-            System.out.println("No hay pacientes en la agenda");
-            return;
+    public String removePatientFromSchedule() {
+        if(datesQueue.isEmpty()){
+            return "No hay pacientes en la agenda";
         }
-        Patient patient = this.patientQueue.poll();
-        System.out.println("El paciente "+patient.name+" "+patient.lastName+ " fue eliminado de la agenda correctamente");
+        DoctorDate docDate = this.datesQueue.poll();
+        return "El paciente "+docDate.getPatient().name+" "+docDate.getPatient().lastName+ " fue eliminado de la agenda correctamente";
     }
     
     @Override

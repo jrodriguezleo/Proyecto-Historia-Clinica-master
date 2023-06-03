@@ -8,6 +8,7 @@ import Graphics.InformacionPaciente;
 import Register.Engine;
 import Users.Doctor;
 import Users.Patient;
+import Util.DoctorDate;
 
 /**
  *
@@ -44,10 +45,14 @@ public class AgendarPaciente extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         Salir1 = new javax.swing.JButton();
-        jLabel16 = new javax.swing.JLabel();
         patientIdTextBox = new javax.swing.JTextField();
-        buscarPatientButton = new javax.swing.JButton();
+        agendarPatientButton = new javax.swing.JButton();
         resultado = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        dateTextBox = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        reasonTextBox = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
 
         jLabel13.setFont(new java.awt.Font("Swis721 Blk BT", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(204, 204, 204));
@@ -60,7 +65,7 @@ public class AgendarPaciente extends javax.swing.JFrame {
         jPanel8.setBackground(new java.awt.Color(0, 153, 153));
 
         jLabel10.setFont(new java.awt.Font("Swis721 Blk BT", 0, 18)); // NOI18N
-        jLabel10.setText("Paciente de");
+        jLabel10.setText("Agendar paciente para");
 
         jLabel14.setFont(new java.awt.Font("Swis721 Blk BT", 1, 24)); // NOI18N
         jLabel14.setText(user.getName()+" "+user.getLastName());
@@ -86,7 +91,7 @@ public class AgendarPaciente extends javax.swing.JFrame {
                 .addComponent(jLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel15)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
                 .addComponent(Salir1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -102,19 +107,27 @@ public class AgendarPaciente extends javax.swing.JFrame {
                 .addGap(16, 16, 16))
         );
 
-        jLabel16.setFont(new java.awt.Font("Swis721 Blk BT", 1, 14)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel16.setText("Ingrese el número de identificación del paciente:");
-
-        buscarPatientButton.setText("Buscar");
-        buscarPatientButton.addActionListener(new java.awt.event.ActionListener() {
+        agendarPatientButton.setText("Agendar");
+        agendarPatientButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarPatientButtonActionPerformed(evt);
+                agendarPatientButtonActionPerformed(evt);
             }
         });
 
         resultado.setFont(new java.awt.Font("Swis721 Blk BT", 1, 14)); // NOI18N
         resultado.setForeground(new java.awt.Color(204, 204, 204));
+
+        jLabel17.setFont(new java.awt.Font("Swis721 Blk BT", 1, 14)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel17.setText("Número de identificación:");
+
+        jLabel18.setFont(new java.awt.Font("Swis721 Blk BT", 1, 14)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel18.setText("Fecha:");
+
+        jLabel19.setFont(new java.awt.Font("Swis721 Blk BT", 1, 14)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel19.setText("Razón de consulta:");
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -125,29 +138,46 @@ public class AgendarPaciente extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addComponent(resultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(339, 339, 339)
+                        .addComponent(agendarPatientButton))
+                    .addGroup(jPanel12Layout.createSequentialGroup()
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel12Layout.createSequentialGroup()
-                                .addComponent(patientIdTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(buscarPatientButton)))
-                        .addGap(0, 216, Short.MAX_VALUE))
-                    .addComponent(resultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(dateTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(180, 180, 180))
+                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(patientIdTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(reasonTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(patientIdTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buscarPatientButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(resultado, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(168, Short.MAX_VALUE))
+                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(patientIdTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(dateTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(reasonTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(agendarPatientButton, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(resultado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -169,41 +199,43 @@ public class AgendarPaciente extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_Salir1ActionPerformed
 
-    private void buscarPatientButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarPatientButtonActionPerformed
+    private void agendarPatientButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendarPatientButtonActionPerformed
         // TODO add your handling code here:
         int patientId = Integer.parseInt(patientIdTextBox.getText());
+        String date = dateTextBox.getText();
+        String reason = reasonTextBox.getText();
+        
         boolean hasPatient = false;
         for(Patient patient: user.getPatients()){
             if(patient.getId() == patientId){
                 hasPatient = true;
-                InformacionPaciente infoPaciente = new InformacionPaciente(patient,user);
-                infoPaciente.setLocationRelativeTo(null);
-                infoPaciente.setVisible(true);
+                user.addDateToQueue(new DoctorDate(patient,date,reason));
+                resultado.setText("El paciente "+patient.getName()+" "+patient.getLastName()+ " fue añadido a la agenda correctamente");
+                
             }
         }
         if(!hasPatient){
             resultado.setText("El paciente no se encuentra en la lista");
         }
-        
-        
-        
-        
-        
-    }//GEN-LAST:event_buscarPatientButtonActionPerformed
+    }//GEN-LAST:event_agendarPatientButtonActionPerformed
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Salir1;
-    private javax.swing.JButton buscarPatientButton;
+    private javax.swing.JButton agendarPatientButton;
+    private javax.swing.JTextField dateTextBox;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JTextField patientIdTextBox;
+    private javax.swing.JTextField reasonTextBox;
     private javax.swing.JLabel resultado;
     // End of variables declaration//GEN-END:variables
 }
