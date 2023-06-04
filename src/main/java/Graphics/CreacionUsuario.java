@@ -61,7 +61,6 @@ public class CreacionUsuario extends javax.swing.JFrame {
         txtEspecialidad = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         buttonCrear = new javax.swing.JButton();
-        buttonCerrar = new javax.swing.JButton();
         txtUsername = new javax.swing.JTextField();
         txtPassword = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
@@ -159,8 +158,6 @@ public class CreacionUsuario extends javax.swing.JFrame {
             }
         });
 
-        buttonCerrar.setText("Cerrar");
-
         txtUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsernameActionPerformed(evt);
@@ -193,11 +190,8 @@ public class CreacionUsuario extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)))
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(buttonCrear)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(buttonCerrar))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(buttonCrear, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
@@ -295,9 +289,7 @@ public class CreacionUsuario extends javax.swing.JFrame {
                             .addComponent(txtEps, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel11))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 167, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(buttonCerrar)
-                            .addComponent(buttonCrear))
+                        .addComponent(buttonCrear)
                         .addGap(104, 104, 104))))
         );
 
@@ -374,9 +366,10 @@ public class CreacionUsuario extends javax.swing.JFrame {
                         String userName=txtUsername.getText();
                         String password=txtPassword.getText();
                         Patient newPatient= new Patient(id,userName,password,nombre,apellido,fechaNacimiento,genero,direccion,telefono,email,eps);
-                        LinkedList<Patient> listaPacientes=this.engine.getPatients();
-                        listaPacientes.add(newPatient);
-                        this.engine.setPatients(listaPacientes);
+                        // LinkedList<Patient> listaPacientes=this.engine.getPatients();
+                        // listaPacientes.add(newPatient);
+                        // this.engine.setPatients(listaPacientes);
+                        this.engine.patientAdd(newPatient);
                     }
                 JOptionPane.showMessageDialog(rootPane, "Usuario creado con éxito");
 
@@ -461,7 +454,6 @@ public class CreacionUsuario extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonCerrar;
     private javax.swing.JButton buttonCrear;
     private javax.swing.JButton buttonSalir;
     private javax.swing.JComboBox<String> comboBoxUser;

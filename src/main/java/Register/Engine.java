@@ -6,6 +6,7 @@ import java.util.Stack;
 import java.util.Objects;
 import java.util.Scanner;
 import java.util.*;
+import java.util.HashMap;
 
 import Users.*;
 import Util.RecursiveBinarySearchTree;
@@ -14,7 +15,23 @@ import Util.RecursiveBinarySearchTree;
 import javax.print.Doc;
 
 public class Engine {
-    public LinkedList<Patient> patients = new LinkedList<>();
+    // Patients
+    public HashMap<Integer, Patient> patients = new HashMap<>();
+    public HashMap<String, Integer> patientsUsernameToId = new HashMap<>();
+
+    public void patientAdd(Patient patient){
+        patients.put(patient.getId(), patient);
+        patientsUsernameToId.put(patient.getUserName(), patient.getId());
+    }
+
+    public void patientRemove(Patient patient){
+        patients.remove(patient.getId());
+        patientsUsernameToId.remove(patient.getUserName());
+    }
+
+
+
+
     Set<Doctor> doctors = new TreeSet<>();
     
 
@@ -37,9 +54,14 @@ public class Engine {
     }
 
     public User login(String userName, String password){
-        for (Patient p: patients) {
-            if(Objects.equals(p.getUserName(), userName) && Objects.equals(p.getPassword(), password)) return p;
+        // for (Patient p: patients) {
+        //     if(Objects.equals(p.getUserName(), userName) && Objects.equals(p.getPassword(), password)) return p;
+        // }
+        Patient p = patients.get(patientsUsernameToId.get(userName));
+        if (p != null && p.getPassword().equals(password)) {
+            return p;
         }
+
         for (Doctor d: doctors) {
             if(Objects.equals(d.getUserName(), userName) && Objects.equals(d.getPassword(), password)) return d;
         }
@@ -130,7 +152,8 @@ public class Engine {
                System.out.println("Ingrese su email");
                String email=scan.nextLine();
                Patient newPatient= new Patient(id,userName,password,nombre,apellido,nacimiento,genero,direccion,telefono,email,eps);
-               patients.add(newPatient);
+                // patients.add(newPatient);
+                this.patientAdd(newPatient);
                if (usuario instanceof Doctor){ 
                 ((Doctor)usuario).addPatient(newPatient);
            }
@@ -217,13 +240,20 @@ public class Engine {
                 
             }
         }
-       for (Patient paciente : patients) {
-                if (paciente.getId() == id) {
-                    ((Doctor)usuario).addPatient(paciente);
-                    return "Se añadió a "+paciente.getName()+" "+paciente.getLastName()+" como paciente.";
+    //    for (Patient paciente : patients) {
+    //             if (paciente.getId() == id) {
+    //                 ((Doctor)usuario).addPatient(paciente);
+    //                 return "Se añadió a "+paciente.getName()+" "+paciente.getLastName()+" como paciente.";
                     
-                }
-            }
+    //             }
+    //         }
+
+        Patient paciente = patients.get(id);
+        if (paciente!=null) {
+            ((Doctor)usuario).addPatient(paciente);
+            return "Se añadió a "+paciente.getName()+" "+paciente.getLastName()+" como paciente.";
+        }
+
         return "El paciente no se encuentra registrado";
             
     }
@@ -285,11 +315,17 @@ public class Engine {
                 
         }
         else {
-            for (Patient paciente : patients) {
-                if (paciente.getId() == id) {
-                    return paciente;
-                }
+            // for (Patient paciente : patients) {
+            //     if (paciente.getId() == id) {
+            //         return paciente;
+            //     }
+            // }
+
+            Patient paciente = patients.get(id);
+            if (paciente != null) {
+                return paciente;
             }
+
     // Buscar en la lista de médicos
             for (Doctor medico : doctors) {
                 if (medico.getId() == id) {
@@ -299,7 +335,7 @@ public class Engine {
         
         return null;
                    
-    }
+        }
         
     }
    
@@ -315,7 +351,10 @@ public class Engine {
         info.add(3); //La acción 3 quiere decir editar
 
         if(userRemove instanceof Patient){
-            this.patients.remove((Patient)userRemove);
+            // this.patients.remove((Patient)userRemove);
+
+            this.patientRemove((Patient)userRemove);
+
             int numDoc=0;
             for(Doctor doctor:doctors){
                 if(doctor.getPatients().contains((Patient)userRemove)){
@@ -362,11 +401,18 @@ public class Engine {
         Patient patient2 = new Patient(2,"patient2","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com",epsHolder);
         Patient patient3 = new Patient(3,"patient3","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com",epsHolder);
         Patient patient4 = new Patient(4,"patient4","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com",epsHolder);
-        patients.add(patient0);
-        patients.add(patient1);
-        patients.add(patient2);
-        patients.add(patient3);
-        patients.add(patient4);
+        // patients.add(patient0);
+        // patients.add(patient1);
+        // patients.add(patient2);
+        // patients.add(patient3);
+        // patients.add(patient4);
+
+        patientAdd(patient0);
+        patientAdd(patient1);
+        patientAdd(patient2);
+        patientAdd(patient3);
+        patientAdd(patient4);
+
 
 
         doctors.add(new Doctor("Internista",epsHolder,100,"doc0","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com"));
@@ -461,7 +507,8 @@ public class Engine {
                 
                 if(persona instanceof Patient){
                     Patient paciente=(Patient) persona;
-                    this.patients.add(paciente);
+                    // this.patients.add(paciente);
+                    this.patientAdd(paciente);
                     int countDoc=listAction.get(1);
                     for(int i=0;i<countDoc;i++){
                         ((Doctor)this.persona.pop()).addPatient(paciente);
@@ -483,11 +530,16 @@ public class Engine {
     
     
     
-    public LinkedList<Patient> getPatients() {
+    // public LinkedList<Patient> getPatients() {
+    //     return patients;
+    // }
+
+    public HashMap<Integer, Patient> getPatients() {
         return patients;
     }
 
-    public void setPatients(LinkedList<Patient> patients) {
+
+    public void setPatients(HashMap<Integer, Patient> patients) {
         this.patients = patients;
     }
 

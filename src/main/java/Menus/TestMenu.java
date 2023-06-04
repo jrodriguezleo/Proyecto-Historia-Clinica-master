@@ -294,7 +294,7 @@ public class TestMenu {
 
                 //create users
                 for (int k = 0; k < amount; k++) {
-                    this.engine.patients.add(new Patient(k, "patient"+k, "pass123",
+                    this.engine.patientAdd(new Patient(k, "patient"+k, "pass123",
                             "Name", "LastName", "1-1-2000", "M",
                             "Calle 123", "300 123 9900", "correo@gmail.com", epsHolder));
                 }
