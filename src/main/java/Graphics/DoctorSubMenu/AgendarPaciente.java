@@ -169,7 +169,7 @@ public class AgendarPaciente extends javax.swing.JFrame {
                             .addGroup(jPanel12Layout.createSequentialGroup()
                                 .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel12Layout.setVerticalGroup(
@@ -220,6 +220,11 @@ public class AgendarPaciente extends javax.swing.JFrame {
             int patientId = Integer.parseInt(patientIdTextBox.getText());
             String date = dateToday();
             String reason = reasonTextBox.getText();
+            
+            if(reason.equals("")){
+                resultado.setText("Datos incorrectos");
+                return;
+            }
 
             boolean hasPatient = false;
             for(Patient patient: user.getPatients()){
