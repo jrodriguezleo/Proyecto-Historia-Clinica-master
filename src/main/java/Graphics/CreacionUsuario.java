@@ -363,43 +363,30 @@ public class CreacionUsuario extends javax.swing.JFrame {
             return;
         }
 
-        if (selectedOption.equals("Doctor")){//Vamos a añadir un nuevo doctor
-    
-            int id=Integer.parseInt(txtId.getText());
+        User newUser;
 
-            String nombre=txtName.getText();
-            String apellido=txtApellido.getText();
-            String fechaNacimiento=txtFechaNacimiento.getText();
-            String genero=txtGenero.getText();
-            EPS eps=this.engine.verificarNameEps(txtEps.getText());
-            String direccion=txtDireccion.getText();
-            String telefono=txtTelefono.getText();
-            String email=txtEmail.getText();
-            String especialidad=txtEspecialidad.getText();
-            String userName=txtUsername.getText();
-            String password=txtPassword.getText();
-            Doctor newDoctor= new Doctor(especialidad,eps,id,userName,password,nombre,apellido,fechaNacimiento,genero,direccion,telefono,email);
-            Set<Doctor> arbolDoctores=this.engine.getDoctors();
-            arbolDoctores.add(newDoctor);
-            this.engine.setDoctors(arbolDoctores);
-            
+        int id=Integer.parseInt(txtId.getText());
+        String nombre=txtName.getText();
+        String apellido=txtApellido.getText();
+        String fechaNacimiento=txtFechaNacimiento.getText();
+        String genero=txtGenero.getText();
+        String direccion=txtDireccion.getText();
+        String telefono=txtTelefono.getText();
+        String email=txtEmail.getText();
+        String especialidad=txtEspecialidad.getText();
+        String userName=txtUsername.getText();
+        String password=txtPassword.getText();
+        EPS eps=this.engine.verificarNameEps(txtEps.getText());
 
-            }
-        else if(selectedOption.equals("Paciente")){
-            int id=Integer.parseInt(txtId.getText());
-            String nombre=txtName.getText();
-            String apellido=txtApellido.getText();
-            String fechaNacimiento=txtFechaNacimiento.getText();
-            EPS eps=this.engine.verificarNameEps(txtEps.getText());
-            String genero=txtGenero.getText();
-            String direccion=txtDireccion.getText();
-            String telefono=txtTelefono.getText();
-            String email=txtEmail.getText();
-            String userName=txtUsername.getText();
-            String password=txtPassword.getText();
-            Patient newPatient= new Patient(id,userName,password,nombre,apellido,fechaNacimiento,genero,direccion,telefono,email,eps);
-            this.engine.patientAdd(newPatient);
+
+        if (selectedOption.equals("Doctor")){
+            newUser = new Doctor(especialidad,eps,id,userName,password,nombre,apellido,fechaNacimiento,genero,direccion,telefono,email);
+        } else {
+            newUser = new Patient(id,userName,password,nombre,apellido,fechaNacimiento,genero,direccion,telefono,email,eps);
         }
+
+        this.engine.addNewUser(newUser);
+
         JOptionPane.showMessageDialog(rootPane, "Usuario creado con éxito");
 
         // limpiar campos
