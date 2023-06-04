@@ -374,9 +374,10 @@ public class CreacionUsuario extends javax.swing.JFrame {
                         String userName=txtUsername.getText();
                         String password=txtPassword.getText();
                         Patient newPatient= new Patient(id,userName,password,nombre,apellido,fechaNacimiento,genero,direccion,telefono,email,eps);
-                        LinkedList<Patient> listaPacientes=this.engine.getPatients();
-                        listaPacientes.add(newPatient);
-                        this.engine.setPatients(listaPacientes);
+                        // LinkedList<Patient> listaPacientes=this.engine.getPatients();
+                        // listaPacientes.add(newPatient);
+                        // this.engine.setPatients(listaPacientes);
+                        this.engine.patientAdd(newPatient);
                     }
                 JOptionPane.showMessageDialog(rootPane, "Usuario creado con éxito");
 

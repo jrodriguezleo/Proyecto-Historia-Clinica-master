@@ -7,6 +7,7 @@ package Graphics;
 import Register.*;
 import Users.*;
 import java.util.*;
+import java.util.Map;
 import javax.swing.JOptionPane;
 
 /**
@@ -389,18 +390,27 @@ public class MenuAdmin1 extends javax.swing.JFrame {
 //    }
 
     public void mostrar(){
-    LinkedList<Patient> listaPacientes=this.engine.getPatients();
+    HashMap<Integer,Patient> listaPacientes=this.engine.getPatients();
     Set<Doctor> arbolDoctores = this.engine.getDoctors();
     Doctor[] listaDoctores = new Doctor[arbolDoctores.size()];
     arbolDoctores.toArray(listaDoctores); //convertimos el arbol de pacientes en un arreglo
     int cantUsuarios= listaPacientes.size()+listaDoctores.length;
     String datos[][]=new String [cantUsuarios][4];
-    for(int i=0;i<listaPacientes.size();i++){// llenamos matriz con datos de pacientes 
-        datos[i][0]=String.valueOf(listaPacientes.get(i).getId());
-        datos[i][1]=listaPacientes.get(i).getName();
-        datos[i][2]=listaPacientes.get(i).getEps().getName();
-        datos[i][3]="Paciente";
+    // for(int i=0;i<listaPacientes.size();i++){// llenamos matriz con datos de pacientes 
+    //     datos[i][0]=String.valueOf(listaPacientes.get(i).getId());
+    //     datos[i][1]=listaPacientes.get(i).getName();
+    //     datos[i][2]=listaPacientes.get(i).getEps().getName();
+    //     datos[i][3]="Paciente";
+    // }
+
+    for (Map.Entry<Integer, Patient> entry : listaPacientes.entrySet()) {
+        Patient value = entry.getValue();
+        datos[entry.getKey()][0]=String.valueOf(value.getId());
+        datos[entry.getKey()][1]=value.getName();
+        datos[entry.getKey()][2]=value.getEps().getName();
+        datos[entry.getKey()][3]="Paciente";
     }
+
     int count=0;
     //Ahora llenamos matriz con datos de doctores
         for(int i=listaPacientes.size();i<cantUsuarios;i++){
