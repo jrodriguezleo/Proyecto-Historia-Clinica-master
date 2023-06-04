@@ -275,8 +275,8 @@ public class InformacionPaciente extends javax.swing.JFrame {
     }*/
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
+        filaseleccionada = jTable2.getSelectedRow();
         if(filaseleccionada != -1){
-            filaseleccionada = jTable2.getSelectedRow();
             VerRegistro ver = new VerRegistro(paciente.getHistoriasClinica().get(filaseleccionada));
             ver.setLocationRelativeTo(null);
             ver.setVisible(true);
