@@ -499,9 +499,9 @@ public class VisualizacionPaciente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+  //  /**
+    // * @param args the command line arguments
+     //*/
     /*public static void main(String args[]) {
 
         try {
