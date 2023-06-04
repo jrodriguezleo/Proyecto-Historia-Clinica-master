@@ -393,6 +393,61 @@ public class Engine {
         }
 
 }
+    
+        public void removeUser(User user,int id) {
+        User userRemove=getUser(user, id);
+        if (userRemove==null){
+            System.out.println("No existe un usuario con ese id");
+            
+            return;
+        }
+        ArrayList<Integer> info = new ArrayList<>();
+
+        
+        info.add(3); //La acción 3 quiere decir editar
+
+        if(userRemove instanceof Patient){
+            // this.patients.remove((Patient)userRemove);
+
+            this.patientRemove((Patient)userRemove);
+
+            int numDoc=0;
+            for(Doctor doctor:doctors){
+                if(doctor.getPatients().contains((Patient)userRemove)){
+                    numDoc+=1;
+                    this.persona.add(doctor);
+                }
+                doctor.getPatients().remove((Patient)userRemove);
+                    
+                
+            }
+                    
+            this.persona.add((Person)userRemove);
+            info.add(numDoc);
+            this.action.add(info);
+            
+//            if (info.size() != 0){
+//                changes.add(info);
+//            }
+             System.out.println("El paciente con id " + id + " fue eliminado.");
+             
+
+
+            return;
+        }
+        if(userRemove instanceof Doctor){
+            persona.add((Person)userRemove);
+            doctors.remove((Doctor)userRemove);
+//            if (info.size() != 0){
+//                changes.add(info);
+//            }
+            System.out.println("El doctor con id " + id + " fue eliminado.");
+           
+            return;
+        }
+
+}
+    
     private void initialData(){
         EPS epsHolder = new EPS("SaludPublica","Calle 1 Carrera 2 #10", "3000000000");
         listEps.add(epsHolder);
@@ -533,6 +588,38 @@ public class Engine {
 
     }
     
+    
+    public void cancel(){
+        if (this.action.size() !=0) {
+            ArrayList<Integer> listAction = this.action.pop();
+            int action=listAction.get(0);
+            Person persona= this.persona.pop();
+            if(action  == 3){
+                
+                
+                if(persona instanceof Patient){
+                    Patient paciente=(Patient) persona;
+                    // this.patients.add(paciente);
+                    this.patientAdd(paciente);
+                    int countDoc=listAction.get(1);
+                    for(int i=0;i<countDoc;i++){
+                        ((Doctor)this.persona.pop()).addPatient(paciente);
+                    }
+                }
+                else if (persona instanceof Doctor){
+                    Doctor doctor=(Doctor) persona;
+                    this.doctors.add(doctor);
+                    
+                }
+                System.out.println("El usuario con el id "+ persona.getId()+"Volvió a ser agregado al sistema");
+                
+            }
+        } else {
+            System.out.println("No se ha realizado ningun cambio");
+            
+        }
+
+    }
     
     
     
