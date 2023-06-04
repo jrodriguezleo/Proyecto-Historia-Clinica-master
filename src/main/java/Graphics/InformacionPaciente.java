@@ -36,7 +36,7 @@ public class InformacionPaciente extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         nuevoRegistroButton = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        //jButton2 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jLabel16 = new javax.swing.JLabel();
@@ -108,20 +108,15 @@ public class InformacionPaciente extends javax.swing.JFrame {
         nuevoRegistroButton.setBackground(new java.awt.Color(153, 255, 204));
         nuevoRegistroButton.setLabel("Nuevo Registro");
 
-        jButton2.setBackground(new java.awt.Color(153, 255, 204));
-        jButton2.setLabel("Deshacer Cambios");
+        /*jButton2.setBackground(new java.awt.Color(153, 255, 204));
+        jButton2.setLabel("Deshacer Cambios");*/
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel( 
             llenartabla(this.paciente),
             new String [] { 
                 "ID","Tipo Consulta", "Profesional", "Fecha" 
             } 
-        ){
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;
-            }
-        });
+        ));
 
         jScrollPane3.setViewportView(jTable2);
 
@@ -162,7 +157,8 @@ public class InformacionPaciente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(nuevoRegistroButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
+                    //.addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                        )
                 .addGap(120, 120, 120))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,7 +190,8 @@ public class InformacionPaciente extends javax.swing.JFrame {
                         .addGap(44, 44, 44)
                         .addComponent(nuevoRegistroButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                       // .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    ))
                 .addGap(5, 5, 5)
                 .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -226,11 +223,11 @@ public class InformacionPaciente extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        /*jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
-        });
+        });*/
         botonVerRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -257,28 +254,29 @@ public class InformacionPaciente extends javax.swing.JFrame {
         }
         return tabla;
     }
-    
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {  
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         int size1 = paciente.getHistoriasClinica().size();
         NuevoRegistro nuevo = new NuevoRegistro(paciente,doctor);
         nuevo.setLocationRelativeTo(null);
         nuevo.setVisible(true);
         if(size1 < paciente.getHistoriasClinica().size()){
             this.cantidadnuevosregistros++;
+            llenartabla(this.paciente);
         }
-    } 
-    
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    }
+
+    /*private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
         while(this.cantidadnuevosregistros > 0){
             int size = paciente.getHistoriasClinica().size()-1;
             paciente.getHistoriasClinica().remove(size);
             this.cantidadnuevosregistros--;
         }
-    }
+    }*/
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
+        filaseleccionada = jTable2.getSelectedRow();
         if(filaseleccionada != -1){
-            filaseleccionada = jTable2.getSelectedRow();
             VerRegistro ver = new VerRegistro(paciente.getHistoriasClinica().get(filaseleccionada));
             ver.setLocationRelativeTo(null);
             ver.setVisible(true);
@@ -536,7 +534,7 @@ public class InformacionPaciente extends javax.swing.JFrame {
     }*/
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonVerRegistro;
-    private javax.swing.JButton jButton2;
+   // private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

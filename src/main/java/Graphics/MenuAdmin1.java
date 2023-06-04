@@ -323,13 +323,13 @@ public class MenuAdmin1 extends javax.swing.JFrame {
         filaSeleccionada=jTableUsuarios.getSelectedRow();
         if(sinSeleccion()) return;
         int idUsuario=Integer.parseInt((jTableUsuarios.getValueAt(filaSeleccionada, 0)).toString());
-        this.engine.removeUser(this.user, idUsuario);
+        this.engine.removeUser(this.user, idUsuario,rootPane);
         mostrar();
     }                                                     
 
     private void buttonVolverActionPerformed(java.awt.event.ActionEvent evt) {                                             
         // TODO add your handling code here:
-        this.engine.cancel();
+        this.engine.cancel(rootPane);
         mostrar();
     }                                            
 
