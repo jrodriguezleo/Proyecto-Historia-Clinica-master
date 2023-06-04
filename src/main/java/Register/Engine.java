@@ -4,7 +4,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 import java.util.Objects;
-import java.util.Scanner;
 import java.util.*;
 import java.util.HashMap;
 
@@ -12,7 +11,6 @@ import Users.*;
 import Util.RecursiveBinarySearchTree;
 
 
-import javax.print.Doc;
 import javax.swing.JOptionPane;
 
 public class Engine {
@@ -83,65 +81,7 @@ public class Engine {
         }
         return null;
     }
-    
-    public void editUsuario(User user,int id){
-        Scanner scan=new Scanner(System.in);
-        User userEdit=getUser(user,id);
-        if (userEdit==null){
-            System.out.println("No existe ningún usuario con ese numero de identificación");
-            return;
-        }
-        else if(userEdit instanceof Doctor){
-            System.out.println("Ingrese los nuevos datos del doctor:");
-            System.out.println("Id: "+userEdit.getId());
-            System.out.println("Ingrese especialidad");
-            ((Doctor) userEdit).setSpecialization(scan.nextLine());
-            System.out.println("Ingrese Nombre de Usuario");
-            ((Doctor) userEdit).setUserName(scan.nextLine());
-            System.out.println("Ingrese contraseña");
-            ((Doctor) userEdit).setPassword(scan.nextLine());
-            System.out.println("Ingrese nombre");
-            ((Doctor) userEdit).setName(scan.nextLine());
-            System.out.println("Ingrese apellido");
-            ((Doctor) userEdit).setLastName(scan.nextLine());
-            System.out.println("Ingrese FechaNacimiento");
-            ((Doctor) userEdit).setBirthdate(scan.nextLine());
-            System.out.println("Ingrese genero");
-            ((Doctor) userEdit).setGender(scan.nextLine());
-            System.out.println("Ingrese direccion");
-            ((Doctor) userEdit).setAddress(scan.nextLine());
-            System.out.println("Ingrese email");
-            ((Doctor) userEdit).setEmail(scan.nextLine());
-            System.out.println("Ingrese telefono");
-            ((Doctor) userEdit).setPhone(scan.nextLine());
-            
-            
-        }
-        else if(userEdit instanceof Patient){
-            System.out.println("Ingrese los nuevos datos del paciente:");
-            System.out.println("Id: "+userEdit.getId());
-            System.out.println("Ingrese Nombre de Usuario");
-            ((Patient) userEdit).setUserName(scan.nextLine());
-            System.out.println("Ingrese contraseña");
-            ((Patient) userEdit).setPassword(scan.nextLine());
-            System.out.println("Ingrese nombre");
-            ((Patient) userEdit).setName(scan.nextLine());
-            System.out.println("Ingrese apellido");
-            ((Patient) userEdit).setLastName(scan.nextLine());
-            System.out.println("Ingrese FechaNacimiento");
-            ((Patient) userEdit).setBirthdate(scan.nextLine());
-            System.out.println("Ingrese genero");
-            ((Patient) userEdit).setGender(scan.nextLine());
-            System.out.println("Ingrese direccion");
-            ((Patient) userEdit).setAddress(scan.nextLine());
-            System.out.println("Ingrese email");
-            ((Patient) userEdit).setEmail(scan.nextLine());
-            System.out.println("Ingrese telefono");
-            ((Patient) userEdit).setPhone(scan.nextLine());
-        }
-        System.out.println("El usuario con el numero de identificacion "+id+" fue modificado satisfactoriamente");
-        
-    }
+
     public String addPaciente(User usuario, int id){
         for(Patient paciente: ((Doctor)usuario).getPatients()){
             if (paciente.getId()==id){
@@ -159,32 +99,7 @@ public class Engine {
         return "El paciente no se encuentra registrado";
             
     }
-    public void addRegistroMedico(User usuario,int id){
-        if(usuario instanceof Doctor ){
-            Patient paciente = (Patient)(getUser(usuario,id));
-            if (paciente==null) {
-                System.out.println("Ud no tiene ningun paciente con ese numero de identificacion");
-                return;}
-            List<RegistroMedico> historiaClinica=paciente.getHistoriasClinica();
-            System.out.println("Ingrese el diagnostico del paciente: ");
-            Scanner s= new Scanner(System.in);
-            String diagnostico=s.nextLine();
-            System.out.println("Ingrese el tratamiento a seguir: ");
-            String tratamiento=s.nextLine();
-            System.out.println("Ingrese oberservaciones adicionales: ");
-            String observaciones=s.nextLine();
-            try{
-                RegistroMedico registro=new RegistroMedico(diagnostico,tratamiento,observaciones, (Doctor)usuario);
-                historiaClinica.add(registro);
-                paciente.setHistoriasClinica(historiaClinica);
-            }
-            catch(Exception e){
-                java.lang.System.out.println("Error al actaulizar resgistro");
-            }
-        }
-        else System.out.println("esto no debia pasar onooooo");
 
-    }
     public void addRegistroMedico(User usuario, int id,RegistroMedico r) {
         if (usuario instanceof Doctor) {
             Patient paciente = (Patient) (getUser(usuario, id));
@@ -285,7 +200,6 @@ public class Engine {
 //            }
             //System.out.println("El doctor con id " + id + " fue eliminado.");
             JOptionPane.showMessageDialog(rootPane, "El doctor con id " + id + " fue eliminado.");
-            return;
         }
 
 }
@@ -339,7 +253,6 @@ public class Engine {
 //            }
             System.out.println("El doctor con id " + id + " fue eliminado.");
            
-            return;
         }
 
 }
@@ -522,10 +435,6 @@ public class Engine {
         return patients;
     }
 
-
-    public void setPatients(HashMap<Integer, Patient> patients) {
-        this.patients = patients;
-    }
 
     public Set<Doctor> getDoctors() {
         return doctors;
