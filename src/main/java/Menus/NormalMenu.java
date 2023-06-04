@@ -4,6 +4,7 @@ import Register.*;
 import Users.*;
 
 import java.util.Scanner;
+import Graphics.*;
 
 public class NormalMenu {
     /**
@@ -14,41 +15,49 @@ public class NormalMenu {
      */
     Scanner scanner;
     Engine engine ;
-    User user;
+    public User user;
 
     public NormalMenu(Scanner scanner,Engine engine){
         this.scanner = scanner;
         this.engine=engine;
     }
     public void run(){
-        while(true){
-            System.out.println("Insert your info");
-
-            try {
-                System.out.println("UserName: ");
-                String userName = scanner.nextLine();
-
-                System.out.println("Password: ");
-                String password = scanner.nextLine();
-
-                //Distición entre los tipos de roles
-                user = engine.login(userName,password);
-                if(user instanceof Patient){
-                    patientMenu();
-                    break;
-                }else if(user instanceof Doctor) {
-                    doctorMenu();
-                    break;
-                }else if(user instanceof Admin) {
-                    adminMenu();
-                    break;
-                }else{
-                    System.out.println("Invalid user name or password");
-                }
-            }catch (Exception e){
-                System.out.println("Error " + e);
-            }
-        }
+        
+        //Para probar la interfaz descomentar las siguientes  lineas y comentar todo el while
+        // En caso contrario se ejecutara como siempre el programa, por consola;
+        InicioSesion log = new InicioSesion(engine,user);
+        log.setLocationRelativeTo(null);
+            log.setVisible(true);
+//        while(true){
+//            
+//            
+//            System.out.println("Insert your info");
+//
+//            try {
+//                System.out.println("UserName: ");
+//                String userName = scanner.nextLine();
+//
+//                System.out.println("Password: ");
+//                String password = scanner.nextLine();
+//
+//                //Distición entre los tipos de roles
+//                user = engine.login(userName,password);
+//                if(user instanceof Patient){
+//                    patientMenu();
+//                    break;
+//                }else if(user instanceof Doctor) {
+//                    doctorMenu();
+//                    break;
+//                }else if(user instanceof Admin) {
+//                    adminMenu();
+//                    break;
+//                }else{
+//                    System.out.println("Invalid user name or password");
+//                }
+//            }catch (Exception e){
+//                System.out.println("Error " + e);
+//            }
+//        }
     }
     void patientMenu(){
         int option = -1;
@@ -83,6 +92,7 @@ public class NormalMenu {
             System.out.println("1-Create");
             System.out.println("2-Delete");
             System.out.println("3-Edit");
+            System.out.println("4-Back");
             System.out.println("0-Exit");
             try {
                 option = scanner.nextInt();
@@ -101,6 +111,8 @@ public class NormalMenu {
                         System.out.println("Ingrese el numero de identificacion del usuario que desea modificar");
                         int id=scanner.nextInt();
                         engine.editUsuario(user,id);
+                    }case 4 ->{
+                        engine.cancel();
                     }
                     case 0 ->{
                         System.out.println("Goodbye");
@@ -120,6 +132,9 @@ public class NormalMenu {
             System.out.println("2-Show all my patients");
             System.out.println("3-Add a new patient");
             System.out.println("4-Make a prescription to one of my patients");
+            System.out.println("5-Schedule a date");
+            System.out.println("6-View the  dates schedule");
+            System.out.println("7-Remove most recent patient");
             System.out.println("0-Exit");
             try {
                 option = scanner.nextInt();
@@ -128,20 +143,25 @@ public class NormalMenu {
                         System.out.println(((Doctor)user).toString());
 
                     }case 2 ->{
-                        System.out.println(((Doctor)user).toStringListPatients());
+                        ((Doctor) user).printPatientList();
 
                     }case 3 ->{
                         System.out.println("Digite el id del paciente que desea agregar a su lista de pacientes");
                         int id=scanner.nextInt();
                         engine.addPaciente(user,id);
                
-                    }case 4 ->{
+                    }case 4 -> {
                         System.out.println("Digite el id del paciente sobre el que desea agregar un nuevo registro");
-                        int id=scanner.nextInt();
+                        int id = scanner.nextInt();
                         engine.addRegistroMedico(user, id);
-                        
-
-                    }case 0 ->{
+                    } case 5 ->{
+                        ((Doctor)user).schedulePatient(scanner);
+                    } case 6 ->{
+                        ((Doctor) user).printPatientQueue();
+                    }case 7 ->{
+                        ((Doctor) user).removePatientFromSchedule();
+                    }
+                    case 0 ->{
                         System.out.println("Goodbye");
                     }
                 }
