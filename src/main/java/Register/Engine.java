@@ -13,6 +13,7 @@ import Util.RecursiveBinarySearchTree;
 
 
 import javax.print.Doc;
+import javax.swing.JOptionPane;
 
 public class Engine {
     // Patients
@@ -235,10 +236,11 @@ public class Engine {
         
     }
    
-    public void removeUser(User user,int id) {
+    public void removeUser(User user,int id,javax.swing.JRootPane rootPane) {
         User userRemove=getUser(user, id);
         if (userRemove==null){
-            System.out.println("No existe un usuario con ese id");
+            //System.out.println("No existe un usuario con ese id");
+            JOptionPane.showMessageDialog(rootPane, "No existe un usuario con ese id");
             return;
         }
         ArrayList<Integer> info = new ArrayList<>();
@@ -269,7 +271,8 @@ public class Engine {
 //            if (info.size() != 0){
 //                changes.add(info);
 //            }
-             System.out.println("El paciente con id " + id + " fue eliminado.");
+             //System.out.println("El paciente con id " + id + " fue eliminado.");
+             JOptionPane.showMessageDialog(rootPane, "El paciente con id " + id + " fue eliminado.");
 
 
             return;
@@ -280,7 +283,8 @@ public class Engine {
 //            if (info.size() != 0){
 //                changes.add(info);
 //            }
-            System.out.println("El doctor con id " + id + " fue eliminado.");
+            //System.out.println("El doctor con id " + id + " fue eliminado.");
+            JOptionPane.showMessageDialog(rootPane, "El doctor con id " + id + " fue eliminado.");
             return;
         }
 
@@ -369,7 +373,7 @@ public class Engine {
     }
 
 
-    public void cancel(){//        if (this.changes.size()!=0){
+    public void cancel(javax.swing.JRootPane rootPane){//        if (this.changes.size()!=0){
 //            LinkedList<Object> info2 = this.changes.pop();
 //            if(info2.contains("patient")){
 //                Patient patient = ePatients.pop();
@@ -410,10 +414,12 @@ public class Engine {
                     this.doctors.add(doctor);
                     
                 }
-                System.out.println("El usuario con el id "+ persona.getId()+"Volvió a ser agregado al sistema");
+                //System.out.println("El usuario con el id "+ persona.getId()+"Volvió a ser agregado al sistema");
+                JOptionPane.showMessageDialog(rootPane, "El usuario con el id "+ persona.getId()+" Volvió a ser agregado al sistema");
             }
         } else {
-            System.out.println("No se ha realizado ningun cambio");
+            //System.out.println("No se ha realizado ningun cambio");
+            JOptionPane.showMessageDialog(rootPane,"No se ha realizado ningun cambio");
         }
 
     }

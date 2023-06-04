@@ -116,12 +116,7 @@ public class InformacionPaciente extends javax.swing.JFrame {
             new String [] { 
                 "ID","Tipo Consulta", "Profesional", "Fecha" 
             } 
-        ){
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;
-            }
-        });
+        ));
 
         jScrollPane3.setViewportView(jTable2);
 
