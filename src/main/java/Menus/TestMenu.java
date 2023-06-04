@@ -66,6 +66,12 @@ public class TestMenu {
                     case 7 -> {
                         test7();
                     }
+                    case 8 -> {
+                        test8();
+                    }
+                    case 9 -> {
+                        test9();
+                    }
                     case 0 -> {
                         System.out.println("Goodbye");
                     }
@@ -75,6 +81,107 @@ public class TestMenu {
             }
         }
     }
+
+    void test8(){
+        //Add 100^i patients to the patients hashtable, for m=10 times and averaged each result, for 1<=i<=nTest
+
+        int nTest = 7; // Con 10^8 datos ya se rompe la memoria
+        double amount = 10;
+        long time = 0;
+        int timesToAverage = 10;
+        EPS epsHolder = new EPS("EPS for testing","Fake Address 123", "123 456 7890");
+
+        for (int i = 0; i <  nTest; i++) {
+            time = 0;   //Reset the time
+
+            for (int j = 0; j < timesToAverage; j++) {
+                //Create the list
+                HashMap<Integer,Patient> patientsList = new HashMap<>();
+
+                //Start Timer
+                long start = System.nanoTime();
+
+                //Run for an amount of times
+                for(int k =0; k < amount; k++){
+                    patientsList.put(k,new Patient(k,"patient0","password123",
+                            "My Name", "My Last Name","1-1-2000","M",
+                            "Calle 123","300 123 9900","correo@gmail.com",epsHolder));
+                }
+                //End timer
+                long finish = System.nanoTime();
+
+                time += finish-start;
+            }
+            //Calculate the average
+            time = time/timesToAverage;
+            //Print the result of each iteration
+            System.out.println("Add n="+(int) amount+" patients to a list tooks "+time+" nanoseconds");
+            //Increment the amount of additions
+            amount *= 10;
+        }
+    }
+
+    void test9(){
+        // test search
+
+        System.out.println("----TEST SEARCH----");
+        System.out.println("Type the amount of items to include in the tree: ");
+        EPS epsHolder = new EPS("EPS for testing","Fake Address 123", "123 456 7890");
+        HashMap<Integer,Patient> patientList = new HashMap<>();
+        for(int j = 1; j<8;j++) {
+            int n = (int) Math.pow(10,j);//scanner.nextInt();
+
+            System.out.println("Adding items to the HashMap");
+            long startTime = System.nanoTime();
+            for (int i = 0; i < n; i++) {
+                Patient p = new Patient(i,"patient"+i,"password123",
+                        "My Name", "My Last Name","1-1-2000","M",
+                        "Calle 123","300 123 9900","correo@gmail.com",epsHolder);
+                patientList.put(i,p);
+            }
+
+            long endTime = System.nanoTime();
+            long timeElapsed = endTime - startTime;
+            // convert to milliseconds
+            //timeElapsed /= 1000000;
+
+            System.out.println("Execution time for adding " + n + " items to the HashMap: " + timeElapsed + " nanoseconds");
+
+            System.out.println("Searching last in the list");
+            startTime = System.nanoTime();
+            patientList.get(n-1);
+            endTime = System.nanoTime();
+
+            timeElapsed = endTime - startTime;
+            // convert to milliseconds
+
+            //timeElapsed /= 1000000;
+            System.out.println("Execution time for searching last item in a HashMap of " + n + " items: " + timeElapsed + " nanoseconds");
+
+            System.out.println("Searching first in the HashMap");
+            startTime = System.nanoTime();
+            patientList.get(0);
+            endTime = System.nanoTime();
+            timeElapsed = endTime - startTime;
+            // convert to milliseconds
+            //timeElapsed /= 1000000;
+            System.out.println("Execution time for searching first item in a HashMap of " + n + " items: " + timeElapsed + " nanoseconds");
+
+            System.out.println("Searching a random ID in the HashMap");
+            int position = (int) (Math.random() * n);
+
+            startTime = System.nanoTime();
+            patientList.get(position);
+            endTime = System.nanoTime();
+            timeElapsed = endTime - startTime;
+            // convert to milliseconds
+            //timeElapsed /= 1000000;
+            System.out.println("Execution time for searching random ID (" + position + ") in a HashMap of " + n + " items: " + timeElapsed + " nanoseconds");
+            System.out.println("---------------------");
+        }
+    }
+
+
     void test1(){
         // test search
 
@@ -275,6 +382,7 @@ public class TestMenu {
             amount *= 10;
         }
     }
+
     void test5(){
         //Add 100^i patients to the patients list, for m=10 times and averaged each result, for 1<=i<=nTest
 

@@ -38,12 +38,8 @@ public class Engine {
 
     private LinkedList<Admin> admins = new LinkedList<>();
     private LinkedList<EPS> listEps  = new LinkedList<>();
-//    private Stack<LinkedList> changes = new Stack<>();
-//    private Stack<Patient> ePatients = new Stack<>();
-//    private Stack<Doctor> eDoctorPatient = new Stack<>();
-//    private Stack<Doctor> eDoctor = new Stack<>();
     private Stack<Person> persona= new Stack();
-     private Stack<ArrayList> action= new Stack();
+    private Stack<ArrayList> action= new Stack();
 
     private TreeMap<Integer, Patient> patientstree = new TreeMap<>();
     private RecursiveBinarySearchTree<Integer> doctorsid = new RecursiveBinarySearchTree<>();
@@ -55,9 +51,6 @@ public class Engine {
     }
 
     public User login(String userName, String password){
-        // for (Patient p: patients) {
-        //     if(Objects.equals(p.getUserName(), userName) && Objects.equals(p.getPassword(), password)) return p;
-        // }
         Patient p = patients.get(patientsUsernameToId.get(userName));
         if (p != null && p.getPassword().equals(password)) {
             return p;
@@ -72,100 +65,15 @@ public class Engine {
 
         return null;
     }
-    
-    public void adUsuario(User usuario,int opcion){
-        Scanner scan=new Scanner(System.in);
-       switch(opcion){
-           case 0 ->{
-               System.out.println("Ingrese los datos del nuevo ususario Doctor");
-               System.out.println("Ingrese la identificación: ");
-               int id=scan.nextInt();
-               while(getUser(usuario, id)!=null){
-                   System.out.println("Ya hay un usuario con esa id, ingrese otra");
-                   id=scan.nextInt();
-               }
-               scan.nextLine();
-               System.out.println("Ingrese el nombre de usuario");
-               String userName=scan.nextLine();
-               System.out.println("Ingrese la contraseña");
-               String password=scan.nextLine();
-               System.out.println("Ingrese el nombre");
-               String nombre=scan.nextLine();
-               System.out.println("Ingrese el apellido");
-               String apellido=scan.nextLine();
-               System.out.println("Ingrese especialidad");
-               String especialidad=scan.nextLine();
-               System.out.println("Ingrese el nombre de la EPS");
-               String nameEps =scan.nextLine();
-               while(verificarNameEps(nameEps)==null){
-                   System.out.println("Esa eps no existe en nuestro sistema, ingreselo nuevamente");
-               nameEps =scan.nextLine();
-               }
-               EPS eps=verificarNameEps(nameEps);
-               System.out.println("Ingrese la fecha de nacimiento");
-               String nacimiento=scan.nextLine();
-               System.out.println("Ingrese el genero");
-               String genero=scan.nextLine();
-               System.out.println("Ingrese la dirección");
-               String direccion=scan.nextLine();
-               System.out.println("Ingrese el numero de telefono");
-               String telefono=scan.nextLine();
-               System.out.println("Ingrese su email");
-               String email=scan.nextLine();
-               Doctor newDoctor= new Doctor(especialidad,eps,id,userName,password,nombre,apellido,nacimiento,genero,direccion,telefono,email);
-               doctors.add(newDoctor);
-               System.out.println("El doctor fue añadido con exito");
-           }case 1 ->{
-               
-               System.out.println("Ingrese los datos del nuevo ususario Paciente");
-               System.out.println("Ingrese la identificación: ");
-               int id=scan.nextInt();
-               while(getUser(usuario, id)!=null){
-                   System.out.println("Ya hay un usuario con esa id");
-                       
-                   
-                   id=scan.nextInt();
-               }
-               scan.nextLine();
-               System.out.println("Ingrese el nombre de usuario");
-               String userName=scan.nextLine();
-               System.out.println("Ingrese la contraseña");
-               String password=scan.nextLine();
-               System.out.println("Ingrese el nombre");
-               String nombre=scan.nextLine();
-               System.out.println("Ingrese el apellido");
-               String apellido=scan.nextLine();
-               System.out.println("Ingrese el nombre de la EPS");
-               String nameEps =scan.nextLine();
-               while(verificarNameEps(nameEps)==null){
-                   System.out.println("Esa eps no existe en nuestro sistema, ingreselo nuevamente");
-               nameEps =scan.nextLine();
-               }
-               EPS eps=verificarNameEps(nameEps);
-               System.out.println("Ingrese la fecha de nacimiento");
-               String nacimiento=scan.nextLine();
-               System.out.println("Ingrese el genero");
-               String genero=scan.nextLine();
-               System.out.println("Ingrese la dirección");
-               String direccion=scan.nextLine();
-               System.out.println("Ingrese el numero de telefono");
-               String telefono=scan.nextLine();
-               System.out.println("Ingrese su email");
-               String email=scan.nextLine();
-               Patient newPatient= new Patient(id,userName,password,nombre,apellido,nacimiento,genero,direccion,telefono,email,eps);
-                // patients.add(newPatient);
-                this.patientAdd(newPatient);
-               if (usuario instanceof Doctor){ 
-                ((Doctor)usuario).addPatient(newPatient);
-           }
-               System.out.println("El paciente fue añadido con exito");
-               
-           }
-       
-       }
-       
+
+    public void addNewUser(User newUser) {
+        if (newUser instanceof Patient) {
+            this.patientAdd((Patient) newUser);
+        } else if (newUser instanceof Doctor) {
+            // this.do((Doctor) newUser);
+            this.doctors.add((Doctor) newUser);
+        }
     }
-    
     
     public EPS verificarNameEps(String nombre){
         for(EPS eps:listEps){
@@ -241,13 +149,6 @@ public class Engine {
                 
             }
         }
-    //    for (Patient paciente : patients) {
-    //             if (paciente.getId() == id) {
-    //                 ((Doctor)usuario).addPatient(paciente);
-    //                 return "Se añadió a "+paciente.getName()+" "+paciente.getLastName()+" como paciente.";
-                    
-    //             }
-    //         }
 
         Patient paciente = patients.get(id);
         if (paciente!=null) {
@@ -316,11 +217,6 @@ public class Engine {
                 
         }
         else {
-            // for (Patient paciente : patients) {
-            //     if (paciente.getId() == id) {
-            //         return paciente;
-            //     }
-            // }
 
             Patient paciente = patients.get(id);
             if (paciente != null) {
@@ -460,11 +356,6 @@ public class Engine {
         Patient patient2 = new Patient(2,"patient2","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com",epsHolder);
         Patient patient3 = new Patient(3,"patient3","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com",epsHolder);
         Patient patient4 = new Patient(4,"patient4","password123","My Name", "My Last Name","1-1-2000","M","Calle 123","300 123 9900","correo@gmail.com",epsHolder);
-        // patients.add(patient0);
-        // patients.add(patient1);
-        // patients.add(patient2);
-        // patients.add(patient3);
-        // patients.add(patient4);
 
         patientAdd(patient0);
         patientAdd(patient1);
