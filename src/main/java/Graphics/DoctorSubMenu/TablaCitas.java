@@ -84,7 +84,7 @@ public class TablaCitas extends javax.swing.JFrame {
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             llenarTabla(user.getDatesQueue()),
             new String [] {
-                "ID", "Nombre", "Fecha", "Citas Pendientes"
+                "ID", "Nombre", "Fecha", "Razón"
             }
         ) {
             Class[] types = new Class [] {
