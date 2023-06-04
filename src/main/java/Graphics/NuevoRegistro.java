@@ -49,8 +49,8 @@ public class NuevoRegistro extends javax.swing.JFrame {
         botonGuardar = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        observaciones = new javax.swing.JTextField();
-        tratamiento = new javax.swing.JTextField();
+        observaciones = new java.awt.TextArea();
+        tratamiento = new java.awt.TextArea();
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 153));
 
@@ -162,18 +162,6 @@ public class NuevoRegistro extends javax.swing.JFrame {
         jLabel18.setForeground(new java.awt.Color(153, 255, 204));
         jLabel18.setText("Tratamiento:");
 
-        observaciones.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                observacionesActionPerformed(evt);
-            }
-        });
-
-        tratamiento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tratamientoActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -184,9 +172,11 @@ public class NuevoRegistro extends javax.swing.JFrame {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10)
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addGap(9, 9, 9)
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel5Layout.createSequentialGroup()
                                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(jLabel13)
@@ -197,17 +187,13 @@ public class NuevoRegistro extends javax.swing.JFrame {
                                                 .addComponent(diagnostico, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(jPanel5Layout.createSequentialGroup()
                                                 .addGap(208, 208, 208)
-                                                .addComponent(jLabel18)))
-                                        .addGap(154, 154, 154))
-                                    .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addComponent(observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                                        .addComponent(tratamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(jLabel10)))
+                                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(tratamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jLabel18)))))))))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(245, 245, 245)
                         .addComponent(botonGuardar)))
-                .addGap(14, 14, 14))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,12 +210,12 @@ public class NuevoRegistro extends javax.swing.JFrame {
                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tratamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(botonGuardar)
-                .addGap(0, 25, Short.MAX_VALUE))
+                .addGap(0, 21, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -257,7 +243,7 @@ public class NuevoRegistro extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(rootPane, "Completar el campo diagnostico es obligatorio");
         return;
         } ;               
-        if("".equals(this.tratamiento.getText())){
+        if("".equals(this.observaciones.getText())){
         JOptionPane.showMessageDialog(rootPane, "Completar el campo tratamiento es obligatorio");
         return;
         } ; 
@@ -265,13 +251,13 @@ public class NuevoRegistro extends javax.swing.JFrame {
         List<RegistroMedico> historiaClinica = paciente.getHistoriasClinica();
         String diagnosticoS = diagnostico.getText();
         String observac = observaciones.getText();
-        String trata = tratamiento.getText();
+        String trata = observaciones.getText();
         
         try{
                 RegistroMedico registro=new RegistroMedico(diagnosticoS,trata,observac, doctor);
                 historiaClinica.add(registro);
                 paciente.setHistoriasClinica(historiaClinica);
-                
+                JOptionPane.showMessageDialog(rootPane, "Registro guardado con éxito");
                 
             }
             catch(Exception e){
@@ -284,14 +270,6 @@ public class NuevoRegistro extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_botonSalirActionPerformed
-
-    private void observacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_observacionesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_observacionesActionPerformed
-
-    private void tratamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tratamientoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tratamientoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -345,7 +323,7 @@ public class NuevoRegistro extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JLabel nombrePaciente;
-    private javax.swing.JTextField observaciones;
-    private javax.swing.JTextField tratamiento;
+    private java.awt.TextArea observaciones;
+    private java.awt.TextArea tratamiento;
     // End of variables declaration//GEN-END:variables
 }

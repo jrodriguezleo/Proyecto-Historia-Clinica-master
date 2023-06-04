@@ -118,10 +118,12 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
+                              <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="9" pref="9" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
+                                      <Component id="observaciones" min="-2" pref="231" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="1" attributes="0">
                                               <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
@@ -133,19 +135,15 @@
                                               </Group>
                                               <Group type="102" alignment="0" attributes="0">
                                                   <EmptySpace min="-2" pref="208" max="-2" attributes="0"/>
-                                                  <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="tratamiento" min="-2" pref="231" max="-2" attributes="0"/>
+                                                      <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
                                               </Group>
                                           </Group>
-                                          <EmptySpace min="-2" pref="154" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="observaciones" min="-2" pref="248" max="-2" attributes="0"/>
-                                          <EmptySpace pref="59" max="32767" attributes="0"/>
-                                          <Component id="tratamiento" min="-2" pref="248" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
-                              <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -153,7 +151,7 @@
                           <Component id="botonGuardar" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                  <EmptySpace pref="31" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -174,13 +172,13 @@
                       <Component id="jLabel18" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="observaciones" alignment="3" min="-2" pref="131" max="-2" attributes="0"/>
-                      <Component id="tratamiento" alignment="3" min="-2" pref="131" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="observaciones" min="-2" pref="131" max="-2" attributes="0"/>
+                      <Component id="tratamiento" min="-2" pref="131" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Component id="botonGuardar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="25" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="21" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -311,15 +309,9 @@
             <Property name="text" type="java.lang.String" value="Tratamiento:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="observaciones">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="observacionesActionPerformed"/>
-          </Events>
+        <Component class="java.awt.TextArea" name="observaciones">
         </Component>
-        <Component class="javax.swing.JTextField" name="tratamiento">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tratamientoActionPerformed"/>
-          </Events>
+        <Component class="java.awt.TextArea" name="tratamiento">
         </Component>
       </SubComponents>
     </Container>

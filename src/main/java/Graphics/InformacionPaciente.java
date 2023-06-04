@@ -40,7 +40,7 @@ public class InformacionPaciente extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jLabel16 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        botonVerRegistro = new javax.swing.JButton();
 
         jLabel10.setFont(new java.awt.Font("Swis721 Blk BT", 0, 16)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(153, 255, 204));
@@ -124,9 +124,9 @@ public class InformacionPaciente extends javax.swing.JFrame {
         jLabel16.setForeground(new java.awt.Color(153, 255, 204));
         jLabel16.setText("REGISTROS PREVIOS");
 
-        jButton3.setBackground(new java.awt.Color(153, 255, 204));
-        jButton3.setText("Ver Registro");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        botonVerRegistro.setBackground(new java.awt.Color(153, 255, 204));
+        botonVerRegistro.setText("Ver Registro");
+        botonVerRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
@@ -169,7 +169,7 @@ public class InformacionPaciente extends javax.swing.JFrame {
                         .addComponent(jLabel16))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(202, 202, 202)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(botonVerRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(135, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -195,7 +195,7 @@ public class InformacionPaciente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botonVerRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(181, Short.MAX_VALUE))
         );
 
@@ -226,7 +226,7 @@ public class InformacionPaciente extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        botonVerRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
@@ -306,7 +306,7 @@ public class InformacionPaciente extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jLabel16 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        botonVerRegistro = new javax.swing.JButton();
 
         jLabel10.setFont(new java.awt.Font("Swis721 Blk BT", 0, 16)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(153, 255, 204));
@@ -418,11 +418,11 @@ public class InformacionPaciente extends javax.swing.JFrame {
         jLabel16.setForeground(new java.awt.Color(153, 255, 204));
         jLabel16.setText("REGISTROS PREVIOS");
 
-        jButton3.setBackground(new java.awt.Color(153, 255, 204));
-        jButton3.setText("Ver Registro");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        botonVerRegistro.setBackground(new java.awt.Color(153, 255, 204));
+        botonVerRegistro.setText("Ver Registro");
+        botonVerRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                botonVerRegistroActionPerformed(evt);
             }
         });
 
@@ -455,7 +455,7 @@ public class InformacionPaciente extends javax.swing.JFrame {
                         .addComponent(jLabel16))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(202, 202, 202)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(botonVerRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(282, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -481,7 +481,7 @@ public class InformacionPaciente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botonVerRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(192, Short.MAX_VALUE))
         );
 
@@ -505,9 +505,9 @@ public class InformacionPaciente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void botonVerRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerRegistroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_botonVerRegistroActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
@@ -528,8 +528,8 @@ public class InformacionPaciente extends javax.swing.JFrame {
        });
     }*/
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonVerRegistro;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
