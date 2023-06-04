@@ -116,7 +116,12 @@ public class InformacionPaciente extends javax.swing.JFrame {
             new String [] { 
                 "ID","Tipo Consulta", "Profesional", "Fecha" 
             } 
-        ));
+        ){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        });
 
         jScrollPane3.setViewportView(jTable2);
 
@@ -271,11 +276,13 @@ public class InformacionPaciente extends javax.swing.JFrame {
         }
     }
     
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        filaseleccionada = jTable2.getSelectedRow();
-        VerRegistro ver = new VerRegistro(paciente.getHistoriasClinica().get(filaseleccionada));
-        ver.setLocationRelativeTo(null);
-        ver.setVisible(true);
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
+        if(filaseleccionada != -1){
+            filaseleccionada = jTable2.getSelectedRow();
+            VerRegistro ver = new VerRegistro(paciente.getHistoriasClinica().get(filaseleccionada));
+            ver.setLocationRelativeTo(null);
+            ver.setVisible(true);
+        }
     }    
     
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {                                         
