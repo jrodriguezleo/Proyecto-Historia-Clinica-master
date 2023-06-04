@@ -316,70 +316,116 @@ public class CreacionUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCrearActionPerformed
-        // TODO add your handling code here:
+        /// Validacion de campos vacios ///
+
+        // id
         if("".equals(this.txtId.getText())){
-        JOptionPane.showMessageDialog(rootPane, "Completar el campo id es obligatorio");
-        return;
+            JOptionPane.showMessageDialog(rootPane, "Completar el campo id es obligatorio");
+            return;
         } ;
-        if(this.engine.getUser(this.user,Integer.parseInt(this.txtId.getText()))!=null){
-        JOptionPane.showMessageDialog(rootPane, "El id ya se encuentra registrado, verifique");
-        return;
-        } ;
-        
-        if(this.engine.verificarNameEps(this.txtEps.getText())==null){
-        JOptionPane.showMessageDialog(rootPane, "El nombre de la eps no está registrada en el sistema, verifíquela");
-        return;
-        }
-        if((this.txtUsername.getText())==""){
-        JOptionPane.showMessageDialog(rootPane, "Completar el campo nombre de usuario es obligatorio");
-        return;
-        } ;
-        if((this.txtPassword.getText())==""){
-        JOptionPane.showMessageDialog(rootPane, "Completar el campo contraseña es obligatorio");
-        return;
+        // nombre
+        if("".equals(this.txtName.getText())){
+            JOptionPane.showMessageDialog(rootPane, "Completar el campo nombre es obligatorio");
+            return;
         } ;
 
-                if (selectedOption.equals("Doctor")){//Vamos a añadir un nuevo doctor
+        // apellido
+        if("".equals(this.txtApellido.getText())){
+            JOptionPane.showMessageDialog(rootPane, "Completar el campo apellido es obligatorio");
+            return;
+        } ;
+
+        // nombre de usuario
+        if("".equals(this.txtUsername.getText())){
+            JOptionPane.showMessageDialog(rootPane, "Completar el campo nombre de usuario es obligatorio");
+            return;
+        } ;
+
+        // contraseña
+        if("".equals(this.txtPassword.getText())){
+            JOptionPane.showMessageDialog(rootPane, "Completar el campo contraseña es obligatorio");
+            return;
+        } ;
+
+
+        /// Otras validaciones ///
+
+
+        // id no numerico
+        try {
+            Integer.parseInt(this.txtId.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(rootPane, "El id debe ser un número");
+            return;
+        }
+
+        // id ya registrado
+        if(this.engine.getUser(this.user,Integer.parseInt(this.txtId.getText()))!=null){
+            JOptionPane.showMessageDialog(rootPane, "El id ya se encuentra registrado, verifique");
+            return;
+        } ;
+
+        // eps no registrada
+        if(this.engine.verificarNameEps(this.txtEps.getText())==null){
+            JOptionPane.showMessageDialog(rootPane, "El nombre de la eps no está registrada en el sistema, verifíquela");
+            return;
+        }
+
+        if (selectedOption.equals("Doctor")){//Vamos a añadir un nuevo doctor
+    
+            int id=Integer.parseInt(txtId.getText());
+
+            String nombre=txtName.getText();
+            String apellido=txtApellido.getText();
+            String fechaNacimiento=txtFechaNacimiento.getText();
+            String genero=txtGenero.getText();
+            EPS eps=this.engine.verificarNameEps(txtEps.getText());
+            String direccion=txtDireccion.getText();
+            String telefono=txtTelefono.getText();
+            String email=txtEmail.getText();
+            String especialidad=txtEspecialidad.getText();
+            String userName=txtUsername.getText();
+            String password=txtPassword.getText();
+            Doctor newDoctor= new Doctor(especialidad,eps,id,userName,password,nombre,apellido,fechaNacimiento,genero,direccion,telefono,email);
+            Set<Doctor> arbolDoctores=this.engine.getDoctors();
+            arbolDoctores.add(newDoctor);
+            this.engine.setDoctors(arbolDoctores);
             
-                        int id=Integer.parseInt(txtId.getText());
-            
-                        String nombre=txtName.getText();
-                        String apellido=txtApellido.getText();
-                        String fechaNacimiento=txtFechaNacimiento.getText();
-                        String genero=txtGenero.getText();
-                        EPS eps=this.engine.verificarNameEps(txtEps.getText());
-                        String direccion=txtDireccion.getText();
-                        String telefono=txtTelefono.getText();
-                        String email=txtEmail.getText();
-                        String especialidad=txtEspecialidad.getText();
-                        String userName=txtUsername.getText();
-                        String password=txtPassword.getText();
-                        Doctor newDoctor= new Doctor(especialidad,eps,id,userName,password,nombre,apellido,fechaNacimiento,genero,direccion,telefono,email);
-                        Set<Doctor> arbolDoctores=this.engine.getDoctors();
-                        arbolDoctores.add(newDoctor);
-                        this.engine.setDoctors(arbolDoctores);
-                        
-            
-                    }
-                else if(selectedOption.equals("Paciente")){
-                        int id=Integer.parseInt(txtId.getText());
-                        String nombre=txtName.getText();
-                        String apellido=txtApellido.getText();
-                        String fechaNacimiento=txtFechaNacimiento.getText();
-                        EPS eps=this.engine.verificarNameEps(txtEps.getText());
-                        String genero=txtGenero.getText();
-                        String direccion=txtDireccion.getText();
-                        String telefono=txtTelefono.getText();
-                        String email=txtEmail.getText();
-                        String userName=txtUsername.getText();
-                        String password=txtPassword.getText();
-                        Patient newPatient= new Patient(id,userName,password,nombre,apellido,fechaNacimiento,genero,direccion,telefono,email,eps);
-                        // LinkedList<Patient> listaPacientes=this.engine.getPatients();
-                        // listaPacientes.add(newPatient);
-                        // this.engine.setPatients(listaPacientes);
-                        this.engine.patientAdd(newPatient);
-                    }
-                JOptionPane.showMessageDialog(rootPane, "Usuario creado con éxito");
+
+            }
+        else if(selectedOption.equals("Paciente")){
+            int id=Integer.parseInt(txtId.getText());
+            String nombre=txtName.getText();
+            String apellido=txtApellido.getText();
+            String fechaNacimiento=txtFechaNacimiento.getText();
+            EPS eps=this.engine.verificarNameEps(txtEps.getText());
+            String genero=txtGenero.getText();
+            String direccion=txtDireccion.getText();
+            String telefono=txtTelefono.getText();
+            String email=txtEmail.getText();
+            String userName=txtUsername.getText();
+            String password=txtPassword.getText();
+            Patient newPatient= new Patient(id,userName,password,nombre,apellido,fechaNacimiento,genero,direccion,telefono,email,eps);
+            this.engine.patientAdd(newPatient);
+        }
+        JOptionPane.showMessageDialog(rootPane, "Usuario creado con éxito");
+
+        // limpiar campos
+        this.txtId.setText("");
+        this.txtName.setText("");
+        this.txtApellido.setText("");
+        this.txtFechaNacimiento.setText("");
+
+        this.txtGenero.setText("");
+        this.txtDireccion.setText("");
+        this.txtTelefono.setText("");
+        this.txtEmail.setText("");
+        this.txtUsername.setText("");
+        this.txtPassword.setText("");
+        this.txtEspecialidad.setText("");
+        // this.txtEps.setText("");
+
+
 
     }//GEN-LAST:event_buttonCrearActionPerformed
 
